@@ -7,6 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.widget.Toast;
 
@@ -18,9 +19,7 @@ import com.bw.movie.activity.NetWorkActivity;
  * function:
  */
 public abstract class BaseMVPActivity<V,P extends BaseMVPPresenter> extends Activity {
-
     public P presenter;
-
     /**
      * 初始化presenter
      * @return
@@ -37,6 +36,7 @@ public abstract class BaseMVPActivity<V,P extends BaseMVPPresenter> extends Acti
             showToast("亲，您的手机没有网络呦！！！");
             Intent intent = new Intent(this,NetWorkActivity.class);
             startActivity(intent);
+            finish();
         }else{
             initData();
             setListener();

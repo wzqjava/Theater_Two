@@ -1,9 +1,10 @@
 package com.bw.movie.server;
 
-
 import com.bw.movie.bean.LoginBean;
+import com.bw.movie.bean.RegisterBean;
 import com.bw.movie.net.Constom;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import io.reactivex.Observable;
@@ -26,4 +27,9 @@ public interface APIServer {
     @POST("login")
     Observable<LoginBean> Login(@FieldMap Map<String, String> map);
 
+    //注册的网络请求
+    //http://172.17.8.100/movieApi/user/v1/registerUser
+    @FormUrlEncoded
+    @POST(Constom.REGISTER_URL)
+    Observable<RegisterBean> getRegister(@FieldMap HashMap<String,String> map);
 }

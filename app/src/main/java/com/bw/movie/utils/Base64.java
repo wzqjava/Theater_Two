@@ -71,14 +71,21 @@ public final class  Base64 {
         base64Alphabet['+']  = 62;
         base64Alphabet['/']  = 63;
 
-        for (int i = 0; i<=25; i++)
+        for (int i = 0; i<=25; i++) {
             lookUpBase64Alphabet[i] = (char)('A'+i);
+        }
 
-        for (int i = 26,  j = 0; i<=51; i++, j++)
+        for (int i = 26,  j = 0; i<=51; i++, j++) {
             lookUpBase64Alphabet[i] = (char)('a'+ j);
+        }
 
-        for (int i = 52,  j = 0; i<=61; i++, j++)
+        int i = 52,  j = 0;
+        while (i<=61) {
             lookUpBase64Alphabet[i] = (char)('0' + j);
+            i++;
+            j++;
+        }
+
         lookUpBase64Alphabet[62] = (char)'+';
         lookUpBase64Alphabet[63] = (char)'/';
 
@@ -108,8 +115,9 @@ public final class  Base64 {
      */
     public static String encode(byte[] binaryData) {
 
-        if (binaryData == null)
+        if (binaryData == null) {
             return null;
+        }
 
         int      lengthDataBits    = binaryData.length*EIGHTBIT;
         if (lengthDataBits == 0) {
@@ -199,8 +207,9 @@ public final class  Base64 {
      */
     public static byte[] decode(String encoded) {
 
-        if (encoded == null)
+        if (encoded == null) {
             return null;
+        }
 
         char[] base64Data = encoded.toCharArray();
         // remove white spaces
@@ -212,8 +221,9 @@ public final class  Base64 {
 
         int      numberQuadruple    = (len/FOURBYTE );
 
-        if (numberQuadruple == 0)
+        if (numberQuadruple == 0) {
             return new byte[0];
+        }
 
         byte     decodedData[]      = null;
         byte     b1=0,b2=0,b3=0,b4=0;
@@ -229,8 +239,9 @@ public final class  Base64 {
             if (!isData( (d1 = base64Data[dataIndex++]) )||
                 !isData( (d2 = base64Data[dataIndex++]) )||
                 !isData( (d3 = base64Data[dataIndex++]) )||
-                !isData( (d4 = base64Data[dataIndex++]) ))
+                !isData( (d4 = base64Data[dataIndex++]) )) {
                 return null;//if found "no data" just return null
+            }
 
             b1 = base64Alphabet[d1];
             b2 = base64Alphabet[d2];
@@ -256,7 +267,9 @@ public final class  Base64 {
             !isData( (d4 ) )) {//Check if they are PAD characters
             if (isPad( d3 ) && isPad( d4)) {               //Two PAD e.g. 3c[Pad][Pad]
                 if ((b2 & 0xf) != 0)//last 4 bits should be zero
+                {
                     return null;
+                }
                 byte[] tmp = new byte[ i*3 + 1 ];
                 System.arraycopy( decodedData, 0, tmp, 0, i*3 );
                 tmp[encodedIndex]   = (byte)(  b1 <<2 | b2>>4 ) ;
@@ -264,7 +277,9 @@ public final class  Base64 {
             } else if (!isPad( d3) && isPad(d4)) {               //One PAD  e.g. 3cQ[Pad]
                 b3 = base64Alphabet[ d3 ];
                 if ((b3 & 0x3 ) != 0)//last 2 bits should be zero
+                {
                     return null;
+                }
                 byte[] tmp = new byte[ i*3 + 2 ];
                 System.arraycopy( decodedData, 0, tmp, 0, i*3 );
                 tmp[encodedIndex++] = (byte)(  b1 <<2 | b2>>4 );
@@ -292,15 +307,17 @@ public final class  Base64 {
      * @return      the new length
      */
     protected static int removeWhiteSpace(char[] data) {
-        if (data == null)
+        if (data == null) {
             return 0;
+        }
 
         // count characters that's not whitespace
         int newSize = 0;
         int len = data.length;
         for (int i = 0; i < len; i++) {
-            if (!isWhiteSpace(data[i]))
+            if (!isWhiteSpace(data[i])) {
                 data[newSize++] = data[i];
+            }
         }
         return newSize;
     }

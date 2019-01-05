@@ -57,7 +57,7 @@ public class LoginActivity extends BaseMVPActivity<LoginInterface,LoginPersenter
         login_imageview_showpwd = (ImageView) findViewById(R.id.login_imageview_showpwd);
         //login_button_wechat = (ImageView)findViewById(R.id.login_button_wechat);
         login_checkbox_rember = (CheckBox) findViewById(R.id.login_checkbox_rember);
-        //login_textview_registered = (TextView)findViewById(R.id.login_textview_registered);
+        login_textview_registered = (TextView)findViewById(R.id.login_text_register);
         login_checkbox_automatic = (CheckBox) findViewById(R.id.login_checkbox_automatic);
         login_button_login = (Button) findViewById(R.id.login_button_login);
 
@@ -134,12 +134,12 @@ public class LoginActivity extends BaseMVPActivity<LoginInterface,LoginPersenter
                 return true;
             }
         });
-       /* login_textview_registered.setOnClickListener(new View.OnClickListener() {
+        login_textview_registered.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(LoginActivity.this,RegisterActivity.class));
             }
-        });*/
+        });
        /* login_button_wechat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

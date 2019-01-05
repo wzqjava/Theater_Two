@@ -18,6 +18,7 @@ import com.bw.movie.base.BaseActivity;
 public class NetWorkActivity extends Activity {
 
     @Override
+
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_net_work);

@@ -30,6 +30,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.NetWorkActivity" />
         <activity android:name=".activity.LoginActivity" />
@@ -39,6 +40,8 @@
         <meta-data
             android:name="com.amap.api.v2.apikey"
             android:value="	3f7588f34241e70f653d29783e31074c"/>
+
+        <activity android:name=".activity.ClassifyActivity" />
 
     </application>
 

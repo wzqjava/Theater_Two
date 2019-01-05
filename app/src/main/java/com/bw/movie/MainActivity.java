@@ -28,7 +28,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     protected int setView() {
         return R.layout.activity_main;
     }
-
     /**
      * 初始化View
      */
