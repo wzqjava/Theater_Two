@@ -1,5 +1,8 @@
 package com.bw.movie.activity;
 
+import android.app.Activity;
+import android.os.PersistableBundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -13,39 +16,14 @@ import com.bw.movie.base.BaseActivity;
  *
  * 当用户没有网络的时候去跳转到本页面
  */
-public class NetWorkActivity extends BaseActivity {
+public class NetWorkActivity extends Activity {
 
-    /**
-     * 设置布局
-     *
-     * @return
-     */
     @Override
-    protected int setView() {
-        return R.layout.activity_net_work;
-    }
+    protected void onCreate( @Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_net_work);
 
-    /**
-     * 初始化View
-     */
-    @Override
-    protected void initView() {
 
     }
 
-    /**
-     * 初始化数据
-     */
-    @Override
-    protected void initData() {
-
-    }
-
-    /**
-     * 设置监听
-     */
-    @Override
-    protected void setListener() {
-
-    }
 }

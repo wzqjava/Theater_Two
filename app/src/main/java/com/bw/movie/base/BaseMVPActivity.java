@@ -19,7 +19,7 @@ import com.bw.movie.activity.NetWorkActivity;
  */
 public abstract class BaseMVPActivity<V,P extends BaseMVPPresenter> extends Activity {
 
-    P presenter;
+   public P presenter;
 
     /**
      * 初始化presenter
@@ -37,6 +37,7 @@ public abstract class BaseMVPActivity<V,P extends BaseMVPPresenter> extends Acti
             showToast("亲，您的手机没有网络呦！！！");
             Intent intent = new Intent(this,NetWorkActivity.class);
             startActivity(intent);
+            finish();
         }else{
             initData();
             setListener();

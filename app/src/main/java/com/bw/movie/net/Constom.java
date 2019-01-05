@@ -6,7 +6,12 @@ package com.bw.movie.net;
  * function:
  */
 public class Constom {
-    public final static String DATA_URL="http://120.27.23.105/user/";
 
+
+
+    //所有接口都用
+    public final static String URL="http://172.17.8.100/";
+    //注册的接口
+    public final static String REGISTER_URL="movieApi/user/v1/registerUser";
 
 }

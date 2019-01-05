@@ -1,9 +1,13 @@
 package com.bw.movie;
 
 
+import android.view.View;
+
 import com.bw.movie.base.BaseActivity;
 
 public class MainActivity extends BaseActivity {
+
+
     /**
      * 设置布局
      *
@@ -13,7 +17,6 @@ public class MainActivity extends BaseActivity {
     protected int setView() {
         return R.layout.activity_main;
     }
-
     /**
      * 初始化View
      */

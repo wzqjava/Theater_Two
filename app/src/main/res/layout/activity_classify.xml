@@ -1,0 +1,84 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_30"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_20"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_28"
+            android:src="@mipmap/cinema_detail_icon_location_default" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_32"
+            android:layout_marginLeft="@dimen/dp_6"
+            android:layout_marginTop="@dimen/dp_1"
+            android:layout_weight="1"
+            android:text="北京"
+            android:textSize="@dimen/sp_16" />
+
+        <SearchView
+            android:id="@+id/classfy_search"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_24"
+            android:background="@drawable/cinema_search"></SearchView>
+    </LinearLayout>
+<RadioGroup
+    android:layout_marginTop="@dimen/dp_10"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_25"
+    android:orientation="horizontal"
+    android:gravity="center">
+
+    <RadioButton
+        android:id="@+id/classfy_remen"
+        android:layout_width="@dimen/dp_83"
+        android:layout_height="@dimen/dp_25"
+        android:gravity="center"
+        android:checked="true"
+        android:text="热门电影"
+        android:textSize="@dimen/sp_14"
+        android:textColor="@drawable/cinema_title_text"
+        android:background="@drawable/cinema_title"
+        android:button="@null"
+        />
+    <RadioButton
+        android:id="@+id/classfy_zhengzai"
+        android:layout_width="@dimen/dp_83"
+        android:layout_height="@dimen/dp_25"
+        android:gravity="center"
+        android:text="正在上映"
+        android:button="@null"
+        android:layout_marginLeft="@dimen/dp_32"
+        android:textSize="@dimen/sp_14"
+        android:textColor="@drawable/cinema_title_text"
+        android:background="@drawable/cinema_title"/>
+    <RadioButton
+        android:id="@+id/classfy_jijiang"
+        android:layout_width="@dimen/dp_83"
+        android:layout_height="@dimen/dp_25"
+        android:gravity="center"
+        android:text="即将上映"
+        android:button="@null"
+        android:layout_marginLeft="@dimen/dp_32"
+        android:textSize="@dimen/sp_14"
+        android:textColor="@drawable/cinema_title_text"
+        android:background="@drawable/cinema_title"/>
+</RadioGroup>
+    
+    
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="@dimen/dp_32"
+        android:id="@+id/classfy_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_422"/>
+</LinearLayout>

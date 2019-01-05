@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item  android:state_checked="true"
+        >  <!-- 按钮选中状态-->
+        <shape >
+
+            <gradient
+                android:startColor="#e8175e"
+                android:endColor="#440a33"
+                />
+            <!-- 填充的颜色：这里设置背景透明 -->
+            <corners android:radius="@dimen/dp_4" /><!-- android:radius 弧形的半径 -->
+
+        </shape>
+    </item>
+    <item  android:state_checked="false"
+       >   <!-- 按钮未点击-->
+        <shape >
+            <stroke  android:width="@dimen/dp_1" android:color="#dfd5d5" /><!-- 边框颜色，边框大小-->
+            <solid   android:color="#ffffff" />
+            <!-- 填充的颜色：这里设置背景透明 -->
+            <corners android:radius="@dimen/dp_4" /><!-- android:radius 弧形的半径 -->
+
+        </shape>
+    </item>
+
+
+
+</selector>

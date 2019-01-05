@@ -17,7 +17,6 @@ import android.widget.Toast;
 import com.bw.movie.activity.NetWorkActivity;
 import com.bw.movie.net.Constans;
 
-
 /**
  * date:2018/12/27
  * author:赵豪轩(xuan)
@@ -34,12 +33,12 @@ public abstract class BaseActivity extends AppCompatActivity {
             showToast("亲，您的手机没有网络呦！！！");
             Intent intent = new Intent(this,NetWorkActivity.class);
             startActivity(intent);
+            finish();
         }else{
             initData();
             setListener();
         }
     }
-
     /**
      * 判断权限是否已经配置了，
      *     String...    意思是可以传入多个字符串

@@ -1,8 +1,242 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@mipmap/bitmap">
 
 
+    <RelativeLayout
+        android:layout_width="@dimen/dp_300"
+        android:layout_height="@dimen/dp_40"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_100">
 
-</LinearLayout>
+        <ImageView
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_alignBottom="@+id/register_name"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:src="@mipmap/register_icon_name_default" />
+
+        <EditText
+            android:id="@+id/register_name"
+            android:layout_width="@dimen/dp_250"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="@dimen/dp_40"
+            android:layout_marginLeft="@dimen/dp_40"
+            android:background="@null"
+            android:hint="昵称"
+            android:textColor="#ffffff"
+            android:textColorHint="#fff" />
+
+        <TextView
+            android:layout_width="@dimen/dp_320"
+            android:layout_height="@dimen/dp_1"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_below="@+id/register_name"
+            android:background="#ffff" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="@dimen/dp_300"
+        android:layout_height="@dimen/dp_40"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_150">
+
+        <ImageView
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_alignBottom="@+id/register_sex"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:src="@mipmap/register_icon_sex_default" />
+
+        <EditText
+            android:id="@+id/register_sex"
+            android:layout_width="@dimen/dp_250"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="@dimen/dp_40"
+            android:layout_marginLeft="@dimen/dp_40"
+            android:background="@null"
+            android:hint="性别"
+            android:textColor="#ffffff"
+            android:textColorHint="#fff" />
+
+        <TextView
+            android:layout_width="@dimen/dp_320"
+            android:layout_height="@dimen/dp_1"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_below="@+id/register_sex"
+            android:background="#ffff" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="@dimen/dp_300"
+        android:layout_height="@dimen/dp_40"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_200">
+
+        <ImageView
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_alignBottom="@+id/register_date"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:src="@mipmap/register_icon_date_default" />
+
+        <EditText
+            android:id="@+id/register_date"
+            android:layout_width="@dimen/dp_250"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="@dimen/dp_40"
+            android:layout_marginLeft="@dimen/dp_40"
+            android:background="@null"
+            android:hint="出生日期"
+            android:textColor="#ffffff"
+            android:textColorHint="#fff" />
+
+        <TextView
+            android:layout_width="@dimen/dp_320"
+            android:layout_height="@dimen/dp_1"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_below="@+id/register_date"
+            android:background="#ffff" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="@dimen/dp_300"
+        android:layout_height="@dimen/dp_40"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_250">
+
+        <ImageView
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_alignBottom="@+id/register_phone"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:src="@mipmap/register_icon_phone_default" />
+
+        <EditText
+            android:id="@+id/register_phone"
+            android:layout_width="@dimen/dp_250"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="@dimen/dp_40"
+            android:layout_marginLeft="@dimen/dp_40"
+            android:background="@null"
+            android:hint="手机号"
+            android:textColor="#ffffff"
+            android:textColorHint="#fff" />
+
+        <TextView
+            android:layout_width="@dimen/dp_320"
+            android:layout_height="@dimen/dp_1"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_below="@+id/register_phone"
+            android:background="#ffff" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="@dimen/dp_300"
+        android:layout_height="@dimen/dp_40"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_300">
+
+        <ImageView
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_alignBottom="@+id/register_mail"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:src="@mipmap/register_icon_mail_default" />
+
+        <EditText
+            android:id="@+id/register_mail"
+            android:layout_width="@dimen/dp_250"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="@dimen/dp_40"
+            android:layout_marginLeft="@dimen/dp_40"
+            android:background="@null"
+            android:hint="邮箱"
+            android:textColor="#ffffff"
+            android:textColorHint="#fff" />
+
+        <TextView
+            android:layout_width="@dimen/dp_320"
+            android:layout_height="@dimen/dp_1"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_below="@+id/register_mail"
+            android:background="#ffff" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="@dimen/dp_300"
+        android:layout_height="@dimen/dp_40"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_350">
+
+        <ImageView
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20"
+            android:layout_alignBottom="@+id/register_lock"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_marginLeft="@dimen/dp_8"
+            android:src="@mipmap/register_icon_lock_default" />
+
+        <EditText
+            android:id="@+id/register_lock"
+            android:layout_width="@dimen/dp_250"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="@dimen/dp_40"
+            android:layout_marginLeft="@dimen/dp_40"
+            android:background="@null"
+            android:hint="登录密码"
+            android:textColor="#ffffff"
+            android:textColorHint="#fff" />
+
+        <TextView
+            android:layout_width="@dimen/dp_320"
+            android:layout_height="@dimen/dp_1"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_below="@+id/register_lock"
+            android:background="#ffff" />
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/register_register"
+        android:layout_width="@dimen/dp_250"
+        android:layout_height="wrap_content"
+        android:text="注册"
+        android:textColor="#ffffff"
+        android:background="@drawable/shape"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/dp_85" />
+</RelativeLayout>
