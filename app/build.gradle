@@ -10,8 +10,29 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+   /* MD5: 4F:EC:0B:2C:33:09:D4:3A:13:41:3C:A0:5D:0E:4A:07
+    SHA1: AB:17:B9:4C:E8:F9:4F:9B:65:50:87:E3:A0:E6:B2:C1:83:81:6C:B0
+    SHA256: 35:6D:38:E8:7B:BD:5D:03:00:B3:1F:AA:E4:3A:C3:95:90:01:30:65:8B:7F:BB:01:EF:99:29:76:18:42:81:EE*/
+
+    //签名key的配置
+    signingConfigs {
+        simple {
+            storeFile file("../lz.jks")//签名文件名称
+            storePassword "123456"
+            keyAlias "ll"//别名
+            keyPassword "123456"
+        }
+    }
+
     buildTypes {
+        debug {
+            signingConfig signingConfigs.simple
+            minifyEnabled false
+        }
         release {
+            signingConfig signingConfigs.simple
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
@@ -19,13 +40,12 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.okhttp3:okhttp:3.12.1'
     implementation 'com.jakewharton:butterknife:8.8.1'
@@ -37,5 +57,12 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
     implementation 'org.greenrobot:greendao:3.2.2'
     implementation 'org.greenrobot:greendao-generator:3.2.2'
-
+    //RecycleView:
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    //XRecyclerView
+    implementation 'com.jcodecraeer:xrecyclerview:1.2.0'
+    implementation 'com.android.support:design:28.0.0'
+    /*Fresco的基础依赖*/
+    implementation 'com.facebook.fresco:fresco:0.14.1'
+    implementation files('libs/AMap_Location_V4.4.0_20181122.jar')
 }

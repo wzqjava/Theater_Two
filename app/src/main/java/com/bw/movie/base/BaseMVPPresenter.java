@@ -6,7 +6,7 @@ package com.bw.movie.base;
  * function:
  */
 public class BaseMVPPresenter<V> {
-    V view;
+    public V view;
 
     public void detach() {
         view = null;

@@ -34,6 +34,7 @@ public abstract class BaseActivity extends AppCompatActivity {
             showToast("亲，您的手机没有网络呦！！！");
             Intent intent = new Intent(this,NetWorkActivity.class);
             startActivity(intent);
+            finish();
         }else{
             initData();
             setListener();

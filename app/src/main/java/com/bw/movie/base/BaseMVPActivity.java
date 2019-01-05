@@ -19,7 +19,7 @@ import com.bw.movie.activity.NetWorkActivity;
  */
 public abstract class BaseMVPActivity<V,P extends BaseMVPPresenter> extends Activity {
 
-    P presenter;
+    public P presenter;
 
     /**
      * 初始化presenter

@@ -1,0 +1,72 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_height="@dimen/dp_30">
+        <ImageView
+            android:id="@+id/cinema_location"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:src="@mipmap/cinema_detail_icon_location_default"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginLeft="@dimen/dp_6"
+            android:layout_marginTop="@dimen/dp_1"
+            android:text="北京"
+            android:textSize="@dimen/sp_16"
+            android:layout_weight="1"/>
+        <SearchView
+
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_24"
+            android:id="@+id/search"
+            android:background="@drawable/cinema_search"></SearchView>
+    </LinearLayout>
+    <RadioGroup
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_25"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:id="@+id/cinema_group">
+
+        <RadioButton
+            android:layout_width="@dimen/dp_83"
+            android:layout_height="@dimen/dp_25"
+            android:gravity="center"
+            android:checked="true"
+            android:text="推荐影院"
+            android:textSize="@dimen/sp_14"
+            android:textColor="@drawable/cinema_title_text"
+            android:background="@drawable/cinema_title"
+            android:id="@+id/cinema_bt_recommend"
+            android:button="@null"
+            />
+        <RadioButton
+            android:layout_width="@dimen/dp_83"
+            android:layout_height="@dimen/dp_25"
+            android:gravity="center"
+            android:text="附近影院"
+            android:button="@null"
+            android:layout_marginLeft="@dimen/dp_32"
+            android:textSize="@dimen/sp_14"
+            android:textColor="@drawable/cinema_title_text"
+            android:background="@drawable/cinema_title"
+            android:id="@+id/cinema_bt_nearby"/>
+    </RadioGroup>
+    <android.support.v4.view.ViewPager
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/cinema_pager"></android.support.v4.view.ViewPager>
+
+</LinearLayout>
