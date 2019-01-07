@@ -36,9 +36,8 @@ public class OkHttpUtils {
         OkHttpClient.Builder builder = new OkHttpClient
                 .Builder()
                 //添加日志拦截器
-                .addInterceptor(interceptor);
-
-
+                .addInterceptor(interceptor)
+                .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY));
         return builder;
     }
 }

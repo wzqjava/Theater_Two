@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.text.method.TransformationMethod;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -14,14 +15,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bw.movie.R;
+import com.bw.movie.app.MyApplication;
 import com.bw.movie.base.BaseActivity;
 import com.bw.movie.base.BaseMVPActivity;
 import com.bw.movie.bean.LoginBean;
+import com.bw.movie.greendao.UserBean;
 import com.bw.movie.presenter.LoginInterface;
 import com.bw.movie.presenter.LoginPersenter;
 import com.bw.movie.utils.EncryptUtil;
+import com.greendao.gen.UserBeanDao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -162,6 +167,26 @@ public class LoginActivity extends BaseMVPActivity<LoginInterface,LoginPersenter
         if(loginBean != null){
             showToast(loginBean.getMessage());
             if(loginBean.isSuccess()) {
+                UserBeanDao userBeanDao =
+                        MyApplication.getInstances().getDaoSession().getUserBeanDao();
+
+                UserBean userBean = new UserBean(loginBean.getResult().getSessionId()+"",loginBean.getResult().getUserId()+"",loginBean.getResult().getUserInfo().getBirthday()+"",
+                        loginBean.getResult().getUserInfo().getId()+"",loginBean.getResult().getUserInfo().getLastLoginTime()+"",loginBean.getResult().getUserInfo().getNickName()+"",
+                        loginBean.getResult().getUserInfo().getPhone()+"",loginBean.getResult().getUserInfo().getSex()+"",loginBean.getResult().getUserInfo().getHeadPic()+"");
+
+                Log.e("zhx",loginBean.getResult().getUserInfo().getNickName()+"");
+                List<UserBean> userBeans = userBeanDao.loadAll();
+                if (userBeans.size() != 0){
+                    userBeanDao.deleteAll();
+                }else{
+                }
+                userBeanDao.insert(userBean);
+
+
+                List<UserBean> userBeans1 = userBeanDao.loadAll();
+                Log.e("zhx",userBeans1.size()+"");
+
+
                 Intent intent = new Intent(LoginActivity.this,ShelfActivity.class);
                 startActivity(intent);
             } else {
