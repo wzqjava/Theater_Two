@@ -44,6 +44,7 @@ public class LoginActivity extends BaseMVPActivity<LoginInterface,LoginPersenter
     private TextView login_textview_registered;
     private ImageView login_button_wechat;
     private SharedPreferences rember;
+    private boolean isHideFirst = true;
 
     @Override
     protected LoginPersenter initPresenter() {
@@ -67,6 +68,7 @@ public class LoginActivity extends BaseMVPActivity<LoginInterface,LoginPersenter
         login_button_login = (Button) findViewById(R.id.login_button_login);
 
         login_button_login.setOnClickListener(this);
+        login_imageview_showpwd.setOnClickListener(this);
     }
 
     @Override
@@ -117,6 +119,27 @@ public class LoginActivity extends BaseMVPActivity<LoginInterface,LoginPersenter
 
     @Override
     protected void setListener() {
+        login_imageview_showpwd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isHideFirst == true) {
+                    //密文
+
+                    HideReturnsTransformationMethod method1 = HideReturnsTransformationMethod.getInstance();
+                    login_edittext_pwd.setTransformationMethod(method1);
+                    isHideFirst = false;
+                } else {
+                    //密文
+                    TransformationMethod method = PasswordTransformationMethod.getInstance();
+                    login_edittext_pwd.setTransformationMethod(method);
+                    isHideFirst = true;
+                }
+                // 光标的位置
+                int index =login_edittext_pwd .getText().toString().length();
+                login_edittext_pwd.setSelection(index);
+
+            }
+        });
         login_imageview_showpwd.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {

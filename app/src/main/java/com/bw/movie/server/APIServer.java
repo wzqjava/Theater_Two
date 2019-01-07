@@ -1,8 +1,9 @@
 package com.bw.movie.server;
 
-import com.bw.movie.app.MyApplication;
+
 import com.bw.movie.bean.LoginBean;
 import com.bw.movie.bean.MovieFragmentBean;
+import com.bw.movie.bean.RecommendBean;
 import com.bw.movie.bean.RegisterBean;
 import com.bw.movie.net.Constom;
 import com.greendao.gen.UserBeanDao;
@@ -11,11 +12,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import io.reactivex.Observable;
+import io.reactivex.Observer;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
-import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.QueryMap;
 
@@ -30,6 +31,9 @@ public interface APIServer {
      * @param map
      * @return
      */
+    @GET("movieApi/user/v1/findRecommendCinemas")
+    Observable<RecommendBean> Recommend(@QueryMap Map<String,String> map);
+
     @FormUrlEncoded
     @POST("movieApi/user/v1/login")
     Observable<LoginBean> Login(@FieldMap Map<String, String> map);
@@ -40,7 +44,9 @@ public interface APIServer {
     @POST(Constom.REGISTER_URL)
     Observable<RegisterBean> getRegister(@FieldMap HashMap<String,String> map);
 
+
     //影片的热门电影
     @GET(Constom.MOVIEFRAGMENT_REMEN)
-    Observable<MovieFragmentBean> getMovieFragment(@Header("userId") String userId,@Header("sessionId") String sessionId, @QueryMap HashMap<String, String> map);
+    Observable<MovieFragmentBean> getMovieFragment(@Header("userId") String userId, @Header("sessionId") String sessionId, @QueryMap HashMap<String, String> map);
 }
+

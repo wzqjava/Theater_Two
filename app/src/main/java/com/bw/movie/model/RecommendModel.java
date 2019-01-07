@@ -1,6 +1,7 @@
 package com.bw.movie.model;
 
 import com.bw.movie.bean.LoginBean;
+import com.bw.movie.bean.RecommendBean;
 import com.bw.movie.server.APIServer;
 import com.bw.movie.server.DefaultDisposable;
 import com.bw.movie.utils.RetrofitUtils;
@@ -13,17 +14,17 @@ import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * date:2019/1/4
- * author:刘振国(Liu)
+ * date:2019/1/5
+ * author:李壮(大壮)
  * function:
  */
-public class LoginModel {
+public class RecommendModel {
     private Disposable mDisposable = new DefaultDisposable();
 
-    public void Login(Map<String, String> map, DisposableObserver<LoginBean> observer){
+    public void getRecommend(Map<String, String> map, DisposableObserver<RecommendBean> observer){
         RetrofitUtils.getInstance()
                 .getService(APIServer.class)
-                .Login(map)
+                .Recommend(map)
                 //切换线程
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
@@ -39,4 +40,5 @@ public class LoginModel {
     public void disposable(){
         mDisposable.dispose();
     }
+
 }
