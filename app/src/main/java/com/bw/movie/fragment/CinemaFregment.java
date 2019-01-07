@@ -69,6 +69,7 @@ public class CinemaFregment extends Fragment implements AMapLocationListener {
         mlocationClient = new AMapLocationClient(getActivity());
 //初始化定位参数
         mLocationOption = new AMapLocationClientOption();
+        mLocationOption.setNeedAddress(true);
 //设置定位监听
         mlocationClient.setLocationListener(this);
 //设置定位模式为高精度模式，Battery_Saving为低功耗模式，Device_Sensors是仅设备模式
@@ -98,6 +99,7 @@ public class CinemaFregment extends Fragment implements AMapLocationListener {
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 Date date = new Date(amapLocation.getTime());
                 df.format(date);//定位时间
+                //怎么拿到城市名称
             } else {
                 //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
                 Log.e("AmapError","location Error, ErrCode:"
