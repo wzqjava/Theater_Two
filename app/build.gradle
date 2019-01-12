@@ -78,9 +78,9 @@ dependencies {
     //eventbus
     implementation 'org.greenrobot:eventbus:3.1.1'
 
-
-    implementation 'com.github.bumptech.glide:glide:4.5.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
+    // implementation 'com.github.bumptech.glide:glide:4.5.0'
+    // annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
 
     implementation 'org.greenrobot:greendao:3.2.2' // add library
     implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
@@ -89,4 +89,9 @@ dependencies {
     implementation 'com.chenlittleping:recyclercoverflow:1.0.6'
 
     implementation files('libs/pinyin4j-2.5.0.jar')
+    implementation 'com.dalong:carrousellayout:1.0.0'
+
+
+    implementation 'com.github.axlecho:SakuraPlayer:0.4'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.4'
 }

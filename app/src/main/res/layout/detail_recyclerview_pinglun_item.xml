@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_width="@dimen/dp_340"
+        android:layout_height="@dimen/dp_150"
+        android:layout_centerHorizontal="true">
+
+        <ImageView
+            android:id="@+id/detail_pinglun_img"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:src="@mipmap/com_icon_publish_default"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50" />
+        <TextView
+            android:text="name"
+            android:id="@+id/detail_pinglun_name"
+            android:layout_marginTop="@dimen/sp_20"
+            android:layout_marginLeft="@dimen/dp_70"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/detail_pinglun_xiangqing"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_70"
+            android:text="xiangqing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:layout_marginTop="@dimen/dp_120"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="10-26 13:14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/detail_pinglun_zan"
+            android:layout_marginTop="@dimen/dp_120"
+            android:layout_marginLeft="@dimen/dp_210"
+            android:src="@mipmap/com_icon_praise_default"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20" />
+        <TextView
+            android:text="zan"
+            android:id="@+id/detail_pinglun_zannum"
+            android:layout_marginTop="@dimen/dp_125"
+            android:layout_marginLeft="@dimen/dp_240"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/detail_pinglun_pinglun"
+            android:layout_marginTop="@dimen/dp_120"
+            android:layout_marginLeft="@dimen/dp_270"
+            android:src="@mipmap/com_icon_comment_default"
+            android:layout_width="@dimen/dp_20"
+            android:layout_height="@dimen/dp_20" />
+        <TextView
+            android:text="ping"
+            android:id="@+id/detail_pinglun_pinglunnum"
+            android:layout_marginTop="@dimen/dp_125"
+            android:layout_marginLeft="@dimen/dp_300"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:background="#505050"
+            android:layout_marginTop="@dimen/dp_145"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1" />
+    </RelativeLayout>
+
+</RelativeLayout>

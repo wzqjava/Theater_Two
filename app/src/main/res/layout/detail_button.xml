@@ -1,0 +1,322 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_500"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp_0"
+            android:background="@drawable/detail_button_shape">
+
+            <RelativeLayout
+                android:layout_width="@dimen/dp_150"
+                android:layout_height="@dimen/dp_150"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:layout_marginTop="@dimen/dp_40"
+                android:layout_marginEnd="@dimen/dp_59"
+                android:layout_marginRight="@dimen/dp_59">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_150"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:text="类型:"
+                        android:textSize="@dimen/sp_10" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:text="导演:"
+                        android:textSize="@dimen/sp_10" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:text="时长:"
+                        android:textSize="@dimen/sp_10" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:text="产地:"
+                        android:textSize="@dimen/sp_10" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/dp_150"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="@dimen/dp_25"
+                    android:layout_marginTop="0dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/detail_button_detail_one"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:text="类型"
+                        android:textSize="@dimen/sp_10" />
+
+                    <TextView
+                        android:id="@+id/detail_button_detail_two"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:text="导演"
+                        android:textSize="@dimen/sp_10" />
+
+                    <TextView
+                        android:id="@+id/detail_button_detail_three"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:text="时长"
+                        android:textSize="@dimen/sp_10" />
+
+                    <TextView
+                        android:id="@+id/detail_button_detail_four"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp_5"
+                        android:text="产地"
+                        android:textSize="@dimen/sp_10" />
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/detail_button_down"
+                android:layout_width="@dimen/dp_70"
+                android:layout_height="@dimen/dp_60"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/dp_0"
+                android:layout_marginEnd="@dimen/dp_0"
+                android:layout_marginRight="@dimen/dp_0"
+                android:background="@mipmap/com_icon_down_default" />
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="@dimen/dp_25"
+            android:layout_marginTop="@dimen/dp_281"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="剧情简介" />
+
+            <TextView
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_3"
+                android:layout_marginTop="@dimen/dp_2"
+                android:background="@drawable/moviefragment_shu" />
+
+            <TextView
+                android:id="@+id/detail_button_jianjie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:text="简介" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="@dimen/dp_300"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="@dimen/dp_25"
+            android:layout_marginTop="@dimen/dp_400">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="剧情简介" />
+
+            <TextView
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_3"
+                android:layout_marginTop="@dimen/dp_18"
+                android:background="@drawable/moviefragment_shu" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_30"
+                android:layout_marginTop="@dimen/dp_30"
+                android:background="#ff7300"
+                android:text="演员名称"
+                android:textColor="#ffffff" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_30"
+                android:layout_marginLeft="@dimen/dp_220"
+                android:layout_marginTop="@dimen/dp_30"
+                android:background="#ff7300"
+                android:text="饰演角色"
+                android:textColor="#ffffff" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="@dimen/dp_500"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_25"
+            android:layout_marginTop="@dimen/dp_472">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="@dimen/dp_0"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/detail_button_name_one"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="name1" />
+
+                <TextView
+                    android:id="@+id/detail_button_name_two"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="name2" />
+
+                <TextView
+                    android:id="@+id/detail_button_name_three"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="name3" />
+
+                <TextView
+                    android:id="@+id/detail_button_name_four"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="name4" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="@dimen/dp_147"
+                android:layout_marginLeft="@dimen/dp_147"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="饰"
+                    android:textColor="#ff00e5" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="饰"
+                    android:textColor="#ff00e5" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="饰"
+                    android:textColor="#ff00e5" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="饰"
+                    android:textColor="#ff00e5" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/dp_0"
+                android:layout_marginEnd="@dimen/dp_72"
+                android:layout_marginRight="@dimen/dp_72"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="我不知道啊" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="我不知道啊" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="我不知道啊" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:text="我不知道啊" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/detail_button_img"
+            android:layout_width="@dimen/dp_130"
+            android:layout_height="@dimen/dp_150"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="@dimen/dp_18"
+            android:layout_marginLeft="@dimen/dp_18"
+            android:layout_marginTop="@dimen/dp_110"
+            android:src="@mipmap/dianyingbeijing3" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

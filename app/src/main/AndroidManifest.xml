@@ -43,6 +43,9 @@
 
         <activity android:name=".activity.CinemaDetailActivity" />
         <activity android:name=".activity.ChooseActivity"></activity>
+        <activity android:name=".activity.DeatilActivity" />
+        <activity android:name=".activity.SelectTheatersActivity" />
+        <activity android:name=".activity.PlayDetailActivity"></activity>
     </application>
 
 </manifest>
