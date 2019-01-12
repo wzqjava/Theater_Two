@@ -5,8 +5,10 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
 
-    <TextView
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/cinema_nearby_xrecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="附近影院"/>
+        android:layout_height="match_parent">
+
+    </com.jcodecraeer.xrecyclerview.XRecyclerView>
 </LinearLayout>

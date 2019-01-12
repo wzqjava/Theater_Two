@@ -12,23 +12,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.bw.movie.R;
+import com.bw.movie.bean.LatitudeLongitudeBean;
+import com.bw.movie.dialog.CityDialog;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+
+import io.reactivex.subjects.PublishSubject;
 
 /**
  * date:2019/1/4
  * author:李壮(大壮)
  * function:------------------影院页面---------------
  */
-public class CinemaFregment extends Fragment implements AMapLocationListener {
+public class CinemaFregment extends Fragment implements AMapLocationListener, View.OnClickListener {
 
     private ViewPager cinema_pager;
     private ArrayList<Fragment> mFragments;
@@ -36,6 +41,7 @@ public class CinemaFregment extends Fragment implements AMapLocationListener {
     private RadioButton cinema_bt_recommend;
     private RadioButton cinema_bt_nearby;
     private View mCinema_Location;
+    private TextView mCinema_name;
 
     @Nullable
     @Override
@@ -45,7 +51,26 @@ public class CinemaFregment extends Fragment implements AMapLocationListener {
 
         //初始化数据
         initData();
+
+        //初始化侧边索引控件
+        initBroadside();
         return view;
+    }
+
+    /**
+     * 设置侧边索引
+     */
+    private void initBroadside() {
+        mCinema_name.setOnClickListener(new View.OnClickListener() {
+
+            private CityDialog mCityDialog;
+
+            @Override
+            public void onClick(View v) {
+                mCityDialog = new CityDialog();
+                mCityDialog.show(getFragmentManager(),"");
+            }
+        });
     }
 
     //加载数据
@@ -55,7 +80,7 @@ public class CinemaFregment extends Fragment implements AMapLocationListener {
             @Override
             public void onClick(View v) {
                 //初始化定位
-                initLocation();
+                //initLocation();
             }
         });
     }
@@ -91,6 +116,7 @@ public class CinemaFregment extends Fragment implements AMapLocationListener {
     public void onLocationChanged(AMapLocation amapLocation) {
         if (amapLocation != null) {
             if (amapLocation.getErrorCode() == 0) {
+                stopLocation();
                 //定位成功回调信息，设置相关消息
                 amapLocation.getLocationType();//获取当前定位结果来源，如网络定位结果，详见定位类型表
                 amapLocation.getLatitude();//获取纬度
@@ -100,6 +126,8 @@ public class CinemaFregment extends Fragment implements AMapLocationListener {
                 Date date = new Date(amapLocation.getTime());
                 df.format(date);//定位时间
                 //怎么拿到城市名称
+                //将经纬度传到下级页面
+                publishSubject.onNext(new LatitudeLongitudeBean(amapLocation.getLatitude(), amapLocation.getLongitude()));
             } else {
                 //显示错误信息ErrCode是错误码，errInfo是错误信息，详见错误码表。
                 Log.e("AmapError","location Error, ErrCode:"
@@ -109,18 +137,30 @@ public class CinemaFregment extends Fragment implements AMapLocationListener {
         }
     }
 
+    //事件发布者
+    private PublishSubject<LatitudeLongitudeBean> publishSubject = PublishSubject.create();
 
     private void initView(View view) {
         cinema_pager = (ViewPager) view.findViewById(R.id.cinema_pager);
         cinema_bt_recommend = (RadioButton) view.findViewById(R.id.cinema_bt_recommend);
         cinema_bt_nearby = (RadioButton) view.findViewById(R.id.cinema_bt_nearby);
         cinema_group = (RadioGroup) view.findViewById(R.id.cinema_group);
+        mCinema_name = view.findViewById(R.id.cinema_name);
+        mCinema_name.setOnClickListener(this);
 
         //影院资源id
         mCinema_Location = view.findViewById(R.id.cinema_location);
         mFragments = new ArrayList<>();
-        mFragments.add(new RecommendFragment());
-        mFragments.add(new NearbyFragment());
+
+        RecommendFragment recommendFragment = new RecommendFragment();
+        recommendFragment.initPublishSubject(publishSubject);
+
+        NearbyFragment nearbyFragment = new NearbyFragment();
+        nearbyFragment.initPublishSubject(publishSubject);
+
+
+        mFragments.add(recommendFragment);
+        mFragments.add(nearbyFragment);
 
         cinema_pager.setAdapter(new FragmentPagerAdapter(getChildFragmentManager()) {
             @Override
@@ -180,6 +220,26 @@ public class CinemaFregment extends Fragment implements AMapLocationListener {
                 }
             }
         });
+
+        initLocation();
+    }
+
+    /**
+     * 停止定位
+     */
+    private void stopLocation(){
+        if (mlocationClient != null){
+            mlocationClient.stopLocation();
+        }
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        stopLocation();
+    }
+
+    @Override
+    public void onClick(View v) {
 
     }
 }

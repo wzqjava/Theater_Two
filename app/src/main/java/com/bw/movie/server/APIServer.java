@@ -1,10 +1,16 @@
 package com.bw.movie.server;
 
 
-import com.bw.movie.bean.DetailPingLunBean;
-import com.bw.movie.bean.Detail_Detail_Bean;
+import com.bw.movie.bean.CinemaCommendBean;
+import com.bw.movie.bean.CinemaDetailBean;
+import com.bw.movie.bean.CinemaDetailCinemaBean;
+import com.bw.movie.bean.CinemaDetailIconBean;
+import com.bw.movie.bean.CinemaDetailScheduleBean;
 import com.bw.movie.bean.LoginBean;
 import com.bw.movie.bean.MovieFragmentBean;
+import com.bw.movie.bean.NearbyBean;
+import com.bw.movie.bean.DetailPingLunBean;
+import com.bw.movie.bean.Detail_Detail_Bean;
 import com.bw.movie.bean.PlayDetailPaiQiRecyclerViewBean;
 import com.bw.movie.bean.QuXiaoGuanZhuBean;
 import com.bw.movie.bean.RecommendBean;
@@ -20,6 +26,7 @@ import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.HeaderMap;
 import retrofit2.http.POST;
 import retrofit2.http.QueryMap;
 
@@ -29,6 +36,76 @@ import retrofit2.http.QueryMap;
  * function:
  */
 public interface APIServer {
+
+    /**
+     * 推荐影院
+     * @param headerParams
+     * @param queryParams
+     * @return
+     */
+    //movieApi/cinema/v1/findRecommendCinemas
+    @GET("movieApi/cinema/v1/findRecommendCinemas")
+    //@Query   拼到url后面的  ?k=v&k=v
+    //@Header 请求头参数: @Header("userId")String userId, @Header("sessionId")String sessionId
+    Observable<RecommendBean> getRecommend(@HeaderMap Map<String, String> headerParams,
+                                         @QueryMap Map<String, String> queryParams);
+    //Observable<RecommendBean> Recommend(@QueryMap Map<String,String> map);
+
+
+    /**
+     * 附近影院
+     * @param headerParams
+     * @param queryParams
+     * @return
+     */
+    @GET("movieApi/cinema/v1/findNearbyCinemas")
+    //@Query   拼到url后面的  ?k=v&k=v
+    //@Header 请求头参数: @Header("userId")String userId, @Header("sessionId")String sessionId
+    Observable<NearbyBean> getNearby(@HeaderMap Map<String, String> headerParams,
+                                             @QueryMap Map<String, String> queryParams);
+
+    /**
+     * 影院详情页面展示宣传海报
+     * @param queryParams
+     * @return
+     */
+    @GET("movieApi/movie/v1/findMovieListByCinemaId")
+    Observable<CinemaDetailIconBean> getDetailIcon(@QueryMap Map<String,String> queryParams);
+
+    /**
+     * 影院相对应的影片的排期
+     * @param queryParams
+     * @return
+     */
+    @GET("movieApi/movie/v1/findMovieScheduleList")
+    Observable<CinemaDetailScheduleBean> getDetailSchedule(@QueryMap Map<String,String> queryParams);
+
+    /**
+     * 影院的详情信息
+     * @param headerParams
+     * @param queryParams
+     * @return
+     */
+    @GET("movieApi/cinema/v1/findCinemaInfo")
+    Observable<CinemaDetailCinemaBean> getCinemaMessage(@HeaderMap Map<String, String> headerParams,
+                                                        @QueryMap Map<String, String> queryParams);
+
+    /**
+     * 影院详情
+     * @param headerParams
+     * @param queryParams
+     * @return
+     */
+    @GET("movieApi/cinema/v1/findCinemaInfo")
+    Observable<CinemaDetailBean> getCinemaDetail(@HeaderMap Map<String,String> headerParams,
+                                                 @QueryMap Map<String,String> queryParams);
+
+    @GET("movieApi/cinema/v1/findAllCinemaComment")
+    Observable<CinemaCommendBean> getCinemaCommend(@HeaderMap Map<String,String> headerParams,
+                                                   @QueryMap Map<String,String> queryParams);
+
+
+
     /**
      * 登录
      *
@@ -39,6 +116,8 @@ public interface APIServer {
     Observable<RecommendBean> Recommend(@QueryMap Map<String, String> map);
 
     @FormUrlEncoded
+    //@Headers("Content-Type:application/x-www-form-urlencoded; charset=utf-8")
+    //phone=13793014727&pwd=eWLPHopE945d2ivttHaQTQ%3D%3D
     @POST("movieApi/user/v1/login")
     Observable<LoginBean> Login(@FieldMap Map<String, String> map);
 

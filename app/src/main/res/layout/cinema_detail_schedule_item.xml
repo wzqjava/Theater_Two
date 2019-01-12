@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingRight="@dimen/dp_10"
+    android:paddingLeft="@dimen/dp_10"
+    android:paddingBottom="@dimen/dp_20"
+    android:layout_marginLeft="@dimen/dp_24"
+    android:layout_marginRight="@dimen/dp_24"
+    android:layout_marginTop="@dimen/dp_10"
+    android:background="@drawable/yuanjiao">
+
+    <TextView
+        android:id="@+id/cinema_detail_schedule_office"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:text="观影厅" />
+
+    <TextView
+        android:id="@+id/cinema_detail_schedule_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        android:textSize="@dimen/sp_16"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/cinema_detail_schedule_office"
+        android:text="开始时间" />
+
+    <TextView
+        android:id="@+id/cinema_detail_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        app:layout_constraintTop_toTopOf="@id/cinema_detail_schedule_start"
+        app:layout_constraintLeft_toRightOf="@id/cinema_detail_schedule_start"
+        android:text="------" />
+
+    <TextView
+        android:id="@+id/cinema_detail_schedule_end"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        app:layout_constraintTop_toTopOf="@id/cinema_detail_text"
+        app:layout_constraintLeft_toRightOf="@id/cinema_detail_text"
+        android:text="结束时间" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_18"
+        android:layout_marginRight="@dimen/dp_6"
+        app:layout_constraintRight_toLeftOf="@id/cinema_detail_schedule_price"
+        app:layout_constraintBottom_toBottomOf="@id/cinema_detail_schedule_price"
+        android:text="￥"/>
+    <TextView
+        android:id="@+id/cinema_detail_schedule_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/dp_10"
+        app:layout_constraintRight_toLeftOf="@id/cinema_detail_schedule_next"
+        app:layout_constraintBottom_toBottomOf="@id/cinema_detail_text"
+        android:textColor="@color/red"
+        android:textSize="@dimen/sp_30"
+        android:textStyle="bold"
+        android:text="票价" />
+
+    <ImageView
+        android:id="@+id/cinema_detail_schedule_next"
+        android:layout_width="@dimen/dp_24"
+        android:layout_height="@dimen/dp_24"
+        app:layout_constraintBottom_toBottomOf="@id/cinema_detail_text"
+        app:layout_constraintRight_toRightOf="parent"
+        android:src="@mipmap/com_icon_next_default" />
+</android.support.constraint.ConstraintLayout>

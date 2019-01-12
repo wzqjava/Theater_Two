@@ -55,4 +55,8 @@ public class RetrofitUtils {
     public <T> T getService(Class<T> clzz){
         return mRetrofit.create(clzz);
     }
+
+    public void updateUserId(String userId, String sessionId) {
+        OkHttpUtils.getInstance().updateUserId(userId, sessionId);
+    }
 }

@@ -24,34 +24,37 @@ public class LogginInterceptor implements Interceptor {
         this.map = map;
     }
 
+    private boolean l = false;
     @Override
     public Response intercept(Chain chain) throws IOException {
+        map = null;
         //获取旧的request
         Request oldrequest = chain.request();
         String url = oldrequest.url().toString();
         //get请求
         if (oldrequest.method().equalsIgnoreCase("GET")){
             if (map != null && map.size() > 0){
-                StringBuilder stringBuilder = new StringBuilder(url);
+                //StringBuilder stringBuilder = new StringBuilder(url);
 
-                for (Map.Entry<String,String> entry: map.entrySet()){
+                /*for (Map.Entry<String,String> entry: map.entrySet()){
                     stringBuilder.append("&"+entry.getKey()+"="+entry.getValue());
-                }
+                }*/
 
-                url = stringBuilder.toString();
+                //url = stringBuilder.toString();
 
-                if (!url.contains("?")){
+                /*if (!url.contains("?")){
                     url = url.replaceFirst("&","?");
-                }
+                }*/
                 /**
                  * map.put("ak","0110010010000");
                  *         map.put("Content-Type","application/x-www-form-urlencoded");
                  */
-                Request build = oldrequest.newBuilder()
-                        .addHeader("ak","0110010010000")
-                        .addHeader("Content-Type","application/x-www-form-urlencoded")
-                        .url(url).build();
-                return chain.proceed(build);
+                Request.Builder builder = oldrequest.newBuilder();
+                for (Map.Entry<String, String> entry: map.entrySet()) {
+                    builder.addHeader(entry.getKey(), entry.getValue());
+                }
+                Request request = builder.url(url).build();
+                return chain.proceed(request);
             }
         }else{
             if (map != null && map.size() > 0){
@@ -78,13 +81,14 @@ public class LogginInterceptor implements Interceptor {
                        strings.add(entry.getValue());
                     }*/
 
-                    FormBody build = builder.build();
-                    Request build1 = oldrequest.newBuilder()
-                            .addHeader("ak","0110010010000")
-                            .addHeader("Content-Type","application/x-www-form-urlencoded")
-                            .post(build).build();
+                    FormBody oFormBody = builder.build();
+                    Request.Builder nRequestBuilder = oldrequest.newBuilder();
+                    for (Map.Entry<String, String> entry: map.entrySet()) {
+                        nRequestBuilder.addHeader(entry.getKey(), entry.getValue());
+                    }
+                    Request request = nRequestBuilder.post(oFormBody).build();
 
-                    return chain.proceed(build1);
+                    return chain.proceed(request);
                     /**
                      * .addHeader("userId", strings.get(0))
                      *                             .addHeader("sessionId", strings.get(1))

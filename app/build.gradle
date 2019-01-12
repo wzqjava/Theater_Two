@@ -19,9 +19,9 @@ android {
     //签名key的配置
     signingConfigs {
         simple {
-            storeFile file("../lz.jks")//签名文件名称
+            storeFile file("../movie.keystore")//签名文件名称
             storePassword "123456"
-            keyAlias "ll"//别名
+            keyAlias "bw_movie"//别名
             keyPassword "123456"
         }
     }
@@ -88,6 +88,7 @@ dependencies {
     //旋转木马的效果
     implementation 'com.chenlittleping:recyclercoverflow:1.0.6'
 
+    implementation files('libs/pinyin4j-2.5.0.jar')
     implementation 'com.dalong:carrousellayout:1.0.0'
 
 

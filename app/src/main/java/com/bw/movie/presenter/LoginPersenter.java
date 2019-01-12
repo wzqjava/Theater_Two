@@ -5,16 +5,12 @@ import android.text.TextUtils;
 import com.bw.movie.base.BaseMVPPresenter;
 import com.bw.movie.bean.LoginBean;
 import com.bw.movie.model.LoginModel;
+import com.bw.movie.view.LoginInterface;
 
 import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
 
-/**
- * date:2019/1/4
- * author:刘振国(Liu)
- * function:
- */
 public class LoginPersenter extends BaseMVPPresenter<LoginInterface> {
 
     private final LoginModel mLoginModel;
@@ -33,11 +29,13 @@ public class LoginPersenter extends BaseMVPPresenter<LoginInterface> {
             @Override
             public void onError(Throwable e) {
                 view.Failed();
+                onComplete();
             }
 
             @Override
             public void onComplete() {
-                view.Failed();
+                //view.Failed();
+                //
             }
         });
     }

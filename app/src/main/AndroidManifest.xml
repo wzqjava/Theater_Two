@@ -41,6 +41,8 @@
         <!-- 定位需要的服务 -->
         <service android:name="com.amap.api.location.APSService" />
 
+        <activity android:name=".activity.CinemaDetailActivity" />
+        <activity android:name=".activity.ChooseActivity"></activity>
         <activity android:name=".activity.DeatilActivity" />
         <activity android:name=".activity.SelectTheatersActivity" />
         <activity android:name=".activity.PlayDetailActivity"></activity>

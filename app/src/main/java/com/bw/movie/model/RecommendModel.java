@@ -21,15 +21,14 @@ import io.reactivex.schedulers.Schedulers;
 public class RecommendModel {
     private Disposable mDisposable = new DefaultDisposable();
 
-    public void getRecommend(Map<String, String> map, DisposableObserver<RecommendBean> observer){
-        RetrofitUtils.getInstance()
+    public void getRecommend(Map<String, String> headerParams, Map<String, String> queryParams, DisposableObserver<RecommendBean> observer){
+        mDisposable = RetrofitUtils.getInstance()
                 .getService(APIServer.class)
-                .Recommend(map)
+                .getRecommend(headerParams, queryParams)
                 //切换线程
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(observer);
-        mDisposable = observer;
+                .subscribeWith(observer);
     }
 
 

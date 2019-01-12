@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".activity.ChooseActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/choose"/>
+    <TextView
+        android:id="@+id/choose_cinema_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_24"
+        android:paddingTop="@dimen/dp_10"
+        android:paddingLeft="@dimen/dp_20"
+        android:textColor="@color/white"
+        android:text="影院名称"/>
+    <TextView
+        android:id="@+id/choose_cinema_address"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="@dimen/sp_18"
+        android:layout_marginTop="@dimen/dp_10"
+        android:paddingLeft="@dimen/dp_20"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/choose_cinema_name"
+        android:text="影院地址"/>
+    <TextView
+        android:id="@+id/choose_movie_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="@dimen/sp_24"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/dp_10"
+        android:paddingLeft="@dimen/dp_20"
+        app:layout_constraintTop_toBottomOf="@id/choose_cinema_address"
+        android:text="影片名称"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="29dp"
+        android:layout_marginTop="@dimen/dp_10"
+        android:paddingLeft="@dimen/dp_20"
+        android:text="跑马灯"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_24"
+        app:layout_constraintTop_toBottomOf="@id/choose_movie_name"/>
+
+</android.support.constraint.ConstraintLayout>
