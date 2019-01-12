@@ -3,9 +3,7 @@
     >
     <solid android:color="#ffffff" />
     <corners android:topLeftRadius="@dimen/dp_12"
-        android:topRightRadius="@dimen/dp_12"
-        android:bottomRightRadius="@dimen/dp_12"
-        android:bottomLeftRadius="@dimen/dp_12"/>
+        android:topRightRadius="@dimen/dp_12"/>
 
 
     <stroke android:color="#ffffff" android:width="@dimen/dp_1"></stroke>

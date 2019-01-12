@@ -12,7 +12,7 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
-   /* MD5: 4F:EC:0B:2C:33:09:D4:3A:13:41:3C:A0:5D:0E:4A:07
+    /* MD5: 4F:EC:0B:2C:33:09:D4:3A:13:41:3C:A0:5D:0E:4A:07
     SHA1: AB:17:B9:4C:E8:F9:4F:9B:65:50:87:E3:A0:E6:B2:C1:83:81:6C:B0
     SHA256: 35:6D:38:E8:7B:BD:5D:03:00:B3:1F:AA:E4:3A:C3:95:90:01:30:65:8B:7F:BB:01:EF:99:29:76:18:42:81:EE*/
 
@@ -38,7 +38,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    greendao{
+    greendao {
         schemaVersion 1
         daoPackage 'com.greendao.gen'
         targetGenDir 'src/main/java'
@@ -78,10 +78,19 @@ dependencies {
     //eventbus
     implementation 'org.greenrobot:eventbus:3.1.1'
 
-
-    implementation 'com.github.bumptech.glide:glide:4.5.0'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
+    // implementation 'com.github.bumptech.glide:glide:4.5.0'
+    // annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
 
     implementation 'org.greenrobot:greendao:3.2.2' // add library
     implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
+
+    //旋转木马的效果
+    implementation 'com.chenlittleping:recyclercoverflow:1.0.6'
+
+    implementation 'com.dalong:carrousellayout:1.0.0'
+
+
+    implementation 'com.github.axlecho:SakuraPlayer:0.4'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.4'
 }

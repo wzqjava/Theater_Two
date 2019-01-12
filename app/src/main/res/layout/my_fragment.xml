@@ -5,8 +5,10 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
 
-    <TextView
+    <com.bw.movie.myview.ParallaxListView
+        android:id="@+id/parallaxlistview"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="我的页面"/>
+        android:layout_height="match_parent"
+        />
+
 </LinearLayout>

@@ -7,6 +7,5 @@
         android:bottomRightRadius="@dimen/dp_12"
         android:bottomLeftRadius="@dimen/dp_12"/>
 
-
-    <stroke android:color="#ffffff" android:width="@dimen/dp_1"></stroke>
+    <stroke android:color="#939393" android:width="@dimen/dp_1"></stroke>
 </shape>

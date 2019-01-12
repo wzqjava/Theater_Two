@@ -2,49 +2,80 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_200"
-        android:layout_alignParentTop="true"
-        android:src="@mipmap/dianyingbeijing2" />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_30"
-        android:layout_marginLeft="@dimen/dp_24"
-        android:layout_marginTop="@dimen/dp_20"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="@dimen/dp_24"
-            android:layout_height="@dimen/dp_24"
-            android:src="@mipmap/com_icon_loc_white_default"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/dp_32"
-            android:layout_marginLeft="@dimen/dp_6"
-            android:layout_marginTop="@dimen/dp_1"
-            android:text="北京"
-            android:textColor="#ffffff"
-            android:textSize="@dimen/sp_16"
-            android:layout_weight="1"/>
-        <SearchView
-            android:layout_width="@dimen/dp_48"
-            android:layout_height="@dimen/dp_24"
-            android:id="@+id/search"
-            android:background="@drawable/cinema_search"></SearchView>
-    </LinearLayout>
-
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_300"
-        android:layout_alignParentBottom="true"
+        android:layout_height="match_parent"
         >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_280">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_200"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:src="@mipmap/dianyingbeijing2" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_30"
+                    android:layout_marginLeft="@dimen/dp_24"
+                    android:layout_marginTop="@dimen/dp_20"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="@dimen/dp_24"
+                        android:layout_height="@dimen/dp_24"
+                        android:src="@mipmap/com_icon_loc_white_default"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp_32"
+                        android:layout_marginLeft="@dimen/dp_6"
+                        android:layout_marginTop="@dimen/dp_1"
+                        android:text="北京"
+                        android:textColor="#ffffff"
+                        android:textSize="@dimen/sp_16"
+                        android:layout_weight="1"/>
+                    <SearchView
+                        android:layout_width="@dimen/dp_48"
+                        android:layout_height="@dimen/dp_24"
+                        android:id="@+id/search"
+                        android:background="@drawable/cinema_search"></SearchView>
+                </LinearLayout>
+
+                <recycler.coverflow.RecyclerCoverFlow
+                    android:id="@+id/movie_fragment_recyclercoverflow"
+                    android:layout_width="@dimen/dp_300"
+                    android:layout_height="@dimen/dp_200"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/dp_24">
+
+                </recycler.coverflow.RecyclerCoverFlow>
+
+                <TextView
+                    android:layout_width="@dimen/dp_320"
+                    android:layout_height="@dimen/dp_5"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:background="@drawable/fragment_movie_text" />
+                <TextView
+                    android:id="@+id/movie_fragment_text_dong"
+                    android:layout_width="@dimen/dp_63"
+                    android:layout_height="@dimen/dp_5"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="@dimen/dp_10"
+                    android:background="@drawable/moviefragment_shu" />
+
+            </RelativeLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -65,13 +96,14 @@
                     <TextView
                         android:layout_marginTop="@dimen/dp_40"
                         android:layout_marginLeft="@dimen/dp_20"
-                        android:layout_width="@dimen/dp_30"
+                        android:layout_width="@dimen/dp_85"
                         android:layout_height="@dimen/dp_3"
-                        android:background="#ae2c3a" />
+                        android:background="@drawable/moviefragment_shu"/>
 
                     <ImageView
-                        android:layout_width="@dimen/dp_20"
-                        android:layout_height="@dimen/dp_50"
+                        android:layout_width="@dimen/dp_8"
+                        android:layout_height="@dimen/dp_13"
+                        android:layout_marginTop="@dimen/dp_18"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
@@ -82,8 +114,9 @@
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/movie_fragment_recyclerview_remen"
                     android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/dp_10"
                     android:layout_marginLeft="@dimen/dp_20"
-                    android:layout_height="@dimen/dp_200"/>
+                    android:layout_height="@dimen/dp_180"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -105,13 +138,14 @@
                     <TextView
                         android:layout_marginTop="@dimen/dp_40"
                         android:layout_marginLeft="@dimen/dp_20"
-                        android:layout_width="@dimen/dp_30"
+                        android:layout_width="@dimen/dp_85"
                         android:layout_height="@dimen/dp_3"
-                        android:background="#ae2c3a" />
+                        android:background="@drawable/moviefragment_shu" />
 
                     <ImageView
-                        android:layout_width="@dimen/dp_20"
-                        android:layout_height="@dimen/dp_50"
+                        android:layout_width="@dimen/dp_8"
+                        android:layout_height="@dimen/dp_13"
+                        android:layout_marginTop="@dimen/dp_18"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
@@ -120,10 +154,11 @@
                         android:src="@mipmap/com_icon_next_default" />
                 </RelativeLayout>
                 <android.support.v7.widget.RecyclerView
+                    android:layout_marginTop="@dimen/dp_10"
                     android:id="@+id/movie_fragment_recyclerview_zhengzai"
                     android:layout_width="match_parent"
                     android:layout_marginLeft="@dimen/dp_20"
-                    android:layout_height="@dimen/dp_200"/>
+                    android:layout_height="@dimen/dp_180"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -145,13 +180,14 @@
                     <TextView
                         android:layout_marginTop="@dimen/dp_40"
                         android:layout_marginLeft="@dimen/dp_20"
-                        android:layout_width="@dimen/dp_30"
+                        android:layout_width="@dimen/dp_85"
                         android:layout_height="@dimen/dp_3"
-                        android:background="#ae2c3a" />
+                        android:background="@drawable/moviefragment_shu" />
 
                     <ImageView
-                        android:layout_width="@dimen/dp_20"
-                        android:layout_height="@dimen/dp_50"
+                        android:layout_width="@dimen/dp_8"
+                        android:layout_height="@dimen/dp_13"
+                        android:layout_marginTop="@dimen/dp_18"
                         android:layout_alignParentTop="true"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
@@ -160,10 +196,11 @@
                         android:src="@mipmap/com_icon_next_default" />
                 </RelativeLayout>
                 <android.support.v7.widget.RecyclerView
+                    android:layout_marginTop="@dimen/dp_10"
                     android:id="@+id/movie_fragment_recyclerview_jijiang"
                     android:layout_width="match_parent"
                     android:layout_marginLeft="@dimen/dp_20"
-                    android:layout_height="@dimen/dp_200"/>
+                    android:layout_height="@dimen/dp_180"/>
             </LinearLayout>
 
 

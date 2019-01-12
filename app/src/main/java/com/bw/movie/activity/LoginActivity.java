@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bw.movie.BuildConfig;
 import com.bw.movie.R;
 import com.bw.movie.app.MyApplication;
 import com.bw.movie.base.BaseActivity;
@@ -69,6 +70,11 @@ public class LoginActivity extends BaseMVPActivity<LoginInterface,LoginPersenter
 
         login_button_login.setOnClickListener(this);
         login_imageview_showpwd.setOnClickListener(this);
+
+        if(BuildConfig.DEBUG) {
+            login_edittext_phone.setText("15235920684");
+            login_edittext_pwd.setText("123456");
+        }
     }
 
     @Override
@@ -112,7 +118,6 @@ public class LoginActivity extends BaseMVPActivity<LoginInterface,LoginPersenter
         edit.putBoolean("automatic",login_checkbox_automatic.isChecked());
         edit.putString("userId",loginBean.getResult().getUserId()+"");
         edit.putString("sessionId",loginBean.getResult().getSessionId());
-
         edit.commit();
     }
 
@@ -124,7 +129,6 @@ public class LoginActivity extends BaseMVPActivity<LoginInterface,LoginPersenter
             public void onClick(View v) {
                 if (isHideFirst == true) {
                     //密文
-
                     HideReturnsTransformationMethod method1 = HideReturnsTransformationMethod.getInstance();
                     login_edittext_pwd.setTransformationMethod(method1);
                     isHideFirst = false;
