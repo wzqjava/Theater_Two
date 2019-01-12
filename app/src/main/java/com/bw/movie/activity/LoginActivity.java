@@ -14,16 +14,21 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bw.movie.BuildConfig;
 import com.bw.movie.R;
 import com.bw.movie.app.MyApplication;
-import com.bw.movie.base.BaseActivity;
 import com.bw.movie.base.BaseMVPActivity;
 import com.bw.movie.bean.LoginBean;
+import com.bw.movie.bean.RegisteredEventBusBean;
 import com.bw.movie.greendao.UserBean;
-import com.bw.movie.presenter.LoginInterface;
+import com.bw.movie.view.LoginInterface;
 import com.bw.movie.presenter.LoginPersenter;
 import com.bw.movie.utils.EncryptUtil;
+import com.bw.movie.utils.RetrofitUtils;
 import com.greendao.gen.UserBeanDao;
+
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.HashMap;
 import java.util.List;
@@ -69,6 +74,10 @@ public class LoginActivity extends BaseMVPActivity<LoginInterface,LoginPersenter
 
         login_button_login.setOnClickListener(this);
         login_imageview_showpwd.setOnClickListener(this);
+        if(BuildConfig.DEBUG) {
+            login_edittext_phone.setText("13793014727");
+            login_edittext_pwd.setText("123456");
+        }
     }
 
     @Override
@@ -106,19 +115,41 @@ public class LoginActivity extends BaseMVPActivity<LoginInterface,LoginPersenter
      */
     private void remberData(LoginBean loginBean) {
         SharedPreferences.Editor edit = rember.edit();
-        edit.putString("phone",login_edittext_phone.getText().toString());
-        edit.putString("pwd",login_edittext_pwd.getText().toString());
-        edit.putBoolean("rember",login_checkbox_rember.isChecked());
-        edit.putBoolean("automatic",login_checkbox_automatic.isChecked());
-        edit.putString("userId",loginBean.getResult().getUserId()+"");
-        edit.putString("sessionId",loginBean.getResult().getSessionId());
+        if(!login_checkbox_rember.isChecked()){
+            edit.clear();
+            edit.putString("userId", loginBean.getResult().getUserId() + "");
+            edit.putString("sessionId", loginBean.getResult().getSessionId());
+            edit.commit();
+            return;
+        }
 
+        edit.putString("phone", login_edittext_phone.getText().toString());
+        edit.putString("pwd", login_edittext_pwd.getText().toString());
+        edit.putBoolean("rember", login_checkbox_rember.isChecked());
+        edit.putBoolean("automatic", login_checkbox_automatic.isChecked());
+        edit.putString("userId", loginBean.getResult().getUserId() + "");
+        edit.putString("sessionId", loginBean.getResult().getSessionId());
         edit.commit();
     }
 
+    /**
+     * 注册成功后回显账号密码
+     * @param bean
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void handleEvent(RegisteredEventBusBean bean) {
+        login_edittext_phone.setText(bean.getPhone());
+        login_edittext_pwd.setText(bean.getPwd());
+    }
 
     @Override
     protected void setListener() {
+        login_checkbox_automatic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                login_checkbox_rember.setChecked(login_checkbox_automatic.isChecked());
+            }
+        });
         login_imageview_showpwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -187,9 +218,18 @@ public class LoginActivity extends BaseMVPActivity<LoginInterface,LoginPersenter
 
     @Override
     public void Success(LoginBean loginBean) {
-        if(loginBean != null){
+        /*if(loginBean != null){
             showToast(loginBean.getMessage());
             if(loginBean.isSuccess()) {
+
+                if(login_checkbox_rember.isChecked()) {
+                    remberData(loginBean);
+                }
+
+                RetrofitUtils.getInstance().updateUserId(
+                        String.valueOf(loginBean.getResult().getUserId()),
+                        loginBean.getResult().getSessionId());
+
                 UserBeanDao userBeanDao =
                         MyApplication.getInstances().getDaoSession().getUserBeanDao();
 
@@ -213,7 +253,15 @@ public class LoginActivity extends BaseMVPActivity<LoginInterface,LoginPersenter
                 Intent intent = new Intent(LoginActivity.this,ShelfActivity.class);
                 startActivity(intent);
             } else {
+                //
+            }
+        }*/
+        if (loginBean != null) {
+            showToast(loginBean.getMessage());
+            if (loginBean.getMessage().equals("登陆成功")) {
                 remberData(loginBean);
+                startActivity(new Intent(LoginActivity.this,ShelfActivity.class));
+                finish();
             }
         }
     }
@@ -222,4 +270,5 @@ public class LoginActivity extends BaseMVPActivity<LoginInterface,LoginPersenter
     public void Failed() {
 
     }
+
 }

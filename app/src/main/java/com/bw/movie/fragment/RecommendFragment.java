@@ -1,35 +1,47 @@
 package com.bw.movie.fragment;
 
-import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.CinemaDetailActivity;
 import com.bw.movie.adapter.CinemaRecommendAdapter;
+import com.bw.movie.app.MyApplication;
 import com.bw.movie.base.BaseFragment;
+import com.bw.movie.bean.LatitudeLongitudeBean;
 import com.bw.movie.bean.RecommendBean;
+import com.bw.movie.greendao.UserBean;
 import com.bw.movie.presenter.RecommendPresenter;
 import com.bw.movie.view.RecommendView;
+import com.greendao.gen.UserBeanDao;
+import com.jcodecraeer.xrecyclerview.XRecyclerView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import io.reactivex.functions.Consumer;
+import io.reactivex.subjects.PublishSubject;
 
 /**
  * date:2019/1/4
  * author:李壮(大壮)
  * function:
  */
-public class RecommendFragment extends BaseFragment implements RecommendView {
+public class RecommendFragment extends BaseFragment implements RecommendView, Consumer<LatitudeLongitudeBean> {
 
-    private RecyclerView mCinema_Recommend_RecyclerView;
+    private XRecyclerView mCinema_Recommend_RecyclerView;
     private CinemaRecommendAdapter mCinemaRecommendAdapter;
     private RecommendPresenter mRecommendPresenter;
+    private Map<String, String> mHeaderParams = new HashMap<>();
+    private Map<String, String> mQueryParams = new HashMap<>();
+    private UserBeanDao mUserBeanDao;
+    private List<UserBean> mUserBeans;
+    private Intent mIntent;
 
     /**
      * 初始化视图
@@ -54,6 +66,31 @@ public class RecommendFragment extends BaseFragment implements RecommendView {
         //设置布局管理器
         mCinema_Recommend_RecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),OrientationHelper.VERTICAL,false));
         mCinema_Recommend_RecyclerView.setAdapter(mCinemaRecommendAdapter);
+        mCinema_Recommend_RecyclerView.setPullRefreshEnabled(true);
+        mCinema_Recommend_RecyclerView.setLoadingMoreEnabled(true);
+        mCinema_Recommend_RecyclerView.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                buildLatitudeLongitude();
+                mRecommendPresenter.refreshData(mHeaderParams,mQueryParams);
+            }
+
+            @Override
+            public void onLoadMore() {
+                buildLatitudeLongitude();
+                mRecommendPresenter.loadData(mHeaderParams,mQueryParams);
+            }
+        });
+    }
+
+    /**
+     * 获取经纬度
+     */
+    private void buildLatitudeLongitude(){
+        if(mLatitudeLongitudeBean != null) {
+            mQueryParams.put("longitude", String.valueOf(mLatitudeLongitudeBean.getLongitude()));
+            mQueryParams.put("latitude", String.valueOf(mLatitudeLongitudeBean.getLatitude()));
+        }
     }
 
     /**
@@ -66,11 +103,25 @@ public class RecommendFragment extends BaseFragment implements RecommendView {
          * 初始化P层
          */
         mRecommendPresenter = new RecommendPresenter();
-
+        mUserBeanDao = MyApplication.getInstances().getDaoSession().getUserBeanDao();
+        mUserBeans = mUserBeanDao.loadAll();
+        mHeaderParams.put("userId",mUserBeans.get(0).getUserId());
+        mQueryParams.put("sessionId",mUserBeans.get(0).getSessionId());
         mRecommendPresenter.onCreate(this);
-        //mRecommendPresenter.getData();
-
+        //从外面过来
+        buildLatitudeLongitude();
+        mRecommendPresenter.refreshData(mHeaderParams,mQueryParams);
+        mIntent = new Intent(getActivity(),CinemaDetailActivity.class);
+        mCinemaRecommendAdapter.setCinemaClickListener(new CinemaRecommendAdapter.CinemaClickListener() {
+            @Override
+            public void cinemaClick(int id) {
+                Toast.makeText(getActivity(), "影院id" + id, Toast.LENGTH_SHORT).show();
+                mIntent.putExtra("id",String.valueOf(id));
+                startActivity(mIntent);
+            }
+        });
     }
+
 
     /**
      * 设置监听事件
@@ -82,12 +133,33 @@ public class RecommendFragment extends BaseFragment implements RecommendView {
     }
 
     @Override
-    public void success(List<RecommendBean.ResultBean.FollowCinemasBean> followCinemasBeans) {
-        mCinemaRecommendAdapter.setData(followCinemasBeans);
+    public void success(boolean isRefresh,List<RecommendBean.ResultBean> resultBeans) {
+        if (isRefresh){
+            mCinemaRecommendAdapter.setData(resultBeans);
+        }else {
+            mCinemaRecommendAdapter.addData(resultBeans);
+        }
+
     }
 
     @Override
     public void error(String msg) {
 
+    }
+
+    @Override
+    public void onloadComplete() {
+        mCinema_Recommend_RecyclerView.refreshComplete();
+        mCinema_Recommend_RecyclerView.loadMoreComplete();
+    }
+
+    public void initPublishSubject(PublishSubject<LatitudeLongitudeBean> publishSubject) {
+        publishSubject.subscribe(this);
+    }
+
+    private LatitudeLongitudeBean mLatitudeLongitudeBean = null;
+    @Override
+    public void accept(LatitudeLongitudeBean latitudeLongitudeBean) throws Exception {
+        mLatitudeLongitudeBean = latitudeLongitudeBean;
     }
 }

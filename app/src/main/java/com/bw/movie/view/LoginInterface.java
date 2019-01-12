@@ -1,4 +1,4 @@
-package com.bw.movie.presenter;
+package com.bw.movie.view;
 
 import com.bw.movie.bean.LoginBean;
 

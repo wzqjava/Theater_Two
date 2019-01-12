@@ -12,11 +12,6 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
-/**
- * date:2019/1/4
- * author:刘振国(Liu)
- * function:
- */
 public class LoginModel {
     private Disposable mDisposable = new DefaultDisposable();
 

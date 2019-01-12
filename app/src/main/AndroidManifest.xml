@@ -4,15 +4,12 @@
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-
 
     <application
         android:name=".app.MyApplication"
@@ -29,22 +26,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.NetWorkActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.CountDownActivity" />
-        <activity android:name=".activity.ShelfActivity"></activity>
+        <activity android:name=".activity.ShelfActivity" />
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="	3f7588f34241e70f653d29783e31074c"/>
+            android:value=" 3f7588f34241e70f653d29783e31074c" />
 
         <activity android:name=".activity.ClassifyActivity" />
 
         <!-- 定位需要的服务 -->
-        <service android:name="com.amap.api.location.APSService">
-        </service>
+        <service android:name="com.amap.api.location.APSService" />
+
+        <activity android:name=".activity.CinemaDetailActivity" />
+        <activity android:name=".activity.ChooseActivity"></activity>
     </application>
 
 </manifest>

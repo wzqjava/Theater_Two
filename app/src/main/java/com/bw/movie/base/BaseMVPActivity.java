@@ -18,7 +18,7 @@ import com.bw.movie.activity.NetWorkActivity;
  * author:赵豪轩(xuan)
  * function:
  */
-public abstract class BaseMVPActivity<V,P extends BaseMVPPresenter> extends Activity {
+public abstract class BaseMVPActivity<V,P extends BaseMVPPresenter> extends AppCompatActivity {
     public P presenter;
     /**
      * 初始化presenter

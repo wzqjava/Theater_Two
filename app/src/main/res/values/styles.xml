@@ -9,4 +9,24 @@
     </style>
 
     <!--Theme.AppCompat.Light.DarkActionBar-->
+    <style name="TranslucentNoTitleDialog" parent="android:style/Theme.Dialog">
+        <!--去除标题-->
+        <item name="android:windowNoTitle">true</item>
+        <!--背景透明-->
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <!-- 不占用状态栏空间-->
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:windowIsFloating">false</item>
+        <!--进入和退出的动画-->
+        <item name="android:windowEnterAnimation">@anim/bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/bottom_out</item>
+        <item name="android:windowAnimationStyle">@style/DialogAnima</item>
+    </style>
+    <style name="DialogAnima">
+        <item name="android:windowEnterAnimation">@anim/bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/bottom_out</item>
+    </style>
+
 </resources>

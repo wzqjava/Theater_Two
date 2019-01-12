@@ -29,12 +29,13 @@ public class CountDownActivity extends BaseActivity {
                 startActivity(intent);
                 finish();
             }else {
-                mTv_Count_Down.setText(NUM + "S");
+                mTv_time.setText(NUM + "S");
                 mHandler.sendEmptyMessageDelayed(1,1000);
             }
 
         }
     };
+    private TextView mTv_time;
 
     /**
      * 初始化页面
@@ -48,11 +49,13 @@ public class CountDownActivity extends BaseActivity {
     @Override
     protected void initView() {
         mTv_Count_Down = findViewById(R.id.tv_count_down);
+        mTv_time = findViewById(R.id.tv_time);
     }
 
     @Override
     protected void initData() {
         mHandler.sendEmptyMessage(1);
+        //mHandler.sendEmptyMessageDelayed(1, 3000);
     }
 
     @Override
@@ -61,6 +64,7 @@ public class CountDownActivity extends BaseActivity {
         mTv_Count_Down.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mHandler.removeMessages(1);
                 Intent intent= new Intent(CountDownActivity.this,LoginActivity.class);
                 startActivity(intent);
                 finish();
@@ -73,6 +77,7 @@ public class CountDownActivity extends BaseActivity {
     protected void onDestroy() {
         super.onDestroy();
         mHandler.removeMessages(1);
+
     }
 
 }
