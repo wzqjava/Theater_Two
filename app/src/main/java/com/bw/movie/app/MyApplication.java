@@ -3,6 +3,7 @@ package com.bw.movie.app;
 import android.app.Application;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.bw.movie.utils.WechatUtil;
 import com.greendao.gen.DaoMaster;
 import com.greendao.gen.DaoSession;
 
@@ -22,6 +23,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         instances = this;
+        WechatUtil.init(this);
         setDatabase();
     }
     public static MyApplication getInstances(){

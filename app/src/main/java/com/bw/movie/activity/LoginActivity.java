@@ -218,7 +218,7 @@ public class LoginActivity extends BaseMVPActivity<LoginInterface,LoginPersenter
 
     @Override
     public void Success(LoginBean loginBean) {
-        /*if(loginBean != null){
+        if(loginBean != null){
             showToast(loginBean.getMessage());
             if(loginBean.isSuccess()) {
 
@@ -255,15 +255,15 @@ public class LoginActivity extends BaseMVPActivity<LoginInterface,LoginPersenter
             } else {
                 //
             }
-        }*/
-        if (loginBean != null) {
+        }
+        /*if (loginBean != null) {
             showToast(loginBean.getMessage());
             if (loginBean.getMessage().equals("登陆成功")) {
                 remberData(loginBean);
                 startActivity(new Intent(LoginActivity.this,ShelfActivity.class));
                 finish();
             }
-        }
+        }*/
     }
 
     @Override
