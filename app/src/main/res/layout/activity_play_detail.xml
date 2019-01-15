@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.PlayDetailActivity">
+
+    <TextView
+        android:textColor="#000000"
+        android:id="@+id/play_detail_yingyuan_name"
+        android:layout_marginTop="@dimen/dp_15"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:text="name"
+        android:textSize="@dimen/sp_14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:textColor="#000000"
+        android:text="address"
+        android:id="@+id/play_detail_yingyuan_address"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <ImageView
+        android:src="@mipmap/com_icon_navigation_default"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:layout_marginTop="@dimen/dp_15"
+        android:layout_marginLeft="@dimen/dp_300"/>
+    <RelativeLayout
+        android:layout_marginTop="@dimen/dp_60"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@mipmap/dianyingbeijing4"
+            android:layout_centerHorizontal="true"
+            android:layout_width="@dimen/dp_320"
+            android:layout_height="@dimen/dp_150" />
+        <ImageView
+            android:id="@+id/play_detail_yingpian_img"
+            android:layout_marginLeft="@dimen/dp_30"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/dianyingbeijing3"
+            android:layout_width="@dimen/dp_90"
+            android:layout_height="@dimen/dp_130" />
+        <TextView
+            android:id="@+id/play_detail_yingpian_name"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/sp_12"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/dp_130"
+            android:text="name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/play_detail_yingpian_leixing"
+            android:layout_marginLeft="@dimen/dp_130"
+            android:textColor="#ffffff"
+            android:text="类型"
+            android:layout_marginTop="@dimen/dp_40"
+            android:textSize="@dimen/sp_9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/play_detail_yingpian_daoyan"
+            android:layout_marginTop="@dimen/dp_60"
+            android:textColor="#ffffff"
+            android:text="导演"
+            android:textSize="@dimen/sp_9"
+            android:layout_marginLeft="@dimen/dp_130"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/play_detail_yingpian_shichang"
+            android:layout_marginTop="@dimen/dp_80"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/sp_9"
+            android:text="时长"
+            android:layout_marginLeft="@dimen/dp_130"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/play_detail_yingpian_chandi"
+            android:textColor="#ffffff"
+            android:text="产地"
+            android:textSize="@dimen/sp_9"
+            android:layout_marginTop="@dimen/dp_100"
+            android:layout_marginLeft="@dimen/dp_130"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/play_detail_recyclerview"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_210"
+        android:layout_width="@dimen/dp_330"
+        android:layout_height="@dimen/dp_400"/>
+
+    <ImageView
+        android:id="@+id/play_detail_fanhui"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="@dimen/dp_50"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:src="@mipmap/com_icon_my_fanhui" />
+</RelativeLayout>

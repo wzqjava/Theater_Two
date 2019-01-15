@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+      <android.support.constraint.ConstraintLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/dp_15"
+            >
+      <android.support.constraint.ConstraintLayout
+
+          android:id="@+id/con"
+          android:layout_marginTop="@dimen/dp_20"
+          app:layout_constraintTop_toTopOf="parent"
+          android:background="@mipmap/dianyingbeijing4"
+          android:layout_width="match_parent"
+          android:layout_height="@dimen/dp_120"
+          android:layout_marginLeft="@dimen/dp_24"
+          android:layout_marginRight="@dimen/dp_24"
+          ></android.support.constraint.ConstraintLayout>
+      <ImageView
+          android:id="@+id/classfy_recyclerview_item_img"
+          android:layout_width="@dimen/dp_103"
+          android:layout_height="@dimen/dp_120"
+          android:layout_marginTop="@dimen/dp_20"
+          android:layout_marginLeft="@dimen/dp_38"
+          app:layout_constraintLeft_toLeftOf="parent"
+          />
+
+            <TextView
+                android:id="@+id/classfy_recyclerview_item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_8"
+                android:text="姓名"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/sp_15"
+                app:layout_constraintLeft_toRightOf="@id/classfy_recyclerview_item_img"
+                app:layout_constraintTop_toTopOf="@id/con" />
+
+            <TextView
+                android:id="@+id/classfy_recyclerview_item_context"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_8"
+                android:layout_marginTop="@dimen/dp_12"
+                android:maxLines="5"
+                android:text="简介"
+                android:textColor="#ffffff"
+                app:layout_constraintLeft_toRightOf="@id/classfy_recyclerview_item_img"
+                app:layout_constraintTop_toBottomOf="@id/classfy_recyclerview_item_name" />
+
+            <ImageView
+                android:id="@+id/classfy_recyclerview_item_guanzhu"
+                android:layout_width="@dimen/dp_24"
+                android:layout_height="@dimen/dp_24"
+                android:layout_marginTop="@dimen/dp_8"
+                android:layout_marginRight="@dimen/dp_12"
+                android:src="@mipmap/com_icon_collection_default"
+                app:layout_constraintRight_toRightOf="@id/con"
+                app:layout_constraintTop_toTopOf="@id/con" />
+      </android.support.constraint.ConstraintLayout>
+
+</RelativeLayout>
+

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.bw.movie">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -51,6 +52,12 @@
             android:launchMode="singleTop" />
         <activity android:name=".activity.CityActivity" />
         <activity android:name=".activity.SearchActivity"></activity>
+        <activity android:name=".activity.ChooseActivity"
+            tools:ignore="DuplicateActivity"></activity>
+        <activity android:name=".activity.DeatilActivity" />
+        <activity android:name=".activity.SelectTheatersActivity" />
+        <activity android:name=".activity.PlayDetailActivity"></activity>
+>>>>>>> dev
     </application>
 
 </manifest>

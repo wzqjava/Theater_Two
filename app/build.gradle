@@ -79,6 +79,12 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
     implementation 'org.greenrobot:greendao:3.2.2'
     // add library
+
+    // implementation 'com.github.bumptech.glide:glide:4.5.0'
+    // annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+
+    implementation 'org.greenrobot:greendao:3.2.2' // add library
     implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
     //旋转木马的效果
     implementation 'com.chenlittleping:recyclercoverflow:1.0.6'
@@ -87,4 +93,9 @@ dependencies {
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
 
     implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.dalong:carrousellayout:1.0.0'
+
+
+    implementation 'com.github.axlecho:SakuraPlayer:0.4'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.4'
 }

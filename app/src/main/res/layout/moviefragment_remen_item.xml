@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:background="@drawable/yuanjiao"
+        android:layout_marginRight="@dimen/dp_20"
+        android:layout_width="@dimen/dp_130"
+        android:layout_height="@dimen/dp_180">
+        <ImageView
+            android:id="@+id/moviefragment_recyclerview_remen_item_img"
+            android:src="@mipmap/ic_launcher"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <RelativeLayout
+            android:background="#80000000"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+
+            android:layout_alignBottom="@+id/moviefragment_recyclerview_remen_item_img">
+
+            <TextView
+                android:layout_marginLeft="@dimen/dp_10"
+                android:background="@drawable/moviefragment_shu"
+                android:layout_marginTop="@dimen/dp_8"
+                android:layout_width="@dimen/dp_4"
+                android:layout_height="@dimen/dp_25" />
+
+            <TextView
+                android:layout_centerInParent="true"
+                android:id="@+id/moviefragment_recyclerview_remen_item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="name"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/sp_8" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>

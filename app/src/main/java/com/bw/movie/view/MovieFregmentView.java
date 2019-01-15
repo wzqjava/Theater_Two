@@ -13,5 +13,13 @@ public interface MovieFregmentView {
 
      void successsReMen(List<MovieFragmentBean.ResultBean> result);
 
-     void error(String msg);
+     void errorReMen(String msg);
+
+    void successsZhengZai(List<MovieFragmentBean.ResultBean> result);
+
+    void successsJiJiang(List<MovieFragmentBean.ResultBean> result);
+
+    void errorZhengZai(String msg);
+
+    void errorJiJiang(String msg);
 }

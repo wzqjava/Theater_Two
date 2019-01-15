@@ -33,13 +33,13 @@ public class MoviewFragmentPresenter extends BaseMVPPresenter<MovieFregmentView>
                             movieFragmentBean.getResult();
                     view.successsReMen(result);
                 }else{
-                    view.error(movieFragmentBean.getMessage());
+                    view.errorReMen(movieFragmentBean.getMessage());
                 }
             }
 
             @Override
             public void onError(Throwable e) {
-                view.error(e.toString());
+                view.errorReMen(e.toString());
             }
 
             @Override
@@ -48,6 +48,55 @@ public class MoviewFragmentPresenter extends BaseMVPPresenter<MovieFregmentView>
             }
         });
     }
+    public void moviewFragmentZhengZai(String userId, String sessionId, HashMap<String,String> map) {
+        mMoviewFragmentModel.getZhengZaiData(userId,sessionId,map, new DisposableObserver<MovieFragmentBean>() {
+            @Override
+            public void onNext(MovieFragmentBean movieFragmentBean) {
+                if (movieFragmentBean.isSuccess()){
+                    List<MovieFragmentBean.ResultBean> result =
+                            movieFragmentBean.getResult();
+                    view.successsZhengZai(result);
+                }else{
+                    view.errorZhengZai(movieFragmentBean.getMessage());
+                }
+            }
 
+            @Override
+            public void onError(Throwable e) {
+                view.errorZhengZai(e.toString());
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
+
+    }
+    public void moviewFragmentJiJiang(String userId, String sessionId, HashMap<String,String> map) {
+        mMoviewFragmentModel.getJiJiangData(userId,sessionId,map, new DisposableObserver<MovieFragmentBean>() {
+            @Override
+            public void onNext(MovieFragmentBean movieFragmentBean) {
+                if (movieFragmentBean.isSuccess()){
+                    List<MovieFragmentBean.ResultBean> result =
+                            movieFragmentBean.getResult();
+                    view.successsJiJiang(result);
+                }else{
+                    view.errorJiJiang(movieFragmentBean.getMessage());
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                view.errorJiJiang(e.toString());
+            }
+
+            @Override
+            public void onComplete() {
+
+            }
+        });
+
+    }
 
 }
