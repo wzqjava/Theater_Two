@@ -1,6 +1,6 @@
 package com.bw.movie.activity;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -41,7 +41,6 @@ public class ShelfActivity extends AppCompatActivity {
     private void initData() {
 
         mFragments = new ArrayList<Fragment>();
-
         mFragments.add(new MovieFregment());
         mFragments.add(new CinemaFregment());
         mFragments.add(new MyFragment());

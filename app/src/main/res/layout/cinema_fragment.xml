@@ -25,13 +25,13 @@
             android:layout_marginTop="@dimen/dp_1"
             android:layout_weight="1"
             android:text="北京"
-            android:textSize="@dimen/sp_16" />
-        <SearchView
-
+            android:textSize="@dimen/sp_14" />
+        <ImageView
             android:id="@+id/search"
             android:layout_width="@dimen/dp_48"
             android:layout_height="@dimen/dp_24"
-            android:background="@drawable/cinema_search"></SearchView>
+            android:src="@mipmap/com_icon_search_default"
+            android:background="@drawable/cinema_search"></ImageView>
     </LinearLayout>
     <RadioGroup
         android:layout_marginTop="@dimen/dp_10"

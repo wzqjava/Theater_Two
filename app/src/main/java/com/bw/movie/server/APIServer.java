@@ -8,7 +8,9 @@ import com.bw.movie.bean.CinemaDetailIconBean;
 import com.bw.movie.bean.CinemaDetailScheduleBean;
 import com.bw.movie.bean.LoginBean;
 import com.bw.movie.bean.MovieFragmentBean;
+import com.bw.movie.bean.MovieTicketBean;
 import com.bw.movie.bean.NearbyBean;
+import com.bw.movie.bean.PayResponseBean;
 import com.bw.movie.bean.RecommendBean;
 import com.bw.movie.bean.RegisterBean;
 import com.bw.movie.net.Constom;
@@ -95,10 +97,35 @@ public interface APIServer {
     Observable<CinemaDetailBean> getCinemaDetail(@HeaderMap Map<String,String> headerParams,
                                                  @QueryMap Map<String,String> queryParams);
 
+    /**
+     * 影院评论
+     * @param headerParams
+     * @param queryParams
+     * @return
+     */
     @GET("movieApi/cinema/v1/findAllCinemaComment")
     Observable<CinemaCommendBean> getCinemaCommend(@HeaderMap Map<String,String> headerParams,
                                                    @QueryMap Map<String,String> queryParams);
 
+    /**
+     *购票下单
+     * @param headerParams
+     * @param queryParams
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("movieApi/movie/v1/verify/buyMovieTicket")
+    Observable<MovieTicketBean> getTicket(@HeaderMap Map<String,String> headerParams, @FieldMap Map<String,String> queryParams);
+
+    /**
+     *支付
+     * @param headerParams
+     * @param queryParams
+     * @return
+     */
+    @FormUrlEncoded
+    @POST("movieApi/movie/v1/verify/pay")
+    Observable<PayResponseBean> getPay(@HeaderMap Map<String,String> headerParams, @FieldMap Map<String,String> queryParams);
 
 
     /**

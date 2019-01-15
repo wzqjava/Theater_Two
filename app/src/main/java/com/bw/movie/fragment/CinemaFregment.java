@@ -1,5 +1,6 @@
 package com.bw.movie.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -19,8 +21,14 @@ import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
 import com.bw.movie.R;
+import com.bw.movie.activity.CityActivity;
+import com.bw.movie.activity.SearchActivity;
+import com.bw.movie.bean.CityEventBusManager;
 import com.bw.movie.bean.LatitudeLongitudeBean;
-import com.bw.movie.dialog.CityDialog;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -42,13 +50,20 @@ public class CinemaFregment extends Fragment implements AMapLocationListener, Vi
     private RadioButton cinema_bt_nearby;
     private View mCinema_Location;
     private TextView mCinema_name;
+    private ImageView mSearch;
+
+    //声明mlocationClient对象
+    public AMapLocationClient mlocationClient;
+    //声明mLocationOption对象
+    public AMapLocationClientOption mLocationOption = null;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = View.inflate(getContext(), R.layout.cinema_fragment,null);
         initView(view);
-
+        //注册EventBus
+        EventBus.getDefault().register(this);
         //初始化数据
         initData();
 
@@ -62,32 +77,31 @@ public class CinemaFregment extends Fragment implements AMapLocationListener, Vi
      */
     private void initBroadside() {
         mCinema_name.setOnClickListener(new View.OnClickListener() {
-
-            private CityDialog mCityDialog;
-
             @Override
             public void onClick(View v) {
-                mCityDialog = new CityDialog();
-                mCityDialog.show(getFragmentManager(),"");
+                Intent intent = new Intent(getActivity(),CityActivity.class);
+                startActivity(intent);
             }
         });
     }
 
     //加载数据
     private void initData() {
-
-        mCinema_Location.setOnClickListener(new View.OnClickListener() {
+        //跳转搜索页面
+        mSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //初始化定位
-                //initLocation();
+                Intent intent = new Intent(getActivity(),SearchActivity.class);
+                startActivity(intent);
             }
         });
     }
-    //声明mlocationClient对象
-    public AMapLocationClient mlocationClient;
-    //声明mLocationOption对象
-    public AMapLocationClientOption mLocationOption = null;
+
+    @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
+    public void setCityMessageEventBus(CityEventBusManager cityMessageEventBus){
+        mCinema_name.setText(cityMessageEventBus.getName());
+    }
+
     //加载定位信息
     private void initLocation() {
 
@@ -147,7 +161,7 @@ public class CinemaFregment extends Fragment implements AMapLocationListener, Vi
         cinema_group = (RadioGroup) view.findViewById(R.id.cinema_group);
         mCinema_name = view.findViewById(R.id.cinema_name);
         mCinema_name.setOnClickListener(this);
-
+        mSearch = view.findViewById(R.id.search);
         //影院资源id
         mCinema_Location = view.findViewById(R.id.cinema_location);
         mFragments = new ArrayList<>();
@@ -236,6 +250,8 @@ public class CinemaFregment extends Fragment implements AMapLocationListener, Vi
     public void onDestroy() {
         super.onDestroy();
         stopLocation();
+            //解除EventBus注册
+            EventBus.getDefault().unregister(this);
     }
 
     @Override

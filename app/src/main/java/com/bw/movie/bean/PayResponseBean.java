@@ -5,9 +5,9 @@ import com.bw.movie.model.BaseResponse;
 /**
  * date:2019/1/12
  * author:李壮(大壮)
- * function:
+ * function:支付访问的Bean
  */
-public class WechatPayResponse extends BaseResponse {
+public class PayResponseBean extends BaseResponse {
     private String appId;
     private String nonceStr;
     private String partnerId;
