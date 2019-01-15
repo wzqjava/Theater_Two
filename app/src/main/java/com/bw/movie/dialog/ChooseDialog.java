@@ -32,6 +32,7 @@ import retrofit2.http.HeaderMap;
 
 import static com.bw.movie.presenter.PayPresenter.AlipayPayType;
 import static com.bw.movie.presenter.PayPresenter.WeatchPayType;
+import static com.tencent.mm.opensdk.modelbase.BaseResp.ErrCode.ERR_OK;
 
 /**
  * date:2019/1/15
@@ -111,18 +112,20 @@ public class ChooseDialog extends DialogFragment implements View.OnClickListener
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-/*
-        Intent intent = new Intent();
-        intent.setAction("");
-        LocalBroadcastManager.getInstance(getActivity()).sendBroadcast(intent);
-        IntentFilter intentFilter = new IntentFilter();
+        IntentFilter intentFilter = new IntentFilter("bw.com.movie.WechatPayResult");
         //注册广播
-        getActivity().registerReceiver(new BroadcastReceiver() {
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-
+               int code = intent.getIntExtra("result_code",-1);
+               if (code == ERR_OK){
+                   Toast.makeText(getActivity(), "支付成功", Toast.LENGTH_SHORT).show();
+                   getActivity().finish();
+               }else {
+                   Toast.makeText(getActivity(), "支付失败", Toast.LENGTH_SHORT).show();
+               }
             }
-        },intentFilter);*/
+        },intentFilter);
         mPayPresenter = new PayPresenter();
         mPayPresenter.attch(this);
         mPrice = getArguments().getString("price");

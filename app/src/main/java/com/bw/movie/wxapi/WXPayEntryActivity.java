@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import com.bw.movie.R;
@@ -47,7 +48,9 @@ public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
 	public void onResp(BaseResp resp) {
 		Log.d(TAG, "onPayFinish, errCode = " + resp.errCode);
 
-
+		Intent intent = new Intent("bw.com.movie.WechatPayResult");
+		intent.putExtra("result_code", resp.errCode);
+		LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
 
 		finish();
 		/*if (resp.getType() == ConstantsAPI.COMMAND_PAY_BY_WX) {

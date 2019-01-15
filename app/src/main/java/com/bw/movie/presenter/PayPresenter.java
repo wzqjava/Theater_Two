@@ -31,6 +31,8 @@ public class PayPresenter extends BaseMVPPresenter<PayView> {
             view.error("没有安装微信");
             return ;
         }
+
+        queryParams.put("payType",payType+"");
         //if (mPayModel.isDisposable()){
             mPayModel.getPay(headerParams, queryParams, new DisposableObserver<PayResponseBean>() {
                 @Override
