@@ -67,12 +67,10 @@ public abstract class BaseMVPActivity<V,P extends BaseMVPPresenter> extends AppC
      * 初始化View
      */
     protected abstract void initView();
-
     /**
      * 初始化数据
      */
     protected abstract void initData();
-
     /**
      * 设置监听
      */

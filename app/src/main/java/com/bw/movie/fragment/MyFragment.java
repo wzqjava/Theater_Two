@@ -1,44 +1,50 @@
 package com.bw.movie.fragment;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.PointerIcon;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestManager;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.request.RequestOptions;
+import com.bw.movie.MainActivity;
 import com.bw.movie.R;
+import com.bw.movie.activity.MyFragmentReMindActivity;
+import com.bw.movie.adapter.MyFragmentListViewAdapter;
+import com.bw.movie.app.MyApplication;
 import com.bw.movie.base.BaseMVPFragment;
+import com.bw.movie.bean.MyFragmentBean;
+import com.bw.movie.greendao.UserBean;
 import com.bw.movie.myview.ParallaxListView;
 import com.bw.movie.presenter.MyFragmentPresenter;
 import com.bw.movie.view.MyFragmentView;
+import com.greendao.gen.UserBeanDao;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * date:2019/1/4
  * author:赵豪轩
  * function:
  */
-public class MyFragment extends BaseMVPFragment<MyFragmentView,MyFragmentPresenter> {
+public class MyFragment extends BaseMVPFragment<MyFragmentView, MyFragmentPresenter> {
 
     private ParallaxListView parallaxlistview;
     private ImageView iv_header;
-    public String[] NAMES = new String[]{"宋江", "卢俊义", "吴用",
-            "公孙胜", "关胜", "林冲", "秦明", "呼延灼", "花荣", "柴进", "李应", "朱仝", "鲁智深",
-            "武松", "董平", "张清", "杨志", "徐宁", "索超", "戴宗", "刘唐", "李逵", "史进", "穆弘",
-            "雷横", "李俊", "阮小二", "张横", "阮小五", " 张顺", "阮小七", "杨雄", "石秀", "解珍",
-            " 解宝", "燕青", "朱武", "黄信", "孙立", "宣赞", "郝思文", "韩滔", "彭玘", "单廷珪",
-            "魏定国", "萧让", "裴宣", "欧鹏", "邓飞", " 燕顺", "杨林", "凌振", "蒋敬", "吕方",
-            "郭 盛", "安道全", "皇甫端", "王英", "扈三娘", "鲍旭", "樊瑞", "孔明", "孔亮", "项充",
-            "李衮", "金大坚", "马麟", "童威", "童猛", "孟康", "侯健", "陈达", "杨春", "郑天寿",
-            "陶宗旺", "宋清", "乐和", "龚旺", "丁得孙", "穆春", "曹正", "宋万", "杜迁", "薛永", "施恩",
-            "周通", "李忠", "杜兴", "汤隆", "邹渊", "邹润", "朱富", "朱贵", "蔡福", "蔡庆", "李立",
-            "李云", "焦挺", "石勇", "孙新", "顾大嫂", "张青", "孙二娘", " 王定六", "郁保四", "白胜",
-            "时迁", "段景柱", "易宸锋"};
+    private UserBeanDao mUserBeanDao;
+    private List<UserBean> mUserBeans;
+    TextView iv_name;
+    ImageView iv_img;
+    private ImageView myfragment_remind;
     @Override
     protected MyFragmentPresenter initPresenter() {
         return new MyFragmentPresenter();
@@ -62,6 +68,7 @@ public class MyFragment extends BaseMVPFragment<MyFragmentView,MyFragmentPresent
     @Override
     protected void initView(View view) {
         parallaxlistview = view.findViewById(R.id.parallaxlistview);
+        myfragment_remind = view.findViewById(R.id.myfragment_remind);
     }
 
     /**
@@ -71,13 +78,25 @@ public class MyFragment extends BaseMVPFragment<MyFragmentView,MyFragmentPresent
      */
     @Override
     protected void initData(View view) {
+        mUserBeanDao = MyApplication.getInstances().getDaoSession().getUserBeanDao();
+        mUserBeans = mUserBeanDao.loadAll();
         //获取外部的布局
         View head = View.inflate(getContext(), R.layout.myfragment_layout_header, null);
-       //给listview添加头布局
+        //给listview添加头布局
         parallaxlistview.addHeaderView(head);
         //获取头布局中的图片控件
         iv_header = head.findViewById(R.id.iv_header);
+        iv_img = head.findViewById(R.id.iv_img);
+        iv_name = head.findViewById(R.id.iv_name);
 
+        iv_name.setText(mUserBeans.get(0).getNickName());
+        iv_name.setTextColor(Color.WHITE);
+        //圆形
+        RequestManager with = Glide.with(this);
+        with.load(mUserBeans.get(0).getHeadPic())
+                .apply(new RequestOptions().transform(new CircleCrop()))
+                .into(iv_img);
+      // Glide.with(this).load(mUserBeans.get(0).getHeadPic()).into(iv_img);
         /**
          * 我们知道在oncreate中View.getWidth和View.getHeight无法获得一个view的高度和宽度，
          * 这是因为View组件布局要在onResume回调后完成。
@@ -99,7 +118,14 @@ public class MyFragment extends BaseMVPFragment<MyFragmentView,MyFragmentPresent
                 iv_header.getViewTreeObserver().removeGlobalOnLayoutListener(this);
             }
         });
-        parallaxlistview.setAdapter(new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,NAMES));
+        List<MyFragmentBean> strings = new ArrayList<>();
+        strings.add(new MyFragmentBean("我的信息",null,R.mipmap.my_icon_messiage_default,1));
+        strings.add(new MyFragmentBean("我的关注","购票记录",R.mipmap.my_icon_attention_default,R.mipmap.my_icon_rccord_default));
+        strings.add(new MyFragmentBean("意见反馈","检查更新",R.mipmap.my_icon_feedback_default,R.mipmap.my_icon_version_default));
+
+        MyFragmentListViewAdapter myFragmentListViewAdapter = new MyFragmentListViewAdapter(getActivity(), strings);
+        parallaxlistview.setAdapter(myFragmentListViewAdapter);
+
     }
 
     /**
@@ -109,6 +135,11 @@ public class MyFragment extends BaseMVPFragment<MyFragmentView,MyFragmentPresent
      */
     @Override
     protected void setListener(View view) {
-
+        myfragment_remind.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(),MyFragmentReMindActivity.class));
+            }
+        });
     }
 }

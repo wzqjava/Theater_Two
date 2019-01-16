@@ -8,6 +8,7 @@ import com.bw.movie.bean.CinemaDetailIconBean;
 import com.bw.movie.bean.CinemaDetailScheduleBean;
 import com.bw.movie.bean.LoginBean;
 import com.bw.movie.bean.MovieFragmentBean;
+import com.bw.movie.bean.MyFragmentReMindRecyclerViewBean;
 import com.bw.movie.bean.MovieTicketBean;
 import com.bw.movie.bean.NearbyBean;
 import com.bw.movie.bean.PayResponseBean;
@@ -192,6 +193,11 @@ public interface APIServer {
 
     @GET(Constom.SERARCH_URL)
     Observable<SearchBean> getSearch(@QueryMap Map<String,String> queryParams);
+
+    //我的页面的通知
+    @GET(Constom.REMINDRECYCLERVIEW)
+    Observable<MyFragmentReMindRecyclerViewBean> getReMindRecyclerView(@Header("userId") String userId, @Header("sessionId") String sessionId, @QueryMap HashMap<String, String> map);
+
 
 
 }

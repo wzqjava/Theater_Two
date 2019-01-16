@@ -44,7 +44,13 @@
         <service android:name="com.amap.api.location.APSService" />
 
         <activity android:name=".activity.CinemaDetailActivity" />
-        //微信支付回调
+
+        <activity android:name=".activity.DeatilActivity" />
+        <activity android:name=".activity.SelectTheatersActivity" />
+        <activity android:name=".activity.PlayDetailActivity" />
+        <activity android:name=".activity.MyFragmentReMindActivity" />
+        <activity android:name=".activity.PersonalDetailsActivity"></activity>
+
         <activity
             android:name=".wxapi.WXPayEntryActivity"
             android:exported="true"
@@ -53,9 +59,6 @@
         </activity>
         <activity android:name=".activity.CityActivity" />
         <activity android:name=".activity.SearchActivity"></activity>
-        <activity android:name=".activity.DeatilActivity" />
-        <activity android:name=".activity.SelectTheatersActivity" />
-        <activity android:name=".activity.PlayDetailActivity"></activity>
     </application>
 
 </manifest>

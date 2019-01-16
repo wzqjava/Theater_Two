@@ -46,6 +46,8 @@ public class Constom {
     public final static String QUXIAOGUANZHU ="movieApi/movie/v1/verify/cancelFollowMovie";
     //关注
     public final static String GUANZHU = "movieApi/movie/v1/verify/followMovie";
+    //我的页面的通知
+    public final static String REMINDRECYCLERVIEW = "movieApi/tool/v1/verify/findAllSysMsgList";
 
     //推荐影院
     public final static String RECOMMEND_CINEMA = "movieApi/cinema/v1/findRecommendCinemas";
