@@ -2,6 +2,7 @@ package com.bw.movie;
 
 import com.bw.movie.bean.RecommendBean;
 import com.bw.movie.server.APIServer;
+import com.bw.movie.utils.EncryptUtil;
 import com.bw.movie.utils.RetrofitUtils;
 
 import org.junit.Test;
@@ -63,5 +64,11 @@ public class ExampleUnitTest {
                     }
                 });
         cdl.await();
+    }
+
+    @Test public void md5Test() {
+        String msg = "3895" + "22" + "1" + "movie";
+        System.out.println(EncryptUtil.MD5(msg));
+        //{"orderId":"20190112091306970","message":"下单成功","status":"0000"}
     }
 }

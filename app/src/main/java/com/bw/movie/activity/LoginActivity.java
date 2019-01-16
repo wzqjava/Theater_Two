@@ -231,6 +231,14 @@ public class LoginActivity extends BaseMVPActivity<LoginInterface,LoginPersenter
                 //
             }
         }
+        /*if (loginBean != null) {
+            showToast(loginBean.getMessage());
+            if (loginBean.getMessage().equals("登陆成功")) {
+                remberData(loginBean);
+                startActivity(new Intent(LoginActivity.this,ShelfActivity.class));
+                finish();
+            }
+        }*/
            /* if (loginBean != null) {
                 showToast(loginBean.getMessage());
                 if (loginBean.getMessage().equals("登陆成功")) {

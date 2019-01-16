@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.bw.movie.R;
-import com.bw.movie.bean.HaoHan;
+import com.bw.movie.bean.CityBean;
 import java.util.ArrayList;
 
 /**
@@ -18,12 +18,16 @@ import java.util.ArrayList;
  * 你们用多条目的思路实现一下
  */
 public class HaoHanAdapter extends BaseAdapter {
-    private ArrayList<HaoHan> persons =new ArrayList<>();
+    private ArrayList<CityBean> persons =new ArrayList<>();
     private final Context context;
 
-    public HaoHanAdapter(ArrayList<HaoHan> persons, Context context) {
+    public HaoHanAdapter(ArrayList<CityBean> persons, Context context) {
         this.persons =persons;
         this.context =context;
+    }
+
+    public ArrayList<CityBean> getPersons() {
+        return persons;
     }
 
     @Override
@@ -40,9 +44,9 @@ public class HaoHanAdapter extends BaseAdapter {
         }
         TextView tv_index = (TextView) view.findViewById(R.id.tv_index);
         TextView tv_name = (TextView) view.findViewById(R.id.tv_name);
-        HaoHan haoHan = persons.get(position);
+        CityBean cityBean = persons.get(position);
         //当前首字母
-        String currentStr = haoHan.getPinyin().charAt(0) + "";
+        String currentStr = cityBean.getPinyin().charAt(0) + "";
         System.out.println("当前首字母"+currentStr);
         String indexStr =null;
         //如果是第一个条目,直接显示
@@ -60,14 +64,14 @@ public class HaoHanAdapter extends BaseAdapter {
         }
         tv_index.setVisibility(indexStr != null ?View.VISIBLE :View.GONE);
         tv_index.setText(currentStr);
-        tv_name.setText(haoHan.getName());
+        tv_name.setText(cityBean.getName());
         return view;
     }
 
 
     @Override
-    public Object getItem(int i) {
-        return null;
+    public CityBean getItem(int i) {
+        return persons.get(i);
     }
 
     @Override

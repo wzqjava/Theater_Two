@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="SeatTableView">
+        <attr name="seat_checked" format="reference" />
+        <attr name="seat_sold" format="reference" />
+        <attr name="seat_available" format="reference" />
+        <attr name="overview_checked" format="color" />
+        <attr name="overview_sold" format="color" />
+        <attr name="txt_color" format="color"/>
+    </declare-styleable>
+    <!--设置字体大小AlertDialog显示的列表文本-->
+    <string-array name="font_name">
+        <item>微信</item>
+        <item>支付宝</item>
+    </string-array>
+</resources>

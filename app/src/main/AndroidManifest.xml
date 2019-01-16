@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.bw.movie">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -9,7 +10,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:name=".app.MyApplication"
@@ -30,7 +31,7 @@
         <activity android:name=".activity.NetWorkActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.CountDownActivity" />
-        <activity android:name=".activity.ShelfActivity" />
+        <activity android:name=".activity.ShelfActivity" />git
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
@@ -48,6 +49,14 @@
         <activity android:name=".activity.PlayDetailActivity" />
         <activity android:name=".activity.MyFragmentReMindActivity" />
         <activity android:name=".activity.PersonalDetailsActivity"></activity>
+
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop" />
+        <activity android:name=".activity.CityActivity" />
+        <activity android:name=".activity.SearchActivity"></activity>
+
     </application>
 
 </manifest>

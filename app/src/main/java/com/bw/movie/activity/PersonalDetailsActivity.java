@@ -51,8 +51,6 @@ public class PersonalDetailsActivity extends AppCompatActivity {
         // myViewHolder.myfragment_remind_item_date.setText(date  + "");
          personaldetail_activity_date.setText(date  + "");
         personaldetail_activity_phone.setText(mUserBeans.get(0).getPhone()+"");
-
-
     }
 
     public static void start(Context context) {

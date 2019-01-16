@@ -63,7 +63,11 @@ public class CinemaDetailScheduleAdapter extends RecyclerView.Adapter<CinemaDeta
             @Override
             public void onClick(View v) {
                 if (mSetOnClickChooseListener != null){
-                    mSetOnClickChooseListener.onClick(mResultBeans.get(i).getId());
+                    mSetOnClickChooseListener.onClick(mResultBeans.get(i).getId(),
+                            mResultBeans.get(i).getScreeningHall(),
+                            mResultBeans.get(i).getBeginTime(),
+                            mResultBeans.get(i).getEndTime(),
+                            mResultBeans.get(i).getPrice()+"");
                 }
             }
         });
@@ -95,7 +99,7 @@ public class CinemaDetailScheduleAdapter extends RecyclerView.Adapter<CinemaDeta
     }
 
     public interface SetOnClickChooseListener{
-        void onClick(int id);
+        void onClick(int id, String screeningHall, String beginTime, String endTime, String price);
     }
 
     private SetOnClickChooseListener mSetOnClickChooseListener;

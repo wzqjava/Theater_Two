@@ -23,7 +23,7 @@ public class RetrofitUtils {
     private RetrofitUtils(){
         mGson = new GsonBuilder()
                 .create();
-        mRetrofit = new Retrofit.Builder().baseUrl(Constom.BASE_URL)
+        mRetrofit = new Retrofit.Builder().baseUrl(Constom.GETNETWORK)
                 //RxJava
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 //gson

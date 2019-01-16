@@ -9,7 +9,9 @@ import com.bw.movie.bean.CinemaDetailScheduleBean;
 import com.bw.movie.bean.LoginBean;
 import com.bw.movie.bean.MovieFragmentBean;
 import com.bw.movie.bean.MyFragmentReMindRecyclerViewBean;
+import com.bw.movie.bean.MovieTicketBean;
 import com.bw.movie.bean.NearbyBean;
+import com.bw.movie.bean.PayResponseBean;
 import com.bw.movie.bean.DetailPingLunBean;
 import com.bw.movie.bean.Detail_Detail_Bean;
 import com.bw.movie.bean.PlayDetailPaiQiRecyclerViewBean;
@@ -22,6 +24,7 @@ import com.bw.movie.net.Constom;
 import java.util.HashMap;
 import java.util.Map;
 
+import freemarker.template.utility.Constants;
 import io.reactivex.Observable;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
@@ -45,7 +48,7 @@ public interface APIServer {
      * @return
      */
     //movieApi/cinema/v1/findRecommendCinemas
-    @GET("movieApi/cinema/v1/findRecommendCinemas")
+    @GET(Constom.RECOMMEND_CINEMA)
     //@Query   拼到url后面的  ?k=v&k=v
     //@Header 请求头参数: @Header("userId")String userId, @Header("sessionId")String sessionId
     Observable<RecommendBean> getRecommend(@HeaderMap Map<String, String> headerParams,
@@ -59,7 +62,7 @@ public interface APIServer {
      * @param queryParams
      * @return
      */
-    @GET("movieApi/cinema/v1/findNearbyCinemas")
+    @GET(Constom.NEARBY_CINEMA)
     //@Query   拼到url后面的  ?k=v&k=v
     //@Header 请求头参数: @Header("userId")String userId, @Header("sessionId")String sessionId
     Observable<NearbyBean> getNearby(@HeaderMap Map<String, String> headerParams,
@@ -70,7 +73,7 @@ public interface APIServer {
      * @param queryParams
      * @return
      */
-    @GET("movieApi/movie/v1/findMovieListByCinemaId")
+    @GET(Constom.CINEMA_POSTER)
     Observable<CinemaDetailIconBean> getDetailIcon(@QueryMap Map<String,String> queryParams);
 
     /**
@@ -78,7 +81,7 @@ public interface APIServer {
      * @param queryParams
      * @return
      */
-    @GET("movieApi/movie/v1/findMovieScheduleList")
+    @GET(Constom.CINEMA_SCHEDULE)
     Observable<CinemaDetailScheduleBean> getDetailSchedule(@QueryMap Map<String,String> queryParams);
 
     /**
@@ -87,7 +90,7 @@ public interface APIServer {
      * @param queryParams
      * @return
      */
-    @GET("movieApi/cinema/v1/findCinemaInfo")
+    @GET(Constom.CINEMA_DETAIL)
     Observable<CinemaDetailCinemaBean> getCinemaMessage(@HeaderMap Map<String, String> headerParams,
                                                         @QueryMap Map<String, String> queryParams);
 
@@ -97,14 +100,39 @@ public interface APIServer {
      * @param queryParams
      * @return
      */
-    @GET("movieApi/cinema/v1/findCinemaInfo")
+    @GET(Constom.CINEMA_DETAIL_DIALOG)
     Observable<CinemaDetailBean> getCinemaDetail(@HeaderMap Map<String,String> headerParams,
                                                  @QueryMap Map<String,String> queryParams);
 
-    @GET("movieApi/cinema/v1/findAllCinemaComment")
+    /**
+     * 影院评论
+     * @param headerParams
+     * @param queryParams
+     * @return
+     */
+    @GET(Constom.CINEMA_COMMENT)
     Observable<CinemaCommendBean> getCinemaCommend(@HeaderMap Map<String,String> headerParams,
                                                    @QueryMap Map<String,String> queryParams);
 
+    /**
+     *购票下单
+     * @param headerParams
+     * @param queryParams
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(Constom.MOVIE_BUY_TICKET)
+    Observable<MovieTicketBean> getTicket(@HeaderMap Map<String,String> headerParams, @FieldMap Map<String,String> queryParams);
+
+    /**
+     *支付
+     * @param headerParams
+     * @param queryParams
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(Constom.MOVIE_BUY_TICKET_PAY )
+    Observable<PayResponseBean> getPay(@HeaderMap Map<String,String> headerParams, @FieldMap Map<String,String> queryParams);
 
 
     /**
@@ -113,13 +141,10 @@ public interface APIServer {
      * @param map
      * @return
      */
-    @GET("movieApi/user/v1/findRecommendCinemas")
-    Observable<RecommendBean> Recommend(@QueryMap Map<String, String> map);
-
     @FormUrlEncoded
     //@Headers("Content-Type:application/x-www-form-urlencoded; charset=utf-8")
     //phone=13793014727&pwd=eWLPHopE945d2ivttHaQTQ%3D%3D
-    @POST("movieApi/user/v1/login")
+    @POST(Constom.LOHGIN_URL)
     Observable<LoginBean> Login(@FieldMap Map<String, String> map);
 
     //注册的网络请求

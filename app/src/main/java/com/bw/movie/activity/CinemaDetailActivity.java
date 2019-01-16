@@ -24,8 +24,6 @@ import com.bw.movie.presenter.CinemaDetailPresenter;
 import com.bw.movie.view.CinemaDetailView;
 import com.greendao.gen.UserBeanDao;
 
-import org.greenrobot.eventbus.EventBus;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,6 +48,9 @@ public class CinemaDetailActivity extends BaseMVPActivity<CinemaDetailView,Cinem
     private CinemaDetailAdapter mCinemaDetailAdapter;
     private CinemaDetailScheduleAdapter mCinemaDetailScheduleAdapter;
     private int mScheduleId;
+    private String mCinemaName;
+    private String mCinemaAddress;
+    private String mMovieName;
 
     @Override
     protected CinemaDetailPresenter initPresenter() {
@@ -117,6 +118,7 @@ public class CinemaDetailActivity extends BaseMVPActivity<CinemaDetailView,Cinem
      */
     private void initSchedule(int position) {
         mScheduleId = mCinemaDetailAdapter.getItem(position).getId();
+        mMovieName = mCinemaDetailAdapter.getItem(position).getName();
         Map<String,String> queryParams = new HashMap<>();
         queryParams.put("cinemasId" , mId);
         queryParams.put("movieId", mScheduleId +"");
@@ -124,12 +126,24 @@ public class CinemaDetailActivity extends BaseMVPActivity<CinemaDetailView,Cinem
         mCinemaDetailScheduleAdapter = new CinemaDetailScheduleAdapter(CinemaDetailActivity.this);
         mCinema_detail_recyclerview.setAdapter(mCinemaDetailScheduleAdapter);
         mCinema_detail_recyclerview.setLayoutManager(new LinearLayoutManager(CinemaDetailActivity.this,OrientationHelper.VERTICAL,false));
+
         mCinemaDetailScheduleAdapter.setSetOnClickListener(new CinemaDetailScheduleAdapter.SetOnClickChooseListener() {
             @Override
-            public void onClick(int id) {
+            public void onClick(int id, String screeningHall, String beginTime, String endTime, String price) {
                 Intent intent = new Intent(CinemaDetailActivity.this,ChooseActivity.class);
+
+                intent.putExtra("scheduleId",id);
+                intent.putExtra("cinemaName",mCinemaName);
+                intent.putExtra("cinemaAddress",mCinemaAddress);
+                intent.putExtra("movieName",mMovieName);
+                intent.putExtra("movieHall",screeningHall);
+                intent.putExtra("movieBegin",beginTime);
+                intent.putExtra("movieEnd",endTime);
+                intent.putExtra("price",price);
                 startActivity(intent);
             }
+
+
 
         });
     }
@@ -183,12 +197,20 @@ public class CinemaDetailActivity extends BaseMVPActivity<CinemaDetailView,Cinem
 
     }
 
+    /**
+     * 显示影院信息
+     * @param cinemaDetailBeans
+     */
     @Override
     public void success(CinemaDetailBean cinemaDetailBeans) {
         cinemaDetailBeans.getResult();
         mCinema_detail_cinema_name.setText(cinemaDetailBeans.getResult().getName());
         Glide.with(CinemaDetailActivity.this).load(cinemaDetailBeans.getResult().getLogo()).into(mCinema_detail_cinema_icon);
         mCinema_detail_cinema_address.setText(cinemaDetailBeans.getResult().getAddress());
+        //影院名称
+        mCinemaName = cinemaDetailBeans.getResult().getName();
+        //影院地址
+        mCinemaAddress = cinemaDetailBeans.getResult().getAddress();
 
     }
 
