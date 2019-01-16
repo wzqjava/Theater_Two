@@ -34,6 +34,7 @@
                         android:src="@mipmap/com_icon_loc_white_default"/>
 
                     <TextView
+                        android:id="@+id/movie_name"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/dp_32"
                         android:layout_marginLeft="@dimen/dp_6"
@@ -42,11 +43,12 @@
                         android:textColor="#ffffff"
                         android:textSize="@dimen/sp_16"
                         android:layout_weight="1"/>
-                    <SearchView
+                    <ImageView
                         android:layout_width="@dimen/dp_48"
                         android:layout_height="@dimen/dp_24"
                         android:id="@+id/search"
-                        android:background="@drawable/cinema_search"></SearchView>
+                        android:src="@mipmap/com_icon_search_default"
+                        android:background="@drawable/cinema_search"></ImageView>
                 </LinearLayout>
 
                 <recycler.coverflow.RecyclerCoverFlow

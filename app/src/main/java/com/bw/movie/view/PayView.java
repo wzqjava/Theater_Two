@@ -1,5 +1,9 @@
 package com.bw.movie.view;
 
+import android.app.Activity;
+import android.content.Context;
+import android.os.Handler;
+
 import com.bw.movie.bean.PayResponseBean;
 
 /**
@@ -9,5 +13,7 @@ import com.bw.movie.bean.PayResponseBean;
  */
 public interface PayView {
     void success(PayResponseBean payResponseBean);
+    Activity getActivity();
     void error(String msg);
+    Handler getHandler();
 }

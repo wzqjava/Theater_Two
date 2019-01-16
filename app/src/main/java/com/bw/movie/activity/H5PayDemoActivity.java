@@ -1,9 +1,11 @@
-package com.alipay.sdk.pay.demo;
+package com.bw.movie.activity;
 
 import com.alipay.sdk.app.PayTask;
 import com.alipay.sdk.util.H5PayResultModel;
 import com.alipay.sdk.app.H5PayCallback;
 import com.alipay.sdk.app.PayTask;
+import com.bw.movie.R;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -19,6 +21,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import android.widget.Toast;
 
 public class H5PayDemoActivity extends Activity {
 
@@ -47,7 +50,7 @@ public class H5PayDemoActivity extends Activity {
 		}
 		if (TextUtils.isEmpty(url)) {
 			// 测试H5支付，必须设置要打开的url网站
-			new AlertDialog.Builder(H5PayDemoActivity.this).setTitle(R.string.error)
+			/*new AlertDialog.Builder(H5PayDemoActivity.this).setTitle(R.string.error)
 					.setMessage(R.string.error_missing_h5_pay_url)
 					.setPositiveButton(R.string.confirm, new OnClickListener() {
 
@@ -55,7 +58,8 @@ public class H5PayDemoActivity extends Activity {
 						public void onClick(DialogInterface arg0, int arg1) {
 							finish();
 						}
-					}).show();
+					}).show();*/
+			Toast.makeText(this, "URL为空", Toast.LENGTH_SHORT).show();
 
 		}
 		super.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -81,7 +85,7 @@ public class H5PayDemoActivity extends Activity {
 
 		// 启用 WebView 调试模式。
 		// 注意：请勿在实际 App 中打开！
-		WebView.setWebContentsDebuggingEnabled(true);
+		//WebView.setWebContentsDebuggingEnabled(true);
 	}
 
 	@Override

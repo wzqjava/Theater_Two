@@ -9,7 +9,7 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 /**
  * date:2019/1/12
  * author:李壮(大壮)
- * function:
+ * function:微信支付工具类
  */
 public class WechatUtil {
     public final static String APP_ID = "wxb3852e6a6b7d9516";

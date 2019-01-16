@@ -67,7 +67,7 @@ public class ExampleUnitTest {
     }
 
     @Test public void md5Test() {
-        String msg = "3895" + "22" + "1" + "movie";
+        String msg = "3874" + "22" + "1" + "movie";
         System.out.println(EncryptUtil.MD5(msg));
         //{"orderId":"20190112091306970","message":"下单成功","status":"0000"}
     }

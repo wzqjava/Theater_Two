@@ -8,11 +8,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.CityActivity;
 import com.bw.movie.activity.ClassifyActivity;
+import com.bw.movie.activity.SearchActivity;
 import com.bw.movie.adapter.MovieFragmentReMenAdapter;
 import com.bw.movie.app.MyApplication;
 import com.bw.movie.base.BaseFragment;
@@ -21,6 +24,7 @@ import com.bw.movie.bean.MovieFragmentBean;
 import com.bw.movie.greendao.UserBean;
 import com.bw.movie.presenter.MoviewFragmentPresenter;
 import com.bw.movie.view.MovieFregmentView;
+import com.bw.movie.view.SearchView;
 import com.greendao.gen.UserBeanDao;
 
 import java.util.HashMap;
@@ -46,6 +50,8 @@ public class MovieFregment extends BaseMVPFragment<MovieFregmentView,MoviewFragm
     private List<UserBean> mUserBeans;
     private MovieFragmentReMenAdapter mMovieFragmentReMenAdapter;
     private TextView movie_fragment_text_dong;
+    private TextView mMovie_name;
+    private ImageView mSearch;
 
     @Override
     protected MoviewFragmentPresenter initPresenter() {
@@ -77,6 +83,8 @@ public class MovieFregment extends BaseMVPFragment<MovieFregmentView,MoviewFragm
         movie_fragment_recyclerview_jijiang = view.findViewById(R.id.movie_fragment_recyclerview_jijiang);
         movie_fragment_recyclercoverflow = view.findViewById(R.id.movie_fragment_recyclercoverflow);
         movie_fragment_text_dong = view.findViewById(R.id.movie_fragment_text_dong);
+        mMovie_name = view.findViewById(R.id.movie_name);
+        mSearch = view.findViewById(R.id.search);
     }
     /**
      * 初始化数据
@@ -126,6 +134,21 @@ public class MovieFregment extends BaseMVPFragment<MovieFregmentView,MoviewFragm
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ClassifyActivity.class);
                 intent.putExtra("name","3");
+                startActivity(intent);
+            }
+        });
+
+        mMovie_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),CityActivity.class);
+                startActivity(intent);
+            }
+        });
+        mSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(),SearchActivity.class);
                 startActivity(intent);
             }
         });

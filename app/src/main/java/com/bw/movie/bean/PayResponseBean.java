@@ -8,6 +8,7 @@ import com.bw.movie.model.BaseResponse;
  * function:支付访问的Bean
  */
 public class PayResponseBean extends BaseResponse {
+    //微信支付字段
     private String appId;
     private String nonceStr;
     private String partnerId;
@@ -15,6 +16,17 @@ public class PayResponseBean extends BaseResponse {
     private String sign;
     private String timeStamp;
     private String packageValue;
+
+    //支付宝支付字段
+    private String result;
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
 
     public String getAppId() {
         return appId;

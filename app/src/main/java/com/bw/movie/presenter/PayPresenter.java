@@ -1,5 +1,11 @@
 package com.bw.movie.presenter;
 
+import android.media.AsyncPlayer;
+import android.os.Message;
+import android.util.Log;
+
+import com.alipay.sdk.app.PayTask;
+import com.bw.movie.alipay.alipay;
 import com.bw.movie.base.BaseMVPPresenter;
 import com.bw.movie.bean.PayResponseBean;
 import com.bw.movie.model.PayModel;
@@ -15,7 +21,7 @@ import io.reactivex.observers.DisposableObserver;
 /**
  * date:2019/1/14
  * author:李壮(大壮)
- * function:
+ * function:支付Presenter
  */
 public class PayPresenter extends BaseMVPPresenter<PayView> {
 
@@ -26,18 +32,29 @@ public class PayPresenter extends BaseMVPPresenter<PayView> {
     }
 
     public void getPay(final Map<String, String> headerParams, final Map<String, String> queryParams){
-        if(!WechatUtil.getInstance().getApi().isWXAppInstalled() && payType == WeatchPayType) {
+        final int type = payType;
+        if(!WechatUtil.getInstance().getApi().isWXAppInstalled() && type == WeatchPayType) {
             // showToast("没有安装微信");
             view.error("没有安装微信");
             return ;
         }
 
-        queryParams.put("payType",payType+"");
+        queryParams.put("payType",type+"");
         //if (mPayModel.isDisposable()){
             mPayModel.getPay(headerParams, queryParams, new DisposableObserver<PayResponseBean>() {
                 @Override
                 public void onNext(PayResponseBean payResponseBean) {
-                     onPay(headerParams,queryParams,payResponseBean);
+                    if (type == WeatchPayType){
+                        onPay(headerParams,queryParams,payResponseBean);
+                    }else if (type == AlipayPayType){
+                        if (payResponseBean.isSuccess()){
+                            onAlipayPay(payResponseBean.getResult());
+                        }else {
+                            view.error(payResponseBean.getMessage());
+                        }
+
+                    }
+
                 }
 
                 @Override
@@ -52,6 +69,13 @@ public class PayPresenter extends BaseMVPPresenter<PayView> {
             });
         //}
     }
+
+    /**
+     * 微信支付
+     * @param headerParams
+     * @param queryParams
+     * @param payResponseBean
+     */
     public void onPay(Map<String,String> headerParams, Map<String,String> queryParams, PayResponseBean payResponseBean){
 
         //请求支付    需要订单号
@@ -76,8 +100,37 @@ public class PayPresenter extends BaseMVPPresenter<PayView> {
         WechatUtil.getInstance().getApi().sendReq(req);
     }
 
+    /**
+     * 支付宝支付
+     */
+    public void onAlipayPay(final String resultStr){
+
+        Runnable payRunnable = new Runnable() {
+
+            @Override
+            public void run() {
+                if (view != null){
+                    PayTask alipay = new PayTask(view.getActivity());
+                    String version = alipay.getVersion();
+                    Map <String,String> result = alipay.payV2(resultStr,true);
+                    Log.e("lz",result+"");
+                   Message msg = new Message();
+                    msg.what = SDK_PAY_FLAG;
+                    msg.obj = result;
+                    view.getHandler().sendMessage(msg);
+                }
+
+            }
+        };
+        // 必须异步调用
+        Thread payThread = new Thread(payRunnable);
+        payThread.start();
+
+    }
+
     public final static int WeatchPayType = 1;
     public final static int AlipayPayType = 2;
+    public final static int SDK_PAY_FLAG = 3;
     private int payType ;
     public void changePayType(int i) {
         payType = i;

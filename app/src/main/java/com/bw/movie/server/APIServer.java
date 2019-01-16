@@ -17,6 +17,7 @@ import com.bw.movie.bean.PlayDetailPaiQiRecyclerViewBean;
 import com.bw.movie.bean.QuXiaoGuanZhuBean;
 import com.bw.movie.bean.RecommendBean;
 import com.bw.movie.bean.RegisterBean;
+import com.bw.movie.bean.SearchBean;
 import com.bw.movie.bean.SelectThrastersRecyclerViewBean;
 import com.bw.movie.net.Constom;
 
@@ -189,6 +190,8 @@ public interface APIServer {
     @GET(Constom.GUANZHU)
     Observable<QuXiaoGuanZhuBean> getGuanZhu(@Header("userId") String userId, @Header("sessionId") String sessionId, @QueryMap HashMap<String, String> map);
 
+    @GET(Constom.SERARCH_URL)
+    Observable<SearchBean> getSearch(@QueryMap Map<String,String> queryParams);
 
 
 }

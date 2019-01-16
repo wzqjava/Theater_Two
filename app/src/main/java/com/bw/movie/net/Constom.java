@@ -65,4 +65,7 @@ public class Constom {
     public final static String MOVIE_BUY_TICKET ="movieApi/movie/v1/verify/buyMovieTicket";
     //电影购票下单支付
     public final static String MOVIE_BUY_TICKET_PAY ="movieApi/movie/v1/verify/pay";
+
+    //搜索查询
+    public final static String SERARCH_URL ="movieApi/cinema/v1/findAllCinemas";
 }
