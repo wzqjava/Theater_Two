@@ -8,6 +8,7 @@ import com.bw.movie.bean.CinemaDetailIconBean;
 import com.bw.movie.bean.CinemaDetailScheduleBean;
 import com.bw.movie.bean.LoginBean;
 import com.bw.movie.bean.MovieFragmentBean;
+import com.bw.movie.bean.MyFragmentReMindRecyclerViewBean;
 import com.bw.movie.bean.NearbyBean;
 import com.bw.movie.bean.DetailPingLunBean;
 import com.bw.movie.bean.Detail_Detail_Bean;
@@ -164,6 +165,9 @@ public interface APIServer {
     @GET(Constom.GUANZHU)
     Observable<QuXiaoGuanZhuBean> getGuanZhu(@Header("userId") String userId, @Header("sessionId") String sessionId, @QueryMap HashMap<String, String> map);
 
+    //我的页面的通知
+    @GET(Constom.REMINDRECYCLERVIEW)
+    Observable<MyFragmentReMindRecyclerViewBean> getReMindRecyclerView(@Header("userId") String userId, @Header("sessionId") String sessionId, @QueryMap HashMap<String, String> map);
 
 
 }

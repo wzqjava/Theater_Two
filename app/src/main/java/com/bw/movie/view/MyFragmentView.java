@@ -5,5 +5,5 @@ package com.bw.movie.view;
  * author:赵豪轩(xuan)
  * function:
  */
-public class MyFragmentView {
+public interface MyFragmentView {
 }

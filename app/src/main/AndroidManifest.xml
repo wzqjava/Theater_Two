@@ -42,10 +42,12 @@
         <service android:name="com.amap.api.location.APSService" />
 
         <activity android:name=".activity.CinemaDetailActivity" />
-        <activity android:name=".activity.ChooseActivity"></activity>
+        <activity android:name=".activity.ChooseActivity" />
         <activity android:name=".activity.DeatilActivity" />
         <activity android:name=".activity.SelectTheatersActivity" />
-        <activity android:name=".activity.PlayDetailActivity"></activity>
+        <activity android:name=".activity.PlayDetailActivity" />
+        <activity android:name=".activity.MyFragmentReMindActivity" />
+        <activity android:name=".activity.PersonalDetailsActivity"></activity>
     </application>
 
 </manifest>
