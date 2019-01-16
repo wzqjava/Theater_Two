@@ -17,7 +17,9 @@ import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
-
+/**
+ * 微信支付
+ */
 public class WXPayEntryActivity extends Activity implements IWXAPIEventHandler {
 	
 	private static final String TAG = "WXPayEntryActivity";

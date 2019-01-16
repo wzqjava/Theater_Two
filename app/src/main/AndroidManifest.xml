@@ -11,7 +11,8 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!--<uses-sdk tools:node="replace"/>-->
 
     <application
         android:name=".app.MyApplication"
@@ -44,7 +45,6 @@
         <service android:name="com.amap.api.location.APSService" />
 
         <activity android:name=".activity.CinemaDetailActivity" />
-        <activity android:name=".activity.ChooseActivity" />
         //微信支付回调
         <activity
             android:name=".wxapi.WXPayEntryActivity"
@@ -57,7 +57,6 @@
         <activity android:name=".activity.DeatilActivity" />
         <activity android:name=".activity.SelectTheatersActivity" />
         <activity android:name=".activity.PlayDetailActivity"></activity>
->>>>>>> dev
     </application>
 
 </manifest>
