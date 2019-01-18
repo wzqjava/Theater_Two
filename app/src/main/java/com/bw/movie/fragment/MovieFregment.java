@@ -2,6 +2,7 @@ package com.bw.movie.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -46,6 +47,7 @@ public class MovieFregment extends BaseMVPFragment<MovieFregmentView,MoviewFragm
     private List<UserBean> mUserBeans;
     private MovieFragmentReMenAdapter mMovieFragmentReMenAdapter;
     private TextView movie_fragment_text_dong;
+    private TextView movie_fragment_text_xian;
 
     @Override
     protected MoviewFragmentPresenter initPresenter() {
@@ -77,6 +79,7 @@ public class MovieFregment extends BaseMVPFragment<MovieFregmentView,MoviewFragm
         movie_fragment_recyclerview_jijiang = view.findViewById(R.id.movie_fragment_recyclerview_jijiang);
         movie_fragment_recyclercoverflow = view.findViewById(R.id.movie_fragment_recyclercoverflow);
         movie_fragment_text_dong = view.findViewById(R.id.movie_fragment_text_dong);
+        movie_fragment_text_xian = view.findViewById(R.id.movie_fragment_text_xian);
     }
     /**
      * 初始化数据
@@ -146,6 +149,15 @@ public class MovieFregment extends BaseMVPFragment<MovieFregmentView,MoviewFragm
         movie_fragment_recyclercoverflow.setFlatFlow(false);
         movie_fragment_recyclercoverflow.setAdapter(mMovieFragmentReMenAdapter);
         movie_fragment_recyclercoverflow.scrollToPosition(2);
+      /*  movie_fragment_recyclercoverflow.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+
+            }
+        });*/
+
+
     }
     //正在上映
     @Override

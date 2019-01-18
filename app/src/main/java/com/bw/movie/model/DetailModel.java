@@ -2,6 +2,9 @@ package com.bw.movie.model;
 
 import com.bw.movie.bean.DetailPingLunBean;
 import com.bw.movie.bean.Detail_Detail_Bean;
+import com.bw.movie.bean.PingLunPingLunBean;
+import com.bw.movie.bean.PingLunZanBean;
+import com.bw.movie.bean.QuXiaoGuanZhuBean;
 import com.bw.movie.server.APIServer;
 import com.bw.movie.server.DefaultDisposable;
 import com.bw.movie.utils.RetrofitUtils;
@@ -42,6 +45,26 @@ public class DetailModel {
                 .subscribe(observer);
         mDisposable = observer;
     }
+    public void getQuXiaoData(String userId,String sessionId,HashMap<String,String> map, DisposableObserver<QuXiaoGuanZhuBean> observer){
+        RetrofitUtils.getInstance()
+                .getService(APIServer.class)
+                .getQuXiao(userId,sessionId,map)
+                //切换线程
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(observer);
+        mDisposable = observer;
+    }
+    public void getGuanZhuData(String userId,String sessionId,HashMap<String,String> map, DisposableObserver<QuXiaoGuanZhuBean> observer){
+        RetrofitUtils.getInstance()
+                .getService(APIServer.class)
+                .getGuanZhu(userId,sessionId,map)
+                //切换线程
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(observer);
+        mDisposable = observer;
+    }
 
 
     public boolean isDisposable() {
@@ -50,5 +73,36 @@ public class DetailModel {
     }
     public void disposable(){
         mDisposable.dispose();
+    }
+
+    public void getDianZanData(String userId, String sessionId, HashMap<String,String> map, DisposableObserver<PingLunZanBean> observer) {
+        RetrofitUtils.getInstance()
+                .getService(APIServer.class)
+                .getdianzan(userId,sessionId,map)
+                //切换线程
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(observer);
+        mDisposable = observer;
+    }
+    public void getPingLunPingLunData(String userId,String sessionId,HashMap<String,String> map, DisposableObserver<PingLunPingLunBean> observer){
+        RetrofitUtils.getInstance()
+                .getService(APIServer.class)
+                .getPingLunPingLun(userId,sessionId,map)
+                //切换线程
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(observer);
+        mDisposable = observer;
+    }
+    public void getPingLunYingPianData(String userId,String sessionId,HashMap<String,String> map, DisposableObserver<PingLunPingLunBean> observer){
+        RetrofitUtils.getInstance()
+                .getService(APIServer.class)
+                .getPingLunYingPian(userId,sessionId,map)
+                //切换线程
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(observer);
+        mDisposable = observer;
     }
 }

@@ -21,6 +21,8 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
+import io.reactivex.internal.operators.flowable.FlowableUnsubscribeOn;
+
 /**
  * date:2019/1/7
  * author:赵豪轩(xuan)
@@ -29,7 +31,7 @@ import java.util.List;
 public class ClassfyReMenAdapter extends RecyclerView.Adapter<ClassfyReMenAdapter.MyViewHolder> {
 
     Context context;
-    List<MovieFragmentBean.ResultBean> list;
+    public List<MovieFragmentBean.ResultBean> list;
 
     public ClassfyReMenAdapter(Context context, List<MovieFragmentBean.ResultBean> list) {
         this.context = context;
@@ -48,7 +50,9 @@ public class ClassfyReMenAdapter extends RecyclerView.Adapter<ClassfyReMenAdapte
     public void onBindViewHolder(@NonNull final MyViewHolder myViewHolder, final int i) {
 
         myViewHolder.classfy_recyclerview_item_name.setText(list.get(i).getName() + "");
-        myViewHolder.classfy_recyclerview_item_context.setText(list.get(i).getSummary() + "");
+        String summary = list.get(i).getSummary();
+        summary = summary.substring(0,100);
+        myViewHolder.classfy_recyclerview_item_context.setText(summary + "");
         Glide.with(context).load(list.get(i).getImageUrl())
                 .apply(RequestOptions.bitmapTransform(new RoundedCorners(8)))
                 .into(myViewHolder.classfy_recyclerview_item_img);
@@ -70,15 +74,15 @@ public class ClassfyReMenAdapter extends RecyclerView.Adapter<ClassfyReMenAdapte
             @Override
             public void onClick(View view) {
                 int followMovie = list.get(i).getFollowMovie();
-                if (followMovie == 1){
+                    if (followMovie == 1){
                     myViewHolder.classfy_recyclerview_item_guanzhu.setImageResource(R.mipmap.com_icon_collection_default);
-                    if (mClassfyGuanZhuView != null){
-                        mClassfyGuanZhuView.quXiao(list.get(i).getId()+"");
-                    }
+                        if (mClassfyGuanZhuView != null){
+                            mClassfyGuanZhuView.quXiao(list.get(i).getId()+"",i+"");
+                        }
                 }else{
                     myViewHolder.classfy_recyclerview_item_guanzhu.setImageResource(R.mipmap.com_icon_collection_selected);
                     if (mClassfyGuanZhuView != null){
-                        mClassfyGuanZhuView.guanZhu(list.get(i).getId()+"");
+                        mClassfyGuanZhuView.guanZhu(list.get(i).getId()+"",i+"");
                     }
                 }
             }

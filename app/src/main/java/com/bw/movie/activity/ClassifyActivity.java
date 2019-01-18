@@ -127,34 +127,71 @@ public class ClassifyActivity extends BaseMVPActivity<ClassfyView, ClassfyPresen
         classfy_recyclerview.setAdapter(classfyReMenAdapter);
         classfyReMenAdapter.setClassfyGuanZhuView(new ClassfyGuanZhuView() {
             @Override
-            public void quXiao(String id) {
+            public void quXiao(String id,String i) {
                 HashMap<String, String> map1 = new HashMap<>();
                 map1.put("movieId",id+"");
-                presenter.quXiao(mUserBeans.get(0).getUserId(),mUserBeans.get(0).getSessionId(), ClassifyActivity.this.map);
-               // classfyReMenAdapter.notifyDataSetChanged();
+                presenter.quXiao(mUserBeans.get(0).getUserId(),mUserBeans.get(0).getSessionId(), map1);
+                classfyReMenAdapter.list.get(Integer.valueOf(i)).setFollowMovie(2);
+                classfyReMenAdapter.notifyDataSetChanged();
             }
             @Override
-            public void guanZhu(String id) {
+            public void guanZhu(String id , String i) {
                 HashMap<String, String> map1 = new HashMap<>();
                 map1.put("movieId",id+"");
-                presenter.GuanZhu(mUserBeans.get(0).getUserId(),mUserBeans.get(0).getSessionId(), ClassifyActivity.this.map);
-               // classfyReMenAdapter.notifyDataSetChanged();
+                presenter.GuanZhu(mUserBeans.get(0).getUserId(),mUserBeans.get(0).getSessionId(), map1);
+                classfyReMenAdapter.list.get(Integer.valueOf(i)).setFollowMovie(1);
+                classfyReMenAdapter.notifyDataSetChanged();
+            }
+        });
+    }
+    @Override
+    public void successsZhengZai(List<MovieFragmentBean.ResultBean> result) {
+        final ClassfyReMenAdapter classfyReMenAdapter = new ClassfyReMenAdapter(this, result);
+        classfy_recyclerview.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
+        classfy_recyclerview.setAdapter(classfyReMenAdapter);
+        classfyReMenAdapter.setClassfyGuanZhuView(new ClassfyGuanZhuView() {
+            @Override
+            public void quXiao(String id,String i) {
+                HashMap<String, String> map1 = new HashMap<>();
+                map1.put("movieId",id+"");
+                presenter.quXiao(mUserBeans.get(0).getUserId(),mUserBeans.get(0).getSessionId(), map1);
+                classfyReMenAdapter.list.get(Integer.valueOf(i)).setFollowMovie(2);
+                classfyReMenAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void guanZhu(String id , String i) {
+                HashMap<String, String> map1 = new HashMap<>();
+                map1.put("movieId",id+"");
+                presenter.GuanZhu(mUserBeans.get(0).getUserId(),mUserBeans.get(0).getSessionId(), map1);
+                classfyReMenAdapter.list.get(Integer.valueOf(i)).setFollowMovie(1);
+                classfyReMenAdapter.notifyDataSetChanged();
             }
         });
     }
 
     @Override
-    public void successsZhengZai(List<MovieFragmentBean.ResultBean> result) {
-        ClassfyReMenAdapter classfyReMenAdapter = new ClassfyReMenAdapter(this, result);
-        classfy_recyclerview.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
-        classfy_recyclerview.setAdapter(classfyReMenAdapter);
-    }
-
-    @Override
     public void successsJiJiang(List<MovieFragmentBean.ResultBean> result) {
-        ClassfyReMenAdapter classfyReMenAdapter = new ClassfyReMenAdapter(this, result);
+        final ClassfyReMenAdapter classfyReMenAdapter = new ClassfyReMenAdapter(this, result);
         classfy_recyclerview.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         classfy_recyclerview.setAdapter(classfyReMenAdapter);
+        classfyReMenAdapter.setClassfyGuanZhuView(new ClassfyGuanZhuView() {
+            @Override
+            public void quXiao(String id,String i) {
+                HashMap<String, String> map1 = new HashMap<>();
+                map1.put("movieId",id+"");
+                presenter.quXiao(mUserBeans.get(0).getUserId(),mUserBeans.get(0).getSessionId(), map1);
+                classfyReMenAdapter.list.get(Integer.valueOf(i)).setFollowMovie(2);
+                classfyReMenAdapter.notifyDataSetChanged();
+            }
+            @Override
+            public void guanZhu(String id , String i) {
+                HashMap<String, String> map1 = new HashMap<>();
+                map1.put("movieId",id+"");
+                presenter.GuanZhu(mUserBeans.get(0).getUserId(),mUserBeans.get(0).getSessionId(), map1);
+                classfyReMenAdapter.list.get(Integer.valueOf(i)).setFollowMovie(1);
+                classfyReMenAdapter.notifyDataSetChanged();
+            }
+        });
     }
     @Override
     public void errorReMen(String msg) {
@@ -183,6 +220,7 @@ public class ClassifyActivity extends BaseMVPActivity<ClassfyView, ClassfyPresen
     @Override
     public void successguanzhu(String message) {
         showToast("关注："+message);
+
     }
 
     @Override

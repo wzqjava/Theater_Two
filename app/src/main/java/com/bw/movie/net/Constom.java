@@ -67,5 +67,10 @@ public class Constom {
     public final static String MOVIE_BUY_TICKET ="movieApi/movie/v1/verify/buyMovieTicket";
     //电影购票下单支付
     public final static String MOVIE_BUY_TICKET_PAY ="movieApi/movie/v1/verify/pay";
-
+    //zan
+    public final static String DETAIL_PINGLUN_ZAN ="movieApi/movie/v1/verify/movieCommentGreat";
+    //评论评论
+    public final static String DETAIL_PINGLUN_PINGLUN ="movieApi/movie/v1/verify/commentReply";
+    //评论影片
+    public final static String DETAIL_PINGLUN_YINGPIAN ="movieApi/movie/v1/verify/movieComment";
 }

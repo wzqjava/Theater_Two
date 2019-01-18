@@ -15,7 +15,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.bw.movie.R;
 import com.bw.movie.activity.DeatilActivity;
 import com.bw.movie.bean.DetailPingLunBean;
-import com.bw.movie.utils.GlideRoundedCornersUtil;
+import com.bw.movie.view.DetailPingLunZan;
 
 import java.util.List;
 
@@ -44,12 +44,13 @@ public class DetailRecyclerviewPingLunAdapter extends RecyclerView.Adapter<Detai
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(@NonNull final MyViewHolder myViewHolder, final int i) {
 
         RequestManager with = Glide.with(context);
         with.load(list.get(i).getCommentHeadPic())
                 .apply(new RequestOptions().transform(new CircleCrop()))
                 .into(myViewHolder.detail_pinglun_img);
+
        /* Glide.with(myViewHolder.itemView.getContext())
 
 
@@ -57,16 +58,41 @@ public class DetailRecyclerviewPingLunAdapter extends RecyclerView.Adapter<Detai
 
                 .load()
                 .into(myViewHolder.detail_pinglun_img);*/
-
-
-
         myViewHolder.detail_pinglun_name.setText(list.get(i).getCommentUserName()+"");
         myViewHolder.detail_pinglun_xiangqing.setText(list.get(i).getCommentContent()+"");
         myViewHolder.detail_pinglun_zannum.setText(list.get(i).getGreatNum()+"");
         myViewHolder.detail_pinglun_pinglunnum.setText(list.get(i).getReplyNum()+"");
-
+        /*if (list.get(i).getGreatNum() >= 1 ){
+            myViewHolder.detail_pinglun_zan.setImageResource(R.mipmap.com_icon_praise_selected);
+        }*/
+        myViewHolder.detail_pinglun_pinglun.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mDetailPingLunZan != null){
+                    mDetailPingLunZan.pinglun(list.get(i).getCommentId()+"");
+                }
+            }
+        });
+        myViewHolder.detail_pinglun_zan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int zzzz = 0 ;
+                if (mDetailPingLunZan != null){
+                    myViewHolder.detail_pinglun_zan.setImageResource(R.mipmap.com_icon_praise_selected);
+                    mDetailPingLunZan.zan(list.get(i).getCommentId()+"");
+                    if (zzzz == 0){
+                        myViewHolder.detail_pinglun_zannum.setText(list.get(i).getGreatNum()+1+"");
+                        zzzz+=1;
+                    }
+                }
+            }
+        });
     }
 
+    DetailPingLunZan mDetailPingLunZan;
+    public void dianzan(DetailPingLunZan detailPingLunZan){
+        mDetailPingLunZan = detailPingLunZan ;
+    }
     @Override
     public int getItemCount() {
         return list.size();

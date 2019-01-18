@@ -3,7 +3,7 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent">
 
-    <LinearLayout
+   <!-- <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_30"
         android:layout_marginLeft="@dimen/dp_24"
@@ -29,14 +29,14 @@ android:layout_height="match_parent">
             android:layout_width="@dimen/dp_100"
             android:layout_height="@dimen/dp_24"
             android:background="@drawable/cinema_search"></SearchView>
-    </LinearLayout>
+    </LinearLayout>-->
 
     <RadioGroup
         android:id="@+id/radiogroup"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_25"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="@dimen/dp_69"
+        android:layout_marginTop="@dimen/dp_10"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -80,9 +80,8 @@ android:layout_height="match_parent">
     <android.support.v7.widget.RecyclerView
         android:id="@+id/classfy_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_472"
-
-        android:layout_marginTop="@dimen/dp_102" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_40" />
 
     <ImageView
         android:id="@+id/classfy_fanhui"

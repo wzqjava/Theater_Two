@@ -8,6 +8,7 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ import com.bw.movie.bean.Detail_Detail_Bean;
 import com.bw.movie.bean.MovieFragmentBean;
 import com.bw.movie.greendao.UserBean;
 import com.bw.movie.presenter.DetailPresenter;
+import com.bw.movie.view.DetailPingLunZan;
 import com.bw.movie.view.DetailView;
 import com.greendao.gen.UserBeanDao;
 
@@ -44,10 +46,9 @@ public class DeatilActivity extends BaseMVPActivity<DetailView, DetailPresenter>
     private Button detail_yingping;
     private ImageView detail_fanhui;
     private Button detail_goumai;
-
+    private ImageView detail_guanzhu;
     private RelativeLayout detail_onebutton;
     private RelativeLayout detail_twobutton;
-
 
     private ImageView detail_button_img;
     private ImageView detail_button_down;
@@ -68,6 +69,10 @@ public class DeatilActivity extends BaseMVPActivity<DetailView, DetailPresenter>
     private UserBeanDao mUserBeanDao;
     private List<UserBean> mUserBeans;
     private Detail_Recyclerview_Movie detail_recyclerview_movie;
+
+    private RelativeLayout detail_three_button;
+    private EditText pinglun_shuru;
+    private Button pinglun_fasong;
 
     /**
      * 初始化presenter
@@ -104,6 +109,7 @@ public class DeatilActivity extends BaseMVPActivity<DetailView, DetailPresenter>
         detail_goumai = findViewById(R.id.detail_goumai);
         detail_onebutton = findViewById(R.id.detail_onebutton);
         detail_twobutton = findViewById(R.id.detail_twobutton);
+        detail_guanzhu = findViewById(R.id.detail_guanzhu);
 
         detail_button_img = detail_onebutton.findViewById(R.id.detail_button_img);
         detail_button_down = detail_onebutton.findViewById(R.id.detail_button_down);
@@ -122,6 +128,10 @@ public class DeatilActivity extends BaseMVPActivity<DetailView, DetailPresenter>
         detail_button2_name =  detail_twobutton.findViewById(R.id.detail_button2_name);
         detail_button2_bianji = detail_twobutton.findViewById(R.id.detail_button2_bianji);
         detail_button2_recyclerview =  detail_twobutton.findViewById(R.id.detail_button2_recyclerview);
+
+        detail_three_button  = findViewById(R.id.detail_three_button);
+        pinglun_shuru = detail_three_button.findViewById(R.id.pinglun_shuru);
+        pinglun_fasong = detail_three_button.findViewById(R.id.pinglun_fasong);
     }
     /**
      * 初始化数据
@@ -131,6 +141,7 @@ public class DeatilActivity extends BaseMVPActivity<DetailView, DetailPresenter>
         EventBus.getDefault().register(this);
         detail_onebutton.setVisibility(View.INVISIBLE);
         detail_twobutton.setVisibility(View.INVISIBLE);
+        detail_three_button.setVisibility(View.INVISIBLE);
     }
 
 
@@ -152,6 +163,7 @@ public class DeatilActivity extends BaseMVPActivity<DetailView, DetailPresenter>
                 detail_onebutton.setVisibility(View.VISIBLE);
                 detail_twobutton.setVisibility(View.INVISIBLE);
                 detail_goumai.setVisibility(View.INVISIBLE);
+                detail_three_button.setVisibility(View.INVISIBLE);
             }
         });
         detail_button_down.setOnClickListener(new View.OnClickListener() {
@@ -160,6 +172,7 @@ public class DeatilActivity extends BaseMVPActivity<DetailView, DetailPresenter>
                 detail_onebutton.setVisibility(View.INVISIBLE);
                 detail_twobutton.setVisibility(View.INVISIBLE);
                 detail_goumai.setVisibility(View.VISIBLE);
+                detail_three_button.setVisibility(View.INVISIBLE);
             }
         });
         detail_button2_down.setOnClickListener(new View.OnClickListener() {
@@ -168,7 +181,7 @@ public class DeatilActivity extends BaseMVPActivity<DetailView, DetailPresenter>
                 detail_onebutton.setVisibility(View.INVISIBLE);
                 detail_twobutton.setVisibility(View.INVISIBLE);
                 detail_goumai.setVisibility(View.VISIBLE);
-                
+                detail_three_button.setVisibility(View.INVISIBLE);
             }
         });
     }
@@ -177,16 +190,45 @@ public class DeatilActivity extends BaseMVPActivity<DetailView, DetailPresenter>
     }
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void even(final MovieFragmentBean.ResultBean resultBean) {
+
+        mUserBeanDao = MyApplication.getInstances().getDaoSession().getUserBeanDao();
+        mUserBeans = mUserBeanDao.loadAll();
         Log.e("zhx", resultBean.getName() + "");
         detail_name.setText(resultBean.getName() + "");
         Glide.with(this).load(resultBean.getImageUrl() + "").into(detail_img);
+
+
+        if (resultBean.getFollowMovie() == 1){
+            detail_guanzhu.setImageResource(R.mipmap.com_icon_collection_selected);
+        }else{
+            detail_guanzhu.setImageResource(R.mipmap.com_icon_collection_default);
+        }
+        detail_guanzhu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //关注
+                if (resultBean.getFollowMovie() == 1){
+                    //取消关注
+                    HashMap<String, String> qu = new HashMap<>();
+                    qu.put("movieId",""+resultBean.getId());
+                    presenter.getQuXiao(mUserBeans.get(0).getUserId(),mUserBeans.get(0).getSessionId(),qu);
+
+                    resultBean.setFollowMovie(2);
+                   // DeatilActivity.this.notify();
+                }else{
+                    //关注
+                    HashMap<String, String> gu = new HashMap<>();
+                    gu.put("movieId",""+resultBean.getId());
+                    presenter.getGuanZhu(mUserBeans.get(0).getUserId(),mUserBeans.get(0).getSessionId(),gu);
+                    resultBean.setFollowMovie(1);
+                   // DeatilActivity.this.notify();
+                }
+            }
+        });
         //影片的id
         final int id = resultBean.getId();
 
 
-
-            mUserBeanDao = MyApplication.getInstances().getDaoSession().getUserBeanDao();
-            mUserBeans = mUserBeanDao.loadAll();
             HashMap<String, String> map = new HashMap<>();
             map.put("movieId",String.valueOf(id));
             Log.e("zzz",mUserBeans.get(0).getUserId()+"   "+mUserBeans.get(0).getSessionId()+"");
@@ -210,6 +252,32 @@ public class DeatilActivity extends BaseMVPActivity<DetailView, DetailPresenter>
                 startActivity(intent);
             }
         });
+        //对影片的评论
+        detail_button2_bianji.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                detail_three_button.setVisibility(View.VISIBLE);
+                pinglun_fasong.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String trim = pinglun_shuru.getText().toString().trim();
+                        Log.e("zhx","评论影片："+trim);
+                        boolean aNull = presenter.isNull(trim);
+                        if (aNull){
+                            HashMap<String, String> yp = new HashMap<>();
+                            yp.put("movieId",resultBean.getId()+"");
+                            yp.put("commentContent",""+trim);
+                            presenter.getPingLunYingPian(mUserBeans.get(0).getUserId(),mUserBeans.get(0).getSessionId(),yp);
+                            Log.e("zhx","评论影片的评论："+trim);
+                            detail_three_button.setVisibility(View.INVISIBLE);
+                            pinglun_shuru.setText("");
+                        }else {
+                            showToast("输入信息不能为空");
+                        }
+                    }
+                });
+            }
+        });
     }
     @Override
     protected void onDestroy() {
@@ -227,7 +295,9 @@ public class DeatilActivity extends BaseMVPActivity<DetailView, DetailPresenter>
         detail_button_detail_two.setText(resultBean.getDirector());
         detail_button_detail_three.setText(resultBean.getDuration());
         detail_button_detail_four.setText(resultBean.getPlaceOrigin());
-        detail_button_jianjie.setText(resultBean.getSummary());
+        String summary = resultBean.getSummary();
+        summary = summary.substring(0,100);
+        detail_button_jianjie.setText(summary+"...");
         String starring = resultBean.getStarring();
         String[] split = starring.split(",");
 
@@ -245,6 +315,7 @@ public class DeatilActivity extends BaseMVPActivity<DetailView, DetailPresenter>
                 detail_onebutton.setVisibility(View.INVISIBLE);
                 detail_twobutton.setVisibility(View.VISIBLE);
                 detail_goumai.setVisibility(View.INVISIBLE);
+                detail_three_button.setVisibility(View.INVISIBLE);
 
                 List<Detail_Detail_Bean.ResultBean.ShortFilmListBean> shortFilmList = resultBean.getShortFilmList();
                 //播放视频
@@ -264,6 +335,7 @@ public class DeatilActivity extends BaseMVPActivity<DetailView, DetailPresenter>
                 detail_onebutton.setVisibility(View.INVISIBLE);
                 detail_twobutton.setVisibility(View.VISIBLE);
                 detail_goumai.setVisibility(View.INVISIBLE);
+                detail_three_button.setVisibility(View.INVISIBLE);
 
                 List<String> posterList = resultBean.getPosterList();
                 detail_button2_recyclerview.setHasFixedSize(true);
@@ -295,20 +367,109 @@ public class DeatilActivity extends BaseMVPActivity<DetailView, DetailPresenter>
                 detail_button2_name.setText("影评");
                 detail_onebutton.setVisibility(View.INVISIBLE);
                 detail_twobutton.setVisibility(View.VISIBLE);
+                detail_three_button.setVisibility(View.INVISIBLE);
                 detail_goumai.setVisibility(View.INVISIBLE);
                 //com_icon_publish_default
                 detail_button2_bianji.setVisibility(View.VISIBLE);
 
-                DetailRecyclerviewPingLunAdapter adapter = new DetailRecyclerviewPingLunAdapter(DeatilActivity.this, result);
+                final DetailRecyclerviewPingLunAdapter adapter = new DetailRecyclerviewPingLunAdapter(DeatilActivity.this, result);
                 detail_button2_recyclerview.setLayoutManager(new LinearLayoutManager(DeatilActivity.this,LinearLayoutManager.VERTICAL,false));
                 detail_button2_recyclerview.setAdapter(adapter);
+                //点赞
+                adapter.dianzan(new DetailPingLunZan() {
+                    @Override
+                    public void zan(String s) {
+                        //进行点赞操作
+                        HashMap<String, String> zan = new HashMap<>();
+                        zan.put("commentId",s+"");
+                        presenter.getDianZan(mUserBeans.get(0).getUserId(),mUserBeans.get(0).getSessionId(),zan);
+                        adapter.notifyDataSetChanged();
+
+                    }
+                    @Override
+                    public void pinglun(final String s) {
+                        //开始评论别人的评论
+                        detail_three_button.setVisibility(View.VISIBLE);
+                        pinglun_fasong.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                String trim = pinglun_shuru.getText().toString().trim();
+                                boolean aNull = presenter.isNull(trim);
+                                if (aNull){
+                                    HashMap<String, String> yppl = new HashMap<>();
+                                    yppl.put("commentId",s+"");
+                                    yppl.put("replyContent",""+trim);
+                                    presenter.getPingLunPingLun(mUserBeans.get(0).getUserId(),mUserBeans.get(0).getSessionId(),yppl);
+                                    Log.e("zhx","评论别人的评论："+trim);
+                                    detail_three_button.setVisibility(View.INVISIBLE);
+                                    pinglun_shuru.setText("");
+                                }else {
+                                    showToast("输入信息不能为空");
+                                }
+                            }
+                        });
+                    }
+                });
 
             }
         });
+
     }
     @Override
     public void errorPingLun(String msg) {
         showToast(msg+"");
         Log.e("zhx","影片评论的："+"影片评论的");
     }
+
+    @Override
+    public void suucessQuXiao(String msg) {
+        showToast("取消关注成功"+msg);
+        detail_guanzhu.setImageResource(R.mipmap.com_icon_collection_default);
+    }
+
+    @Override
+    public void suucessGuanZhu(String msg) {
+        showToast("关注成功"+msg);
+        detail_guanzhu.setImageResource(R.mipmap.com_icon_collection_selected);
+    }
+
+    @Override
+    public void errorQuXiao(String msg) {
+        showToast("取消关注失败"+msg);
+    }
+
+    @Override
+    public void errorGuanZhu(String msg) {
+        showToast("关注失败"+msg);
+    }
+
+    @Override
+    public void successdianzan(String message) {
+        showToast("点赞成功     "+message);
+    }
+    @Override
+    public void errordianzan(String s) {
+        showToast("点赞失败     "+s);
+    }
+
+    @Override
+    public void successpinglunpinglun(String message) {
+        showToast("评论别人的评论成功："+message);
+    }
+
+    @Override
+    public void errorpinglunpinglun(String message) {
+        showToast("评论别人的评论失败："+message);
+    }
+
+    @Override
+    public void successpinglunyingpian(String message) {
+        showToast("评论影片成功："+message);
+    }
+
+    @Override
+    public void errorpinglunyingpian(String message) {
+        showToast("评论影片失败："+message);
+    }
+
 }
