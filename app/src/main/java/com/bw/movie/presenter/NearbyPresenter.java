@@ -1,5 +1,8 @@
 package com.bw.movie.presenter;
 
+import android.view.View;
+
+import com.bw.movie.base.BaseMVPPresenter;
 import com.bw.movie.bean.NearbyBean;
 import com.bw.movie.bean.RecommendBean;
 import com.bw.movie.model.NearbyModel;
@@ -16,8 +19,7 @@ import io.reactivex.observers.DisposableObserver;
  * author:李壮(大壮)
  * function:---------------------附近影院    P层--------------------
  */
-public class NearbyPresenter {
-    private NearbyView mNearbyView;
+public class NearbyPresenter extends BaseMVPPresenter<NearbyView> {
     private final NearbyModel mNearbyModel;
 
     public NearbyPresenter() {
@@ -45,8 +47,8 @@ public class NearbyPresenter {
                 @Override
                 public void onNext(NearbyBean nearbyBean) {
                     mPage = page + 1;
-                    if (mNearbyView != null) {
-                        mNearbyView.success(page == 1, nearbyBean.getResult());
+                    if (view != null) {
+                        view.success(page == 1, nearbyBean.getResult());
                     }
                 }
 
@@ -58,20 +60,11 @@ public class NearbyPresenter {
 
                 @Override
                 public void onComplete() {
-                    if(mNearbyView != null) {
-                        mNearbyView.onloadComplete();
+                    if(view != null) {
+                        view.onloadComplete();
                     }
                 }
             });
         }
-    }
-
-    public void onCreate(NearbyView view) {
-        mNearbyView = view;
-    }
-
-    public void onDestory() {
-        mNearbyView = null;
-        mNearbyModel.disposable();
     }
 }

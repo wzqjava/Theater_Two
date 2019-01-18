@@ -93,7 +93,7 @@ dependencies {
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
 
     // 添加下面的内容 支付宝
-    implementation (name: 'alipaySdk-15.5.9-20181123210601', ext: 'aar')
+    implementation(name: 'alipaySdk-15.5.9-20181123210601', ext: 'aar')
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.dalong:carrousellayout:1.0.0'
 

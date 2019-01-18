@@ -20,6 +20,7 @@ import com.bw.movie.bean.RecommendBean;
 import com.bw.movie.bean.RegisterBean;
 import com.bw.movie.bean.SearchBean;
 import com.bw.movie.bean.SelectThrastersRecyclerViewBean;
+import com.bw.movie.model.BaseResponse;
 import com.bw.movie.net.Constom;
 
 import java.util.HashMap;
@@ -123,7 +124,8 @@ public interface APIServer {
      */
     @FormUrlEncoded
     @POST(Constom.MOVIE_BUY_TICKET)
-    Observable<MovieTicketBean> getTicket(@HeaderMap Map<String,String> headerParams, @FieldMap Map<String,String> queryParams);
+    Observable<MovieTicketBean> getTicket(@HeaderMap Map<String,String> headerParams,
+                                          @FieldMap Map<String,String> queryParams);
 
     /**
      *支付
@@ -199,5 +201,24 @@ public interface APIServer {
     Observable<MyFragmentReMindRecyclerViewBean> getReMindRecyclerView(@Header("userId") String userId, @Header("sessionId") String sessionId, @QueryMap HashMap<String, String> map);
 
 
+    /**
+     * 关注影院
+     * @param headerParams
+     * @param queryParams
+     * @return
+     */
+    @GET(Constom.ATTENTION_URL)
+    Observable<BaseResponse> getAttention(@HeaderMap Map<String,String> headerParams,
+                                          @QueryMap Map<String,String> queryParams);
+
+    /**
+     * 取消关注影院
+     * @param headerParams
+     * @param queryParams
+     * @return
+     */
+    @GET(Constom.UNATTENTION_URL)
+    Observable<BaseResponse> getUnAttention(@HeaderMap Map<String,String> headerParams,
+                                          @QueryMap Map<String,String> queryParams);
 
 }

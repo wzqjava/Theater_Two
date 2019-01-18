@@ -46,6 +46,7 @@ public class PayPresenter extends BaseMVPPresenter<PayView> {
                 public void onNext(PayResponseBean payResponseBean) {
                     if (type == WeatchPayType){
                         onPay(headerParams,queryParams,payResponseBean);
+                        Log.e("lz",payResponseBean.toString());
                     }else if (type == AlipayPayType){
                         if (payResponseBean.isSuccess()){
                             onAlipayPay(payResponseBean.getResult());

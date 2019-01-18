@@ -1,9 +1,7 @@
 package com.bw.movie.model;
 
 import com.bw.movie.bean.MovieFragmentBean;
-import com.bw.movie.bean.RegisterBean;
 import com.bw.movie.server.APIServer;
-import com.bw.movie.server.DefaultDisposable;
 import com.bw.movie.utils.RetrofitUtils;
 
 import java.util.HashMap;

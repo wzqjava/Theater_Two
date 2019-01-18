@@ -83,4 +83,18 @@ public class PayResponseBean extends BaseResponse {
     public void setPackageValue(String packageValue) {
         this.packageValue = packageValue;
     }
+
+    @Override
+    public String toString() {
+        return "PayResponseBean{" +
+                "appId='" + appId + '\'' +
+                ", nonceStr='" + nonceStr + '\'' +
+                ", partnerId='" + partnerId + '\'' +
+                ", prepayId='" + prepayId + '\'' +
+                ", sign='" + sign + '\'' +
+                ", timeStamp='" + timeStamp + '\'' +
+                ", packageValue='" + packageValue + '\'' +
+                ", result='" + result + '\'' +
+                '}';
+    }
 }

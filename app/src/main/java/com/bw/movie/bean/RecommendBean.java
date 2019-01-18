@@ -62,6 +62,19 @@ public class RecommendBean {
         private String logo;
         private String name;
 
+        public final static int ATTENTION = 1;
+        public final static int UNATTENTION = 2;
+        public boolean isFollowCinema(){
+            return followCinema == ATTENTION;
+        }
+        public void changeItenAttentionStatus(){
+            if (isFollowCinema()){
+                followCinema = UNATTENTION;
+            }else {
+                followCinema = ATTENTION;
+            }
+        }
+
         public String getAddress() {
             return address;
         }

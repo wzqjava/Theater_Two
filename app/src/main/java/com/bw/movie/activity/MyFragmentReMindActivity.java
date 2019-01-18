@@ -1,13 +1,10 @@
 package com.bw.movie.activity;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bw.movie.R;
 import com.bw.movie.adapter.MyFragmentReMindRecyclerviewAdapter;

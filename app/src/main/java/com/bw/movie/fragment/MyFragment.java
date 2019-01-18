@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -18,6 +19,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.bw.movie.MainActivity;
 import com.bw.movie.R;
 import com.bw.movie.activity.MyFragmentReMindActivity;
+import com.bw.movie.activity.TicketActivity;
 import com.bw.movie.adapter.MyFragmentListViewAdapter;
 import com.bw.movie.app.MyApplication;
 import com.bw.movie.base.BaseMVPFragment;
@@ -45,6 +47,7 @@ public class MyFragment extends BaseMVPFragment<MyFragmentView, MyFragmentPresen
     TextView iv_name;
     ImageView iv_img;
     private ImageView myfragment_remind;
+
     @Override
     protected MyFragmentPresenter initPresenter() {
         return new MyFragmentPresenter();
@@ -141,5 +144,6 @@ public class MyFragment extends BaseMVPFragment<MyFragmentView, MyFragmentPresen
                 startActivity(new Intent(getActivity(),MyFragmentReMindActivity.class));
             }
         });
+
     }
 }

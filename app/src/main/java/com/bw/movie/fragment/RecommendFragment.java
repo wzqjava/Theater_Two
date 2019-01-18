@@ -15,7 +15,9 @@ import com.bw.movie.base.BaseFragment;
 import com.bw.movie.bean.LatitudeLongitudeBean;
 import com.bw.movie.bean.RecommendBean;
 import com.bw.movie.greendao.UserBean;
+import com.bw.movie.presenter.AttentionPresenter;
 import com.bw.movie.presenter.RecommendPresenter;
+import com.bw.movie.view.AttentionView;
 import com.bw.movie.view.RecommendView;
 import com.greendao.gen.UserBeanDao;
 import com.jcodecraeer.xrecyclerview.XRecyclerView;
@@ -30,9 +32,9 @@ import io.reactivex.subjects.PublishSubject;
 /**
  * date:2019/1/4
  * author:李壮(大壮)
- * function:
+ * function:推荐影院页面
  */
-public class RecommendFragment extends BaseFragment implements RecommendView, Consumer<LatitudeLongitudeBean> {
+public class RecommendFragment extends BaseFragment implements RecommendView,AttentionView, Consumer<LatitudeLongitudeBean> {
 
     private XRecyclerView mCinema_Recommend_RecyclerView;
     private CinemaRecommendAdapter mCinemaRecommendAdapter;
@@ -42,6 +44,7 @@ public class RecommendFragment extends BaseFragment implements RecommendView, Co
     private UserBeanDao mUserBeanDao;
     private List<UserBean> mUserBeans;
     private Intent mIntent;
+    private AttentionPresenter mAttentionPresenter;
 
     /**
      * 初始化视图
@@ -63,6 +66,8 @@ public class RecommendFragment extends BaseFragment implements RecommendView, Co
         //创建适配器
         mCinemaRecommendAdapter = new CinemaRecommendAdapter(getActivity());
 
+        //创建关注与取消关注的Presenter
+        mAttentionPresenter = new AttentionPresenter();
         //设置布局管理器
         mCinema_Recommend_RecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(),OrientationHelper.VERTICAL,false));
         mCinema_Recommend_RecyclerView.setAdapter(mCinemaRecommendAdapter);
@@ -106,8 +111,9 @@ public class RecommendFragment extends BaseFragment implements RecommendView, Co
         mUserBeanDao = MyApplication.getInstances().getDaoSession().getUserBeanDao();
         mUserBeans = mUserBeanDao.loadAll();
         mHeaderParams.put("userId",mUserBeans.get(0).getUserId());
-        mQueryParams.put("sessionId",mUserBeans.get(0).getSessionId());
-        mRecommendPresenter.onCreate(this);
+        mHeaderParams.put("sessionId",mUserBeans.get(0).getSessionId());
+        mRecommendPresenter.attch(this);
+        mAttentionPresenter.attch(this);
         //从外面过来
         buildLatitudeLongitude();
         mRecommendPresenter.refreshData(mHeaderParams,mQueryParams);
@@ -118,6 +124,14 @@ public class RecommendFragment extends BaseFragment implements RecommendView, Co
                 Toast.makeText(getActivity(), "影院id" + id, Toast.LENGTH_SHORT).show();
                 mIntent.putExtra("id",String.valueOf(id));
                 startActivity(mIntent);
+            }
+        });
+
+        mCinemaRecommendAdapter.setCinemaAttentionClickListener(new CinemaRecommendAdapter.CinemaAttentionClickListener() {
+            @Override
+            public void cinemaAttentionClick(int position) {
+                RecommendBean.ResultBean iten = mCinemaRecommendAdapter.getIten(position - 1);
+                mAttentionPresenter.getAttention(mHeaderParams,position - 1,iten.isFollowCinema(),iten.getId()+"");
             }
         });
     }
@@ -142,9 +156,21 @@ public class RecommendFragment extends BaseFragment implements RecommendView, Co
 
     }
 
+
+    @Override
+    public void successGZ(int position) {
+        Toast.makeText(getActivity(), "成功", Toast.LENGTH_SHORT).show();
+        mCinemaRecommendAdapter.changeItenAttentionStatus(position);
+    }
+
+    @Override
+    public void reeorGZ(String msg) {
+        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+    }
+
     @Override
     public void error(String msg) {
-
+        Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -161,5 +187,12 @@ public class RecommendFragment extends BaseFragment implements RecommendView, Co
     @Override
     public void accept(LatitudeLongitudeBean latitudeLongitudeBean) throws Exception {
         mLatitudeLongitudeBean = latitudeLongitudeBean;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mAttentionPresenter.detach();
+        mRecommendPresenter.detach();
     }
 }

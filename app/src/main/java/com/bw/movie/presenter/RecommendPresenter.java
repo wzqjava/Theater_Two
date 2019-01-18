@@ -1,5 +1,6 @@
 package com.bw.movie.presenter;
 
+import com.bw.movie.base.BaseMVPPresenter;
 import com.bw.movie.bean.RecommendBean;
 import com.bw.movie.model.RecommendModel;
 import com.bw.movie.view.RecommendView;
@@ -14,8 +15,7 @@ import retrofit2.http.PUT;
  * author:李壮(大壮)
  * function:---------------------推荐影院    P层--------------------
  */
-public class RecommendPresenter {
-    private RecommendView mRecommendView;
+public class RecommendPresenter extends BaseMVPPresenter<RecommendView> {
     private final RecommendModel mRecommendModel;
 
     public RecommendPresenter() {
@@ -43,8 +43,8 @@ public class RecommendPresenter {
                 @Override
                 public void onNext(RecommendBean recommendBean) {
                     mPage = page + 1;
-                    if (mRecommendView != null) {
-                        mRecommendView.success(page == 1,recommendBean.getResult());
+                    if (view!= null) {
+                        view.success(page == 1,recommendBean.getResult());
                     }
                 }
 
@@ -55,20 +55,11 @@ public class RecommendPresenter {
 
                 @Override
                 public void onComplete() {
-                  if (mRecommendView != null){
-                      mRecommendView.onloadComplete();
+                  if (view != null){
+                      view.onloadComplete();
                   }
                 }
             });
         }
-    }
-
-    public void onCreate(RecommendView view) {
-        mRecommendView = view;
-    }
-
-    public void onDestory() {
-        mRecommendView = null;
-        mRecommendModel.disposable();
     }
 }

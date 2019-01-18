@@ -1,6 +1,5 @@
 package com.bw.movie.activity;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,12 +15,13 @@ import com.bw.movie.R;
 import com.bw.movie.fragment.CinemaFregment;
 import com.bw.movie.fragment.MovieFregment;
 import com.bw.movie.fragment.MyFragment;
+import com.bw.movie.utils.NoScrollViewPager;
 
 import java.util.ArrayList;
 
 public class ShelfActivity extends AppCompatActivity {
 
-    private ViewPager view_change;
+    private NoScrollViewPager view_change;
     private RadioButton btn_movie;
     private RadioButton btn_cinema;
     private RadioButton btn_my;
@@ -131,7 +131,7 @@ public class ShelfActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        view_change = (ViewPager) findViewById(R.id.view_change);
+        view_change = findViewById(R.id.view_change);
         btn_movie = (RadioButton) findViewById(R.id.btn_movie);
         btn_cinema = (RadioButton) findViewById(R.id.btn_cinema);
         btn_my = (RadioButton) findViewById(R.id.btn_my);

@@ -1,9 +1,7 @@
 package com.bw.movie.model;
 
-import com.bw.movie.bean.CinemaDetailBean;
 import com.bw.movie.bean.CinemaDetailCinemaBean;
 import com.bw.movie.server.APIServer;
-import com.bw.movie.server.DefaultDisposable;
 import com.bw.movie.utils.RetrofitUtils;
 
 import java.util.Map;

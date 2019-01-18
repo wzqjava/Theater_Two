@@ -1,6 +1,5 @@
 package com.bw.movie.model;
 
-import com.bw.movie.bean.NearbyBean;
 import com.bw.movie.server.APIServer;
 import com.bw.movie.utils.RetrofitUtils;
 
@@ -12,30 +11,29 @@ import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
 /**
- * date:2019/1/5
+ * date:2019/1/17
  * author:李壮(大壮)
- * function:附近影院M层
+ * function:取消关注Model层
  */
-public class NearbyModel {
+public class UnAttentionModel {
     private Disposable mDisposable = new DefaultDisposable();
 
-    public void getNearby(Map<String, String> headerParams, Map<String, String> queryParams, DisposableObserver<NearbyBean> observer){
-        mDisposable = RetrofitUtils.getInstance()
+    public void getUnAttention(Map<String,String> headerParams, Map<String,String> queryParams,
+                                 DisposableObserver<BaseResponse> observer){
+        RetrofitUtils.getInstance()
                 .getService(APIServer.class)
-                .getNearby(headerParams, queryParams)
-                //切换线程
-                .observeOn(AndroidSchedulers.mainThread())
+                .getUnAttention(headerParams,queryParams)
                 .subscribeOn(Schedulers.io())
-                .subscribeWith(observer);
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(observer);
+        mDisposable = observer;
     }
 
-
-    public boolean isDisposable() {
-        return mDisposable.isDisposed();
-
+    public boolean idDisposable(){
+        return true;
     }
+
     public void disposable(){
         mDisposable.dispose();
     }
-
 }

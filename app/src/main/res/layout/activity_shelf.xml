@@ -7,12 +7,12 @@
     tools:context=".activity.ShelfActivity"
     >
 
-    <android.support.v4.view.ViewPager
+
+    <com.bw.movie.utils.NoScrollViewPager
         android:id="@+id/view_change"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />
-
 
     <RadioGroup
         android:id="@+id/group"

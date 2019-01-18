@@ -26,7 +26,6 @@ import com.bw.movie.presenter.LoginPersenter;
 import com.bw.movie.utils.EncryptUtil;
 import com.bw.movie.utils.RetrofitUtils;
 import com.greendao.gen.UserBeanDao;
-import com.loc.v;
 
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -34,8 +33,6 @@ import org.greenrobot.eventbus.ThreadMode;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import retrofit2.http.HEAD;
 
 /**
  * 登录页面
@@ -81,7 +78,7 @@ public class LoginActivity extends BaseMVPActivity<LoginInterface,LoginPersenter
             login_edittext_phone.setText("13793014727");
 
             if (BuildConfig.DEBUG) {
-                login_edittext_phone.setText("15235920684");
+                login_edittext_phone.setText("13793014728");
                 login_edittext_pwd.setText("123456");
             }
         }

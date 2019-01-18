@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bw.movie.R;
 import com.bw.movie.adapter.SearchAdapter;
@@ -25,8 +26,7 @@ import java.util.List;
  */
 public class SearchActivity extends BaseMVPActivity<SearchView,SearchPresenter> implements View.OnClickListener,SearchView {
 
-    private EditText mSearch_input;
-    private Button mSearch_query;
+    private android.widget.SearchView mSearch_input;
     private RecyclerView mSearch_recyclerView;
     private SearchAdapter mSearchAdapter;
     private HashMap<String, String> mQueryParams;
@@ -52,11 +52,9 @@ public class SearchActivity extends BaseMVPActivity<SearchView,SearchPresenter> 
     @Override
     protected void initView() {
         mSearch_input = findViewById(R.id.search_input);
-        mSearch_query = findViewById(R.id.search_query);
         mSearch_recyclerView = findViewById(R.id.search_recyclerview);
         mSearch_back = findViewById(R.id.search_back);
         mSearch_back.setOnClickListener(this);
-        mSearch_query.setOnClickListener(this);
         mQueryParams = new HashMap<>();
 
         //创建展示数据适配器
@@ -78,19 +76,32 @@ public class SearchActivity extends BaseMVPActivity<SearchView,SearchPresenter> 
      */
     @Override
     protected void setListener() {
+        mSearch_input.setOnQueryTextListener(new android.widget.SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                if (query == null){
+                    Toast.makeText(SearchActivity.this, "输入不能为空", Toast.LENGTH_SHORT).show();
+                }else {
+                    mQueryParams.put("cinemaName",query);
+                    mQueryParams.put("page","1");
+                    mQueryParams.put("count","10");
+                    presenter.getSearch(mQueryParams);
+                }
 
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+
+                return false;
+            }
+        });
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.search_query:
-                String search_input = mSearch_input.getText().toString();
-                mQueryParams.put("cinemaName",search_input);
-                mQueryParams.put("page","1");
-                mQueryParams.put("count","10");
-                presenter.getSearch(mQueryParams);
-                break;
             case R.id.search_back:
                 finish();
                 break;

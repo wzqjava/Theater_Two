@@ -1,9 +1,7 @@
 package com.bw.movie.model;
 
 import com.bw.movie.bean.PayResponseBean;
-import com.bw.movie.bean.RecommendBean;
 import com.bw.movie.server.APIServer;
-import com.bw.movie.server.DefaultDisposable;
 import com.bw.movie.utils.RetrofitUtils;
 
 import java.util.Map;

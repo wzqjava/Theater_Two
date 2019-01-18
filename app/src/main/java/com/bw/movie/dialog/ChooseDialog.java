@@ -72,6 +72,9 @@ public class ChooseDialog extends DialogFragment implements View.OnClickListener
         return view;
     }
 
+    /**
+     * 支付宝
+     */
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {

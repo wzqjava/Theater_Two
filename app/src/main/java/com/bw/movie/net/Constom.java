@@ -7,7 +7,7 @@ package com.bw.movie.net;
  */
 public class Constom {
 
-    private final static  boolean flag=true;
+    private final static  boolean flag=false;
     /**
      * 通过flag返回内网/外网测试环境
      */
@@ -67,7 +67,10 @@ public class Constom {
     public final static String MOVIE_BUY_TICKET ="movieApi/movie/v1/verify/buyMovieTicket";
     //电影购票下单支付
     public final static String MOVIE_BUY_TICKET_PAY ="movieApi/movie/v1/verify/pay";
-
     //搜索查询
     public final static String SERARCH_URL ="movieApi/cinema/v1/findAllCinemas";
+    //关注影院
+    public final static String ATTENTION_URL ="movieApi/cinema/v1/verify/followCinema";
+    //取消关注影院
+    public final static String UNATTENTION_URL ="movieApi/cinema/v1/verify/cancelFollowCinema";
 }

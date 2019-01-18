@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 
 import com.bw.movie.R;
 import com.bw.movie.activity.PersonalDetailsActivity;
+import com.bw.movie.activity.TicketActivity;
 import com.bw.movie.bean.MyFragmentBean;
 
 import java.util.List;
@@ -47,11 +48,11 @@ public class MyFragmentListViewAdapter extends BaseAdapter {
     public int getItemViewType(int position) {
 
         if (position == 0){
-            return 1;
+            return 0;
         }else if (position == 1){
-            return 2;
+            return 1;
         }else {
-            return 3;
+            return 2;
         }
     }
 
@@ -66,11 +67,11 @@ public class MyFragmentListViewAdapter extends BaseAdapter {
         MyViewHolderOne holderone = null;
         if (view == null){
             holderone = new MyViewHolderOne();
-            if (getItemViewType(i) == 1){
+            if (getItemViewType(i) == 0){
                 view = View.inflate(context,R.layout.myfragment_listview_item_one,null);
                 holderone.myfragment_one = view.findViewById(R.id.myfragment_one);
                 view.setTag(holderone);
-            }else if (getItemViewType(i) == 2){
+            }else if (getItemViewType(i) == 1){
                 view = View.inflate(context,R.layout.myfragment_listview_item_two,null);
                 holderone.myfragment_two_one = view.findViewById(R.id.myfragment_two_one);
                 holderone.myfragment_two_two = view.findViewById(R.id.myfragment_two_two);
@@ -81,7 +82,7 @@ public class MyFragmentListViewAdapter extends BaseAdapter {
                 holderone.myfragment_three_two = view.findViewById(R.id.myfragment_three_two);
                 view.setTag(holderone);
             }
-            if (getItemViewType(i) == 1){
+            if (getItemViewType(i) == 0){
                 holderone = (MyViewHolderOne) view.getTag();
                 holderone.myfragment_one.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -90,7 +91,7 @@ public class MyFragmentListViewAdapter extends BaseAdapter {
                         PersonalDetailsActivity.start(context);
                     }
                 });
-            }else if (getItemViewType(i) == 2){
+            }else if (getItemViewType(i) == 1){
                 holderone.myfragment_two_one.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -101,6 +102,7 @@ public class MyFragmentListViewAdapter extends BaseAdapter {
                     @Override
                     public void onClick(View view) {
                         Log.e("zhx     zhx","2-2");
+                        TicketActivity.start(context);
                     }
                 });
             }else {

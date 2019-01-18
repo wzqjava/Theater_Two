@@ -1,10 +1,7 @@
 package com.bw.movie.model;
 
-import com.bw.movie.bean.DetailPingLunBean;
-import com.bw.movie.bean.Detail_Detail_Bean;
 import com.bw.movie.bean.MyFragmentReMindRecyclerViewBean;
 import com.bw.movie.server.APIServer;
-import com.bw.movie.server.DefaultDisposable;
 import com.bw.movie.utils.RetrofitUtils;
 
 import java.util.HashMap;

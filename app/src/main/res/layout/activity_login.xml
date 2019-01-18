@@ -111,6 +111,7 @@
             android:textColor="#FFF"
             android:layout_below="@id/login_checkbox_rember"
             android:layout_marginTop="@dimen/dp_90"
+            android:background="@drawable/shape"
             android:text="登陆"/>
         <RelativeLayout
             android:layout_width="match_parent"
