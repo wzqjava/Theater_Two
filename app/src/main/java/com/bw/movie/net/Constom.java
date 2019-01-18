@@ -73,4 +73,10 @@ public class Constom {
     public final static String ATTENTION_URL ="movieApi/cinema/v1/verify/followCinema";
     //取消关注影院
     public final static String UNATTENTION_URL ="movieApi/cinema/v1/verify/cancelFollowCinema";
+    //zan
+    public final static String DETAIL_PINGLUN_ZAN ="movieApi/movie/v1/verify/movieCommentGreat";
+    //评论评论
+    public final static String DETAIL_PINGLUN_PINGLUN ="movieApi/movie/v1/verify/commentReply";
+    //评论影片
+    public final static String DETAIL_PINGLUN_YINGPIAN ="movieApi/movie/v1/verify/movieComment";
 }

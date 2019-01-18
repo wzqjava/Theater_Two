@@ -6,6 +6,6 @@ package com.bw.movie.view;
  * function:
  */
 public interface ClassfyGuanZhuView {
-    void quXiao(String id);
-    void guanZhu(String id);
+    void quXiao(String id,String i);
+    void guanZhu(String id,String i);
 }

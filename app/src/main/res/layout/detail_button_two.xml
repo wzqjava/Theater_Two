@@ -48,6 +48,17 @@
                 android:background="@drawable/moviefragment_shu" />
         </LinearLayout>
 
+
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_centerHorizontal="true"
+            android:id="@+id/detail_button2_recyclerview"
+            android:layout_width="@dimen/dp_300"
+            android:layout_height="@dimen/dp_422"
+            android:layout_alignParentBottom="true">
+
+        </android.support.v7.widget.RecyclerView>
+
         <ImageView
             android:id="@+id/detail_button2_bianji"
             android:layout_width="@dimen/dp_60"
@@ -59,17 +70,6 @@
             android:layout_marginRight="@dimen/dp_53"
             android:layout_marginBottom="@dimen/dp_20"
             android:src="@mipmap/com_icon_publish_default" />
-
-        <android.support.v7.widget.RecyclerView
-            android:layout_centerHorizontal="true"
-            android:id="@+id/detail_button2_recyclerview"
-            android:layout_width="@dimen/dp_300"
-            android:layout_height="@dimen/dp_422"
-            android:layout_alignParentBottom="true">
-
-        </android.support.v7.widget.RecyclerView>
-
-
     </RelativeLayout>
 
 

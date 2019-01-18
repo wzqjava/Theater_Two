@@ -14,6 +14,8 @@ import com.bw.movie.bean.NearbyBean;
 import com.bw.movie.bean.PayResponseBean;
 import com.bw.movie.bean.DetailPingLunBean;
 import com.bw.movie.bean.Detail_Detail_Bean;
+import com.bw.movie.bean.PingLunPingLunBean;
+import com.bw.movie.bean.PingLunZanBean;
 import com.bw.movie.bean.PlayDetailPaiQiRecyclerViewBean;
 import com.bw.movie.bean.QuXiaoGuanZhuBean;
 import com.bw.movie.bean.RecommendBean;
@@ -27,6 +29,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import freemarker.template.utility.Constants;
+import io.reactivex.Completable;
 import io.reactivex.Observable;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
@@ -95,7 +98,6 @@ public interface APIServer {
     @GET(Constom.CINEMA_DETAIL)
     Observable<CinemaDetailCinemaBean> getCinemaMessage(@HeaderMap Map<String, String> headerParams,
                                                         @QueryMap Map<String, String> queryParams);
-
     /**
      * 影院详情
      * @param headerParams
@@ -199,6 +201,23 @@ public interface APIServer {
     //我的页面的通知
     @GET(Constom.REMINDRECYCLERVIEW)
     Observable<MyFragmentReMindRecyclerViewBean> getReMindRecyclerView(@Header("userId") String userId, @Header("sessionId") String sessionId, @QueryMap HashMap<String, String> map);
+
+    //给评论点赞
+    @FormUrlEncoded
+    @POST(Constom.DETAIL_PINGLUN_ZAN)
+    Observable<PingLunZanBean> getdianzan(@Header("userId") String userId, @Header("sessionId") String sessionId, @FieldMap HashMap<String,String> map);
+
+
+    //给回复评论
+     @FormUrlEncoded
+    @POST(Constom.DETAIL_PINGLUN_PINGLUN)
+    Observable<PingLunPingLunBean> getPingLunPingLun(@Header("userId") String userId, @Header("sessionId") String sessionId, @FieldMap HashMap<String,String> map);
+
+
+    //评论影片
+    @FormUrlEncoded
+    @POST(Constom.DETAIL_PINGLUN_YINGPIAN)
+    Observable<PingLunPingLunBean> getPingLunYingPian(@Header("userId") String userId, @Header("sessionId") String sessionId, @FieldMap HashMap<String,String> map);
 
 
     /**

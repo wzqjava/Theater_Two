@@ -128,9 +128,7 @@ public class MyFragment extends BaseMVPFragment<MyFragmentView, MyFragmentPresen
 
         MyFragmentListViewAdapter myFragmentListViewAdapter = new MyFragmentListViewAdapter(getActivity(), strings);
         parallaxlistview.setAdapter(myFragmentListViewAdapter);
-
     }
-
     /**
      * 设置监听
      *

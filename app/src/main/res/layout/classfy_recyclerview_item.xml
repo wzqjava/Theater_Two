@@ -29,7 +29,6 @@
           android:layout_marginLeft="@dimen/dp_38"
           app:layout_constraintLeft_toLeftOf="parent"
           />
-
             <TextView
                 android:id="@+id/classfy_recyclerview_item_name"
                 android:layout_width="wrap_content"
@@ -49,6 +48,7 @@
                 android:layout_marginLeft="@dimen/dp_8"
                 android:layout_marginTop="@dimen/dp_12"
                 android:maxLines="5"
+                android:maxEms="15"
                 android:text="简介"
                 android:textColor="#ffffff"
                 app:layout_constraintLeft_toRightOf="@id/classfy_recyclerview_item_img"

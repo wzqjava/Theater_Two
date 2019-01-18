@@ -19,4 +19,24 @@ public interface DetailView {
     void suucessPingLun(List<DetailPingLunBean.ResultBean> result);
 
     void errorPingLun(String msg);
+
+    void suucessQuXiao(String msg);
+
+    void suucessGuanZhu(String msg);
+
+    void errorQuXiao(String msg);
+
+    void errorGuanZhu(String msg);
+
+    void successdianzan(String message);
+
+    void errordianzan(String s);
+
+    void successpinglunpinglun(String message);
+
+    void errorpinglunpinglun(String message);
+
+    void successpinglunyingpian(String message);
+
+    void errorpinglunyingpian(String message);
 }

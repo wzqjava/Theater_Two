@@ -106,7 +106,7 @@ public class ClassfyPresenter extends BaseMVPPresenter<ClassfyView> {
             @Override
             public void onNext(QuXiaoGuanZhuBean bean) {
 
-                if (bean != null){
+                if (bean != null){http://111.203.59.51:8082/cp/643436
                     if (bean.getStatus().equals("0000")){
                         view.successquxiao(bean.getMessage());
                     }else{
