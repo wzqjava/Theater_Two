@@ -2,7 +2,6 @@ package com.bw.movie.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -18,6 +17,7 @@ import com.bw.movie.bean.Detail_Detail_Bean;
 import com.bw.movie.bean.PlayDetailPaiQiRecyclerViewBean;
 import com.bw.movie.bean.SelectThrastersRecyclerViewBean;
 import com.bw.movie.presenter.PlayDetailPresenter;
+import com.bw.movie.view.PlayDetailIdView;
 import com.bw.movie.view.PlayDetailView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -41,6 +41,9 @@ public class PlayDetailActivity extends BaseMVPActivity<PlayDetailView, PlayDeta
     private ImageView play_detail_fanhui;
     private int mYingYuanId;
     private int mYingPianId;
+    private String mAddress;
+    private String mName;
+    private String mYingPianName;
 
     /**
      * 初始化presenter
@@ -93,6 +96,7 @@ public class PlayDetailActivity extends BaseMVPActivity<PlayDetailView, PlayDeta
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void even(Detail_Detail_Bean.ResultBean resultBean) {
         Log.e("zhx"+"播放详情", resultBean.getName()+ "");
+        mYingPianName = resultBean.getName();
         play_detail_yingpian_name.setText(resultBean.getName()+"");
         play_detail_yingpian_leixing.setText("类型："+resultBean.getMovieTypes()+"");
         play_detail_yingpian_chandi.setText("产地："+resultBean.getPlaceOrigin()+"");
@@ -104,6 +108,8 @@ public class PlayDetailActivity extends BaseMVPActivity<PlayDetailView, PlayDeta
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void even(SelectThrastersRecyclerViewBean.ResultBean resultBean) {
         mYingYuanId = resultBean.getId();
+        mAddress = resultBean.getAddress();
+        mName = resultBean.getName();
         Log.e("zhx"+"播放详情", resultBean.getAddress() + "");
         play_detail_yingyuan_name.setText(resultBean.getName()+"");
         play_detail_yingyuan_address.setText(resultBean.getAddress()+"");
@@ -117,6 +123,8 @@ public class PlayDetailActivity extends BaseMVPActivity<PlayDetailView, PlayDeta
             map.put("movieId",mYingPianId+"");
             presenter.getPaiQiData(map);
         }
+
+
     }
     /**
      * 设置监听
@@ -144,6 +152,23 @@ public class PlayDetailActivity extends BaseMVPActivity<PlayDetailView, PlayDeta
         play_detail_recyclerview.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false));
         play_detail_recyclerview.setAdapter(playDetailRecyclerviewPaiQi);
 
+        playDetailRecyclerviewPaiQi.setPlayDetailIdView(new PlayDetailIdView() {
+            @Override
+            public void success(String id, PlayDetailPaiQiRecyclerViewBean.ResultBean resultBean) {
+                    Intent intent = new Intent(PlayDetailActivity.this,ChooseActivity.class);
+
+                    intent.putExtra("scheduleId",id);
+                    intent.putExtra("cinemaName",mName);
+                    intent.putExtra("cinemaAddress",mAddress);
+                    intent.putExtra("movieName",mYingPianName);
+                    intent.putExtra("movieHall",resultBean.getScreeningHall());
+                    intent.putExtra("movieBegin",resultBean.getBeginTime());
+                    intent.putExtra("movieEnd",resultBean.getEndTime());
+                    intent.putExtra("price",resultBean.getPrice()+"");
+                    startActivity(intent);
+
+            }
+        });
     }
 
     @Override

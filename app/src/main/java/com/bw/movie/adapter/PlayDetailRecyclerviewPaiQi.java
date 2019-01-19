@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.bw.movie.R;
 import com.bw.movie.activity.DeatilActivity;
 import com.bw.movie.bean.PlayDetailPaiQiRecyclerViewBean;
+import com.bw.movie.view.PlayDetailIdView;
 
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class PlayDetailRecyclerviewPaiQi extends RecyclerView.Adapter<PlayDetail
         return myViewHolder;
     }
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(@NonNull final MyViewHolder myViewHolder, final int i) {
         myViewHolder.playdetail_recyclerview_item_ting.setText(list.get(i).getScreeningHall()+"");
         TextPaint paint =
                 myViewHolder.playdetail_recyclerview_item_begin.getPaint();
@@ -49,8 +50,19 @@ public class PlayDetailRecyclerviewPaiQi extends RecyclerView.Adapter<PlayDetail
         myViewHolder.playdetail_recyclerview_item_over.setText(list.get(i).getEndTime()+" end");
         myViewHolder.playdetail_recyclerview_item_price.setText("￥:"+list.get(i).getPrice()+"");
 
+        myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mPlayDetailIdView != null){
+                    mPlayDetailIdView.success(""+list.get(i).getId(),list.get(i));
+                }
+            }
+        });
     }
-    @Override
+    PlayDetailIdView mPlayDetailIdView;
+    public void setPlayDetailIdView(PlayDetailIdView playDetailIdView) {
+        mPlayDetailIdView = playDetailIdView;
+    }    @Override
     public int getItemCount() {
         return list.size();
     }

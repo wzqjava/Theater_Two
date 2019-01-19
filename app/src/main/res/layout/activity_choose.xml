@@ -72,8 +72,9 @@
         android:layout_width="@dimen/dp_24"
         android:layout_height="@dimen/dp_24"
         android:src="@mipmap/choose01"
-        app:layout_constraintLeft_toRightOf="@id/choose_tv"
-        app:layout_constraintTop_toBottomOf="@id/choose_cinema_marquee"/>
+        android:layout_marginLeft="@dimen/dp_24"
+        app:layout_constraintTop_toTopOf="@id/choose_tv"
+        app:layout_constraintLeft_toRightOf="@id/choose_tv"/>
     <TextView
         android:layout_marginTop="@dimen/dp_5"
         android:id="@+id/choose_tv01"

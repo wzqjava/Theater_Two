@@ -188,7 +188,7 @@ public class PersonalDetailsActivity extends BaseMVPActivity<PersonalDetailsView
                                     pwds.put("oldPwd",encryptionOld);
                                     pwds.put("newPwd",encryptionNew);
                                     pwds.put("newPwd2",encryptionNew2);
-                                 //   presenter.ChangePwd(pwds);
+                                    //   presenter.ChangePwd(pwds);
                                 }else{
                                     showToast(getReturn);
                                 }
@@ -303,7 +303,7 @@ public class PersonalDetailsActivity extends BaseMVPActivity<PersonalDetailsView
         Log.e("zhx","文件"+file.getName());
         HashMap<String, RequestBody> params = new HashMap<>(4);
 
-       // File file = new File(param.filePaths.get(current));
+        // File file = new File(param.filePaths.get(current));
 
 //image//filename
         //有时候需要指定文件的类型   String.format("imgfile\"; filename=\"%s",file.getName()
