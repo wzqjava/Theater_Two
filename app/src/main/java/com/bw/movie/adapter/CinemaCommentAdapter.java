@@ -60,7 +60,6 @@ public class CinemaCommentAdapter extends RecyclerView.Adapter<CinemaCommentAdap
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.cinema_comment_view, viewGroup,false);
-       // View view = View.inflate(mContext, R.layout.cinema_comment_view,null);
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }

@@ -69,7 +69,15 @@ public class CinemaDetailPresenter extends BaseMVPPresenter<CinemaDetailView> {
             mCinemaDetailIconModel.getDetailIcon(queryParams, new DisposableObserver<CinemaDetailIconBean>() {
                 @Override
                 public void onNext(CinemaDetailIconBean cinemaDetailIconBean) {
-                    view.successIcon(cinemaDetailIconBean.getResult());
+                    if(view == null) {
+                        return;
+                    }
+
+                    if(cinemaDetailIconBean.isSuccess()) {
+                        view.successIcon(cinemaDetailIconBean.getResult());
+                    } else {
+                        view.error(cinemaDetailIconBean.getMessage());
+                    }
                 }
 
                 @Override

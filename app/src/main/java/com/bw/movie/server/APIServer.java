@@ -18,6 +18,7 @@ import com.bw.movie.bean.PingLunPingLunBean;
 import com.bw.movie.bean.PingLunZanBean;
 import com.bw.movie.bean.PlayDetailPaiQiRecyclerViewBean;
 import com.bw.movie.bean.QuXiaoGuanZhuBean;
+import com.bw.movie.bean.QueryTicketBean;
 import com.bw.movie.bean.RecommendBean;
 import com.bw.movie.bean.RegisterBean;
 import com.bw.movie.bean.SearchBean;
@@ -137,7 +138,8 @@ public interface APIServer {
      */
     @FormUrlEncoded
     @POST(Constom.MOVIE_BUY_TICKET_PAY )
-    Observable<PayResponseBean> getPay(@HeaderMap Map<String,String> headerParams, @FieldMap Map<String,String> queryParams);
+    Observable<PayResponseBean> getPay(@HeaderMap Map<String,String> headerParams,
+                                       @FieldMap Map<String,String> queryParams);
 
 
     /**
@@ -161,23 +163,33 @@ public interface APIServer {
 
     //影片的热门电影
     @GET(Constom.MOVIEFRAGMENT_REMEN)
-    Observable<MovieFragmentBean> getMovieFragmentReMen(@Header("userId") String userId, @Header("sessionId") String sessionId, @QueryMap HashMap<String, String> map);
+    Observable<MovieFragmentBean> getMovieFragmentReMen(@Header("userId") String userId,
+                                                        @Header("sessionId") String sessionId,
+                                                        @QueryMap HashMap<String, String> map);
 
     //影片的热门电影
     @GET(Constom.MOVIEFRAGMENT_ZHENGZAI)
-    Observable<MovieFragmentBean> getMovieFragmentZhengZai(@Header("userId") String userId, @Header("sessionId") String sessionId, @QueryMap HashMap<String, String> map);
+    Observable<MovieFragmentBean> getMovieFragmentZhengZai(@Header("userId") String userId,
+                                                           @Header("sessionId") String sessionId,
+                                                           @QueryMap HashMap<String, String> map);
 
     //影片的热门电影
     @GET(Constom.MOVIEFRAGMENT_JIJIANG)
-    Observable<MovieFragmentBean> getMovieFragmentJiJiang(@Header("userId") String userId, @Header("sessionId") String sessionId, @QueryMap HashMap<String, String> map);
+    Observable<MovieFragmentBean> getMovieFragmentJiJiang(@Header("userId") String userId,
+                                                          @Header("sessionId") String sessionId,
+                                                          @QueryMap HashMap<String, String> map);
 
     //影片的详情的查询
     @GET(Constom.DETAIL_DETAIL)
-    Observable<Detail_Detail_Bean> getDetail_Detail(@Header("userId") String userId, @Header("sessionId") String sessionId, @QueryMap HashMap<String, String> map);
+    Observable<Detail_Detail_Bean> getDetail_Detail(@Header("userId") String userId,
+                                                    @Header("sessionId") String sessionId,
+                                                    @QueryMap HashMap<String, String> map);
 
     //影片的评论的查询
     @GET(Constom.DETAIL_PINGLUN)
-    Observable<DetailPingLunBean> getDetail_PingLun(@Header("userId") String userId, @Header("sessionId") String sessionId, @QueryMap HashMap<String, String> map);
+    Observable<DetailPingLunBean> getDetail_PingLun(@Header("userId") String userId,
+                                                    @Header("sessionId") String sessionId,
+                                                    @QueryMap HashMap<String, String> map);
 
     //根据影片查询影院
     @GET(Constom.SELECTTHRATERS_RECYCLERVIEW)
@@ -189,35 +201,47 @@ public interface APIServer {
 
     //取消关注
     @GET(Constom.QUXIAOGUANZHU)
-    Observable<QuXiaoGuanZhuBean> getQuXiao(@Header("userId") String userId, @Header("sessionId") String sessionId, @QueryMap HashMap<String, String> map);
+    Observable<QuXiaoGuanZhuBean> getQuXiao(@Header("userId") String userId,
+                                            @Header("sessionId") String sessionId,
+                                            @QueryMap HashMap<String, String> map);
 
     //关注
     @GET(Constom.GUANZHU)
-    Observable<QuXiaoGuanZhuBean> getGuanZhu(@Header("userId") String userId, @Header("sessionId") String sessionId, @QueryMap HashMap<String, String> map);
+    Observable<QuXiaoGuanZhuBean> getGuanZhu(@Header("userId") String userId,
+                                             @Header("sessionId") String sessionId,
+                                             @QueryMap HashMap<String, String> map);
 
     @GET(Constom.SERARCH_URL)
     Observable<SearchBean> getSearch(@QueryMap Map<String,String> queryParams);
 
     //我的页面的通知
     @GET(Constom.REMINDRECYCLERVIEW)
-    Observable<MyFragmentReMindRecyclerViewBean> getReMindRecyclerView(@Header("userId") String userId, @Header("sessionId") String sessionId, @QueryMap HashMap<String, String> map);
+    Observable<MyFragmentReMindRecyclerViewBean> getReMindRecyclerView(@Header("userId") String userId,
+                                                                       @Header("sessionId") String sessionId,
+                                                                       @QueryMap HashMap<String, String> map);
 
     //给评论点赞
     @FormUrlEncoded
     @POST(Constom.DETAIL_PINGLUN_ZAN)
-    Observable<PingLunZanBean> getdianzan(@Header("userId") String userId, @Header("sessionId") String sessionId, @FieldMap HashMap<String,String> map);
+    Observable<PingLunZanBean> getdianzan(@Header("userId") String userId,
+                                          @Header("sessionId") String sessionId,
+                                          @FieldMap HashMap<String,String> map);
 
 
     //给回复评论
      @FormUrlEncoded
     @POST(Constom.DETAIL_PINGLUN_PINGLUN)
-    Observable<PingLunPingLunBean> getPingLunPingLun(@Header("userId") String userId, @Header("sessionId") String sessionId, @FieldMap HashMap<String,String> map);
+    Observable<PingLunPingLunBean> getPingLunPingLun(@Header("userId") String userId,
+                                                     @Header("sessionId") String sessionId,
+                                                     @FieldMap HashMap<String,String> map);
 
 
     //评论影片
     @FormUrlEncoded
     @POST(Constom.DETAIL_PINGLUN_YINGPIAN)
-    Observable<PingLunPingLunBean> getPingLunYingPian(@Header("userId") String userId, @Header("sessionId") String sessionId, @FieldMap HashMap<String,String> map);
+    Observable<PingLunPingLunBean> getPingLunYingPian(@Header("userId") String userId,
+                                                      @Header("sessionId") String sessionId,
+                                                      @FieldMap HashMap<String,String> map);
 
 
     /**
@@ -239,5 +263,9 @@ public interface APIServer {
     @GET(Constom.UNATTENTION_URL)
     Observable<BaseResponse> getUnAttention(@HeaderMap Map<String,String> headerParams,
                                           @QueryMap Map<String,String> queryParams);
+
+    @GET(Constom.QUERY_TICKET)
+    Observable<QueryTicketBean> getQueryTicket(@HeaderMap Map<String,String> headerParams,
+                                               @QueryMap Map<String,String> queryParams);
 
 }

@@ -212,7 +212,7 @@ public class ChooseActivity extends BaseMVPActivity<TicketView, TicketPresenter>
     private void changePriceWithSelected() {
         selectedTableCount++;
         String currentPrice = mPriceWithCalculate.multiply(new BigDecimal(String.valueOf(selectedTableCount))).toString();
-        mMovie_price.setText("￥："+currentPrice +"");
+        mMovie_price.setText(currentPrice +"");
         //计算机：处理浮点数是不精确的1.2 - 02   = 1   =》    0.9999999999
     }
 
@@ -220,7 +220,7 @@ public class ChooseActivity extends BaseMVPActivity<TicketView, TicketPresenter>
     private void changePriceWithUnSelected() {
         selectedTableCount--;
         String currentPrice = mPriceWithCalculate.multiply(new BigDecimal(String.valueOf(selectedTableCount))).toString();
-        mMovie_price.setText("￥："+currentPrice +"");
+        mMovie_price.setText(currentPrice +"");
     }
 
 

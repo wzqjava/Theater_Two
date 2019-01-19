@@ -18,7 +18,7 @@ import com.bw.movie.base.BaseActivity;
 public class CountDownActivity extends BaseActivity {
 
     private TextView mTv_Count_Down;
-    private int NUM = 3;
+    private int NUM = 2;
 
     Handler mHandler = new Handler(){
         @Override

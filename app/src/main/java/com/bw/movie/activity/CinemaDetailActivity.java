@@ -232,7 +232,7 @@ public class CinemaDetailActivity extends BaseMVPActivity<CinemaDetailView,Cinem
 
     @Override
     public void error(String msg) {
-
+        showToast(msg);
     }
 
 

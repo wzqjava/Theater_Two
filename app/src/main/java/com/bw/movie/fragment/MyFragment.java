@@ -36,7 +36,7 @@ import java.util.List;
 /**
  * date:2019/1/4
  * author:赵豪轩
- * function:
+ * function:我的页面
  */
 public class MyFragment extends BaseMVPFragment<MyFragmentView, MyFragmentPresenter> {
 

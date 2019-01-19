@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="@dimen/dp_10"
+    android:layout_marginLeft="@dimen/dp_24"
+    android:layout_marginRight="@dimen/dp_24"
+    android:layout_marginBottom="@dimen/dp_10"
+    android:background="@drawable/yuanjiao">
+
+
+    <TextView
+        android:id="@+id/ubpay_movie_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="影片名称"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+        android:id="@+id/unpay_movie_orderid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="订单号"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_20"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ubpay_movie_name"/>
+
+    <TextView
+        android:id="@+id/unpay_cinema_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/unpay_movie_orderid"
+        android:text="影院名称"/>
+
+    <TextView
+        android:id="@+id/unpay_hall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/unpay_cinema_name"
+        android:text="影厅"/>
+
+    <TextView
+        android:id="@+id/unpay_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/unpay_hall"
+        android:text="时间"/>
+
+    <TextView
+        android:id="@+id/unpay_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/unpay_time"
+        android:text="数量"/>
+
+    <TextView
+        android:id="@+id/unpay_sum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/unpay_count"
+        android:text="金额"/>
+
+    <Button
+        android:id="@+id/unpay_btn_go_pay"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_40"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@drawable/shape"
+        android:layout_marginRight="@dimen/dp_10"
+        app:layout_constraintTop_toTopOf="@id/ubpay_movie_name"
+        android:textSize="@dimen/sp_12"
+        android:textColor="@color/white"
+        android:text="去付款"/>
+
+</android.support.constraint.ConstraintLayout>

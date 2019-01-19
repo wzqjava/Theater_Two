@@ -7,7 +7,7 @@ package com.bw.movie.net;
  */
 public class Constom {
 
-    private final static  boolean flag=false;
+    private final static  boolean flag=true;
     /**
      * 通过flag返回内网/外网测试环境
      */
@@ -79,4 +79,7 @@ public class Constom {
     public final static String DETAIL_PINGLUN_PINGLUN ="movieApi/movie/v1/verify/commentReply";
     //评论影片
     public final static String DETAIL_PINGLUN_YINGPIAN ="movieApi/movie/v1/verify/movieComment";
+
+    //查询购票记录
+    public final static String QUERY_TICKET="movieApi/user/v1/verify/findUserBuyTicketRecordList";
 }
