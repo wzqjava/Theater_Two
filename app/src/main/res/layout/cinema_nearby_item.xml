@@ -44,16 +44,16 @@
             android:layout_alignBottom="@id/cinema_nearby_icon"
             android:layout_toRightOf="@id/cinema_nearby_icon"
             android:text="影院距离" />
+    </RelativeLayout>
         <ImageView
             android:id="@+id/cinema_nearby_attention"
             android:layout_width="@dimen/dp_16"
             android:layout_height="@dimen/dp_16"
             android:layout_marginRight="@dimen/dp_20"
             android:src="@mipmap/com_icon_collection_default_a"
-            android:layout_alignParentRight="true"
-            android:layout_alignBottom="@id/cinema_nearby_distance"/>
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
-
-    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

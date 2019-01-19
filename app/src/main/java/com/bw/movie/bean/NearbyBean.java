@@ -1,6 +1,5 @@
 package com.bw.movie.bean;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -136,7 +135,7 @@ public class NearbyBean {
          * @return
          */
         public String formatDistance(){
-            return new BigDecimal(distance * 1.0f / 1000).setScale(2, BigDecimal.ROUND_HALF_UP).toString()+"km";
+            return (distance * 1.0f / 1000)+"km";
         }
     }
 

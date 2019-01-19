@@ -17,6 +17,8 @@ import com.bw.movie.activity.DeatilActivity;
 
 import java.util.List;
 
+import retrofit2.http.POST;
+
 import static com.bumptech.glide.request.target.Target.SIZE_ORIGINAL;
 
 /**
@@ -44,10 +46,16 @@ public class Detail_Recyclerview_Img extends RecyclerView.Adapter<Detail_Recycle
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int i) {
         Glide.with(myViewHolder.itemView.getContext())
                 .load(list.get(i))
                 .into(myViewHolder.detail_img_view);
+        myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mItemclick.GetImages(list.get(i));
+            }
+        });
     }
     @Override
     public int getItemCount() {
@@ -61,5 +69,14 @@ public class Detail_Recyclerview_Img extends RecyclerView.Adapter<Detail_Recycle
             super(itemView);
             this.detail_img_view = (ImageView) itemView.findViewById(R.id.detail_img_view);
         }
+    }
+    Itemclick mItemclick;
+
+    public void setItemclick(Itemclick itemclick) {
+        mItemclick = itemclick;
+    }
+
+    public interface Itemclick{
+        void GetImages(String imageUrl);
     }
 }
