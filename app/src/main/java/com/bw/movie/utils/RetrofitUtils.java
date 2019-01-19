@@ -23,7 +23,7 @@ public class RetrofitUtils {
     private RetrofitUtils(){
         mGson = new GsonBuilder()
                 .create();
-        mRetrofit = new Retrofit.Builder().baseUrl(Constom.URL)
+        mRetrofit = new Retrofit.Builder().baseUrl(Constom.GETNETWORK)
                 //RxJava
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 //gson
@@ -54,5 +54,9 @@ public class RetrofitUtils {
 
     public <T> T getService(Class<T> clzz){
         return mRetrofit.create(clzz);
+    }
+
+    public void updateUserId(String userId, String sessionId) {
+        OkHttpUtils.getInstance().updateUserId(userId, sessionId);
     }
 }

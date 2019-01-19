@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.CinemaDetailActivity">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_150"
+            android:background="@mipmap/dianyingbeijing2"/>
+
+            <ImageView
+                android:id="@+id/cinema_detail_cinema_icon"
+                android:layout_marginLeft="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_width="@dimen/dp_70"
+                android:layout_height="@dimen/dp_70"
+                android:src="@mipmap/muguang"/>
+
+               <TextView
+                   android:id="@+id/cinema_detail_cinema_name"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="影院名称"
+                   android:textSize="@dimen/sp_14"
+                   android:layout_alignTop="@id/cinema_detail_cinema_icon"
+                   android:layout_marginLeft="@dimen/dp_10"
+                   android:layout_toRightOf="@id/cinema_detail_cinema_icon"
+                   android:textColor="@color/white"/>
+               <TextView
+                   android:id="@+id/cinema_detail_cinema_address"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="影院地址"
+                   android:layout_marginLeft="@dimen/dp_10"
+                   android:layout_alignBottom="@id/cinema_detail_cinema_icon"
+                   android:layout_toRightOf="@id/cinema_detail_cinema_icon"
+                   android:textSize="@dimen/sp_12"
+                   android:textColor="@color/white"/>
+
+        <recycler.coverflow.RecyclerCoverFlow
+            android:layout_marginTop="@dimen/dp_10"
+            android:id="@+id/cinema_detail_recyclercoverflow"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_223"
+            android:layout_below="@id/cinema_detail_cinema_icon"/>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/cinema_detail_recyclerview"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/cinema_detail_recyclercoverflow"/>
+
+        <Button
+            android:id="@+id/cinema_detail_back"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="@dimen/dp_60"
+            android:layout_alignParentBottom="true"
+            android:background="@mipmap/com_icon_my_fanhui" />
+
+</RelativeLayout>

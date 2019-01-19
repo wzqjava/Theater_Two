@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <RelativeLayout
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@drawable/selectthraters_yuanjiao"
+        android:layout_width="@dimen/dp_300"
+        android:layout_height="@dimen/dp_100">
+
+        <ImageView
+            android:id="@+id/selectthraters_recyclerview_item_img"
+            android:layout_width="@dimen/dp_80"
+            android:layout_centerVertical="true"
+            android:layout_height="@dimen/dp_80"
+            android:layout_marginLeft="@dimen/dp_15"/>
+        <TextView
+            android:textColor="#000000"
+            android:id="@+id/selectthraters_recyclerview_item_name"
+            android:layout_marginTop="@dimen/dp_10"
+            android:text="name"
+            android:layout_marginLeft="@dimen/dp_105"
+            android:textSize="@dimen/sp_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textColor="#000000"
+            android:id="@+id/selectthraters_recyclerview_item_xiang"
+            android:text="xiangqing"
+            android:layout_marginLeft="@dimen/dp_105"
+            android:layout_marginTop="@dimen/dp_30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:textColor="#000000"
+            android:id="@+id/selectthraters_recyclerview_item_km"
+            android:text="qianmi"
+            android:layout_marginLeft="@dimen/dp_105"
+            android:layout_marginTop="@dimen/dp_75"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ImageView
+            android:id="@+id/selectthraters_recyclerview_item_guanzhu"
+            android:layout_marginTop="@dimen/dp_60"
+            android:layout_marginLeft="@dimen/dp_260"
+            android:src="@mipmap/com_icon_collection_selected"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30" />
+    </RelativeLayout>
+
+</RelativeLayout>

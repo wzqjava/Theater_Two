@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_500"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dp_0"
+        android:background="@drawable/detail_button_shape">
+
+        <ImageView
+            android:id="@+id/detail_button2_down"
+            android:layout_width="@dimen/dp_70"
+            android:layout_height="@dimen/dp_60"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/dp_0"
+            android:layout_marginEnd="@dimen/dp_0"
+            android:layout_marginRight="@dimen/dp_0"
+            android:background="@mipmap/com_icon_down_default" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="@dimen/dp_25"
+            android:layout_marginLeft="@dimen/dp_25"
+            android:layout_marginTop="@dimen/dp_25"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="name"
+                android:id="@+id/detail_button2_name"
+                android:textSize="@dimen/sp_15" />
+
+            <TextView
+                android:layout_width="@dimen/dp_35"
+                android:layout_height="@dimen/dp_3"
+                android:layout_marginTop="@dimen/dp_8"
+                android:background="@drawable/moviefragment_shu" />
+        </LinearLayout>
+
+
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_centerHorizontal="true"
+            android:id="@+id/detail_button2_recyclerview"
+            android:layout_width="@dimen/dp_300"
+            android:layout_height="@dimen/dp_422"
+            android:layout_alignParentBottom="true">
+
+        </android.support.v7.widget.RecyclerView>
+
+        <ImageView
+            android:id="@+id/detail_button2_bianji"
+            android:layout_width="@dimen/dp_60"
+            android:layout_height="@dimen/dp_60"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="@dimen/dp_53"
+            android:layout_marginRight="@dimen/dp_53"
+            android:layout_marginBottom="@dimen/dp_20"
+            android:src="@mipmap/com_icon_publish_default" />
+    </RelativeLayout>
+
+
+</RelativeLayout>

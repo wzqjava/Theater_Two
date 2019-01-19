@@ -1,11 +1,9 @@
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical">
+android:layout_height="match_parent">
 
-    <LinearLayout
+   <!-- <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_30"
         android:layout_marginLeft="@dimen/dp_24"
@@ -31,54 +29,70 @@ android:orientation="vertical">
             android:layout_width="@dimen/dp_100"
             android:layout_height="@dimen/dp_24"
             android:background="@drawable/cinema_search"></SearchView>
-    </LinearLayout>
-<RadioGroup
-    android:layout_marginTop="@dimen/dp_10"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/dp_25"
-    android:orientation="horizontal"
-    android:gravity="center">
+    </LinearLayout>-->
 
-    <RadioButton
-        android:id="@+id/classfy_remen"
-        android:layout_width="@dimen/dp_83"
+    <RadioGroup
+        android:id="@+id/radiogroup"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/dp_25"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/dp_10"
         android:gravity="center"
-        android:checked="true"
-        android:text="热门电影"
-        android:textSize="@dimen/sp_14"
-        android:textColor="@drawable/cinema_title_text"
-        android:background="@drawable/cinema_title"
-        android:button="@null"
-        />
-    <RadioButton
-        android:id="@+id/classfy_zhengzai"
-        android:layout_width="@dimen/dp_83"
-        android:layout_height="@dimen/dp_25"
-        android:gravity="center"
-        android:text="正在上映"
-        android:button="@null"
-        android:layout_marginLeft="@dimen/dp_32"
-        android:textSize="@dimen/sp_14"
-        android:textColor="@drawable/cinema_title_text"
-        android:background="@drawable/cinema_title"/>
-    <RadioButton
-        android:id="@+id/classfy_jijiang"
-        android:layout_width="@dimen/dp_83"
-        android:layout_height="@dimen/dp_25"
-        android:gravity="center"
-        android:text="即将上映"
-        android:button="@null"
-        android:layout_marginLeft="@dimen/dp_32"
-        android:textSize="@dimen/sp_14"
-        android:textColor="@drawable/cinema_title_text"
-        android:background="@drawable/cinema_title"/>
-</RadioGroup>
-    
-    
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/classfy_remen"
+            android:layout_width="@dimen/dp_83"
+            android:layout_height="@dimen/dp_25"
+            android:background="@drawable/cinema_title"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="热门电影"
+            android:textColor="@drawable/cinema_title_text"
+            android:textSize="@dimen/sp_14" />
+
+        <RadioButton
+            android:id="@+id/classfy_zhengzai"
+            android:layout_width="@dimen/dp_83"
+            android:layout_height="@dimen/dp_25"
+            android:layout_marginLeft="@dimen/dp_32"
+            android:background="@drawable/cinema_title"
+            android:button="@null"
+            android:gravity="center"
+            android:text="正在上映"
+            android:textColor="@drawable/cinema_title_text"
+            android:textSize="@dimen/sp_14" />
+
+        <RadioButton
+            android:id="@+id/classfy_jijiang"
+            android:layout_width="@dimen/dp_83"
+            android:layout_height="@dimen/dp_25"
+            android:layout_marginLeft="@dimen/dp_32"
+            android:background="@drawable/cinema_title"
+            android:button="@null"
+            android:gravity="center"
+            android:text="即将上映"
+            android:textColor="@drawable/cinema_title_text"
+            android:textSize="@dimen/sp_14" />
+    </RadioGroup>
+
     <android.support.v7.widget.RecyclerView
-        android:layout_marginTop="@dimen/dp_32"
         android:id="@+id/classfy_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_422"/>
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_40" />
+
+    <ImageView
+        android:id="@+id/classfy_fanhui"
+        android:layout_width="@dimen/dp_50"
+        android:layout_height="@dimen/dp_50"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/dp_36"
+        android:layout_marginLeft="@dimen/dp_36"
+        android:layout_marginBottom="@dimen/dp_36"
+        android:src="@mipmap/com_icon_my_fanhui" />
+
+</RelativeLayout>

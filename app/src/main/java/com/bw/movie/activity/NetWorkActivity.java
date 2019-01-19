@@ -1,13 +1,10 @@
 package com.bw.movie.activity;
 
 import android.app.Activity;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.bw.movie.R;
-import com.bw.movie.base.BaseActivity;
 
 //降级处理
 
@@ -19,11 +16,9 @@ import com.bw.movie.base.BaseActivity;
 public class NetWorkActivity extends Activity {
 
     @Override
-    protected void onCreate( @Nullable Bundle savedInstanceState) {
+
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_net_work);
-
-
     }
-
 }

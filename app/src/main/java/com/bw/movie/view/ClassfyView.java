@@ -1,6 +1,9 @@
 package com.bw.movie.view;
 
+import com.bw.movie.bean.MovieFragmentBean;
 import com.bw.movie.bean.RegisterBean;
+
+import java.util.List;
 
 /**
  * date:2019/1/4
@@ -8,8 +11,23 @@ import com.bw.movie.bean.RegisterBean;
  * function:
  */
 public interface ClassfyView {
-    //成功的方法
-    void success(RegisterBean registerBean);
-    //失败的方法
-    void failure(String msg);
+    void successsReMen(List<MovieFragmentBean.ResultBean> result);
+
+    void errorReMen(String msg);
+
+    void successsZhengZai(List<MovieFragmentBean.ResultBean> result);
+
+    void successsJiJiang(List<MovieFragmentBean.ResultBean> result);
+
+    void errorZhengZai(String msg);
+
+    void errorJiJiang(String msg);
+
+    void successquxiao(String message);
+
+    void errorquxiao(String message);
+
+    void successguanzhu(String message);
+
+    void errorguanzhu(String message);
 }

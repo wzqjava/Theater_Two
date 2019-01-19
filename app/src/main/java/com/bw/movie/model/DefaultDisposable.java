@@ -1,4 +1,4 @@
-package com.bw.movie.server;
+package com.bw.movie.model;
 
 import io.reactivex.disposables.Disposable;
 

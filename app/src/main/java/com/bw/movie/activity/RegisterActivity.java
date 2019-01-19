@@ -149,9 +149,9 @@ public class RegisterActivity extends BaseMVPActivity<RegisterView, RegisterPres
 
 
         showToast(registerBean.getMessage()+"");
-       /* Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
-        finish();*/
+        finish();
     }
     @Override
     public void failure(String msg) {

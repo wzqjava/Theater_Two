@@ -7,6 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.widget.Toast;
 
@@ -17,10 +18,8 @@ import com.bw.movie.activity.NetWorkActivity;
  * author:赵豪轩(xuan)
  * function:
  */
-public abstract class BaseMVPActivity<V,P extends BaseMVPPresenter> extends Activity {
-
-   public P presenter;
-
+public abstract class BaseMVPActivity<V,P extends BaseMVPPresenter> extends AppCompatActivity {
+    public P presenter;
     /**
      * 初始化presenter
      * @return
@@ -68,12 +67,10 @@ public abstract class BaseMVPActivity<V,P extends BaseMVPPresenter> extends Acti
      * 初始化View
      */
     protected abstract void initView();
-
     /**
      * 初始化数据
      */
     protected abstract void initData();
-
     /**
      * 设置监听
      */

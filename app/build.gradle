@@ -1,20 +1,46 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao' // apply plugin
 
 android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.bw.movie"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    /* MD5: 4F:EC:0B:2C:33:09:D4:3A:13:41:3C:A0:5D:0E:4A:07
+    SHA1: AB:17:B9:4C:E8:F9:4F:9B:65:50:87:E3:A0:E6:B2:C1:83:81:6C:B0
+    SHA256: 35:6D:38:E8:7B:BD:5D:03:00:B3:1F:AA:E4:3A:C3:95:90:01:30:65:8B:7F:BB:01:EF:99:29:76:18:42:81:EE*/
+
+    //签名key的配置
+    signingConfigs {
+        simple {
+            storeFile file("../movie.keystore")//签名文件名称
+            storePassword "123456"
+            keyAlias "bw_movie"//别名
+            keyPassword "123456"
+        }
+    }
+
     buildTypes {
+        debug {
+            signingConfig signingConfigs.simple
+            minifyEnabled false
+        }
         release {
+            signingConfig signingConfigs.simple
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    greendao {
+        schemaVersion 1
+        daoPackage 'com.greendao.gen'
+        targetGenDir 'src/main/java'
     }
 }
 
@@ -36,19 +62,42 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
     implementation 'org.greenrobot:greendao:3.2.2'
     implementation 'org.greenrobot:greendao-generator:3.2.2'
+    //RecycleView:
+    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    //XRecyclerView
+    implementation 'com.jcodecraeer:xrecyclerview:1.2.0'
+    implementation 'com.android.support:design:28.0.0'
     //gson解析
     implementation 'com.google.code.gson:gson:2.8.5'
-    //recyclerview
-    implementation 'com.android.support:recyclerview-v7:28.0.0'
     //tablayout
     implementation 'com.android.support:design:28.0.0'
     implementation 'com.android.support:cardview-v7:28.0.0'
     implementation 'com.android.support:support-v13:28.0.0'
     //eventbus
     implementation 'org.greenrobot:eventbus:3.1.1'
-    //图片加载Fresco
-    implementation 'com.facebook.fresco:fresco:1.11.0'
-    //xrecyclerview
-    implementation 'com.jcodecraeer:xrecyclerview:1.2.0'
-    implementation 'com.android.support:recyclerview-v7:28.0.0'
+    implementation 'com.github.bumptech.glide:glide:4.5.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
+    implementation 'org.greenrobot:greendao:3.2.2'
+    // add library
+
+    // implementation 'com.github.bumptech.glide:glide:4.5.0'
+    // annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
+
+    implementation 'org.greenrobot:greendao:3.2.2' // add library
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.1'
+    //旋转木马的效果
+    implementation 'com.chenlittleping:recyclercoverflow:1.0.6'
+    implementation files('libs/pinyin4j-2.5.0.jar')
+    //微信sdk依赖
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+
+    // 添加下面的内容 支付宝
+    implementation(name: 'alipaySdk-15.5.9-20181123210601', ext: 'aar')
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.dalong:carrousellayout:1.0.0'
+
+
+    implementation 'com.github.axlecho:SakuraPlayer:0.4'
+    implementation 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.4'
 }

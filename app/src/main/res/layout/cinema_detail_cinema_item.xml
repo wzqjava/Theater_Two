@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingTop="@dimen/dp_10"
+    android:paddingLeft="@dimen/dp_24"
+    android:paddingRight="@dimen/dp_24"
+    android:layout_height="match_parent">
+
+    <ImageView
+    android:id="@+id/cinema_address_icon"
+    android:layout_width="@dimen/dp_24"
+    android:layout_height="@dimen/dp_24"
+    android:src="@mipmap/cinema_detail_icon_location_default"
+    />
+    <TextView
+        android:id="@+id/cinema_detail_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_12"
+        android:layout_marginLeft="@dimen/dp_10"
+        app:layout_constraintLeft_toRightOf="@+id/cinema_address_icon"
+        android:text="影院地址"/>
+
+    <ImageView
+        android:id="@+id/cinema_phone_icon"
+        android:layout_width="@dimen/dp_24"
+        android:layout_height="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_20"
+        app:layout_constraintTop_toBottomOf="@id/cinema_address_icon"
+        android:src="@mipmap/cinema_detail_icon_phone_default"
+        />
+    <TextView
+        android:id="@+id/cinema_detail_cinema_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_12"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_20"
+        app:layout_constraintTop_toBottomOf="@id/cinema_address_icon"
+        app:layout_constraintLeft_toRightOf="@+id/cinema_phone_icon"
+        android:text="影院电话"/>
+
+    <ImageView
+        android:id="@+id/cinema_riding_icon"
+        android:layout_width="@dimen/dp_24"
+        android:layout_height="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_20"
+        app:layout_constraintTop_toBottomOf="@id/cinema_phone_icon"
+        android:src="@mipmap/cinema_detail_icon_route_default"
+        />
+    <TextView
+        android:id="@+id/cinema_detail_cinema_riding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_12"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_20"
+        app:layout_constraintTop_toBottomOf="@id/cinema_phone_icon"
+        app:layout_constraintLeft_toRightOf="@+id/cinema_riding_icon"
+        android:text="乘车路线:"/>
+
+    <TextView
+        android:id="@+id/cinema_detail_cinema_line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_20"
+        app:layout_constraintTop_toBottomOf="@id/cinema_riding_icon"
+        android:text="具体路线"/>
+
+</android.support.constraint.ConstraintLayout>

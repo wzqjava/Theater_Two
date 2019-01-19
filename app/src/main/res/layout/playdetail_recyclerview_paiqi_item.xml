@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dp_330"
+    android:layout_height="match_parent"
+    >
+    <RelativeLayout
+        android:background="@drawable/selectthraters_yuanjiao"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_width="@dimen/dp_330"
+        android:layout_height="@dimen/dp_80">
+
+        <TextView
+            android:text="ting"
+            android:id="@+id/playdetail_recyclerview_item_ting"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:textSize="@dimen/sp_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/playdetail_recyclerview_item_begin"
+            android:text="begin"
+            android:textColor="#000000"
+            android:textSize="@dimen/sp_14"
+            android:layout_marginTop="@dimen/dp_40"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/playdetail_recyclerview_item_over"
+            android:text="over"
+            android:textColor="#000000"
+            android:textSize="@dimen/sp_14"
+            android:layout_marginTop="@dimen/dp_40"
+            android:layout_marginLeft="@dimen/dp_90"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/playdetail_recyclerview_item_price"
+            android:text="price"
+            android:textColor="#000000"
+            android:textSize="@dimen/sp_18"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_190"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:id="@+id/playdetail_recyclerview_item_img"
+            android:layout_marginLeft="@dimen/dp_310"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/com_icon_next_default"
+            android:layout_width="@dimen/dp_10"
+            android:layout_height="@dimen/dp_50" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

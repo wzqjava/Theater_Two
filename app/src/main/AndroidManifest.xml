@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.bw.movie">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:name=".app.MyApplication"
@@ -20,9 +27,42 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.NetWorkActivity" />
         <activity android:name=".activity.RegisterActivity" />
+        <activity android:name=".activity.NetWorkActivity" />
+        <activity android:name=".activity.LoginActivity" />
+        <activity android:name=".activity.CountDownActivity" />
+        <activity android:name=".activity.ShelfActivity" />
+        <activity android:name=".activity.ChooseActivity" />
+
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value=" 3f7588f34241e70f653d29783e31074c" />
+
         <activity android:name=".activity.ClassifyActivity" />
+
+        <!-- 定位需要的服务 -->
+        <service android:name="com.amap.api.location.APSService" />
+
+        <activity android:name=".activity.CinemaDetailActivity" />
+        <activity android:name=".activity.DeatilActivity" />
+        <activity android:name=".activity.SelectTheatersActivity" />
+        <activity android:name=".activity.PlayDetailActivity" />
+        <activity android:name=".activity.MyFragmentReMindActivity" />
+        <activity android:name=".activity.PersonalDetailsActivity" />
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop" />
+        <activity
+            android:name=".activity.H5PayDemoActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"></activity>
+        <activity android:name=".activity.CityActivity" />
+        <activity android:name=".activity.SearchActivity"
+            android:windowSoftInputMode="adjustNothing|stateHidden"
+            />
+        <activity android:name=".activity.TicketActivity"></activity>
     </application>
 
 </manifest>

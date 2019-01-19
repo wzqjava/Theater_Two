@@ -1,11 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+   <android.support.v4.view.ViewPager
+       android:id="@+id/welcome_viewpager"
+       android:layout_marginTop="@dimen/dp_30"
+       android:layout_marginLeft="@dimen/dp_30"
+       android:layout_width="@dimen/dp_300"
+       android:layout_height="@dimen/dp_300">
 
+   </android.support.v4.view.ViewPager>
 
-</LinearLayout>
+   <RadioGroup
+       android:id="@+id/main_group"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_alignParentStart="true"
+       android:layout_alignParentLeft="true"
+       android:layout_alignParentBottom="true"
+       android:layout_marginStart="93dp"
+       android:layout_marginLeft="93dp"
+       android:layout_marginBottom="26dp"
+       android:orientation="horizontal">
+
+      <RadioButton
+          android:id="@+id/main_rb01"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:padding="@dimen/dp_8" />
+
+      <RadioButton
+          android:id="@+id/main_rb02"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:padding="@dimen/dp_8" />
+
+      <RadioButton
+          android:id="@+id/main_rb03"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:padding="@dimen/dp_8" />
+
+      <RadioButton
+          android:id="@+id/main_rb04"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:padding="@dimen/dp_8" />
+   </RadioGroup>
+   <Button
+       android:id="@+id/welcome_start"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_centerInParent="true"
+       android:background="@drawable/welcome_shape"
+       android:visibility="gone"
+       android:text="开始使用"/>
+
+</RelativeLayout>
