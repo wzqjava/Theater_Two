@@ -74,7 +74,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch(requestCode){
             //打电话的权限
-            case Constans.CALL_PHONE:
+            case Constans.XIANG_JI:
                 //判断打电话申请权限是否成功,成功就执行打电话的逻辑
                 //注意:因为集合里只有一个权限申请,所以参数为0代表打电话权限
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED){

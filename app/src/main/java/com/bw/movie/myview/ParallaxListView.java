@@ -73,7 +73,7 @@ public class ParallaxListView extends ListView {
             int new_heigth = iv_hrader.getHeight() + Math.abs(deltaY);
 
             //2.判断当图片小于原始高度，图片不能大于原始的高度
-            if (new_heigth < yuanshi){
+            if (new_heigth < yuanshi*1.5){
                 //把新的高度值负值给控件,改变控件的高度
                 iv_hrader.getLayoutParams().height=new_heigth;
                 iv_hrader.requestLayout();

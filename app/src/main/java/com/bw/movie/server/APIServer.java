@@ -22,21 +22,28 @@ import com.bw.movie.bean.RecommendBean;
 import com.bw.movie.bean.RegisterBean;
 import com.bw.movie.bean.SearchBean;
 import com.bw.movie.bean.SelectThrastersRecyclerViewBean;
+import com.bw.movie.bean.ShangChuanHeadPicBean;
+import com.bw.movie.bean.UserIDChaXunBean;
 import com.bw.movie.model.BaseResponse;
 import com.bw.movie.net.Constom;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
 import freemarker.template.utility.Constants;
 import io.reactivex.Completable;
 import io.reactivex.Observable;
+import okhttp3.RequestBody;
+import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.HeaderMap;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.PartMap;
 import retrofit2.http.QueryMap;
 
 /**
@@ -239,5 +246,15 @@ public interface APIServer {
     @GET(Constom.UNATTENTION_URL)
     Observable<BaseResponse> getUnAttention(@HeaderMap Map<String,String> headerParams,
                                           @QueryMap Map<String,String> queryParams);
+
+
+    //根据id查询用户信息
+    @GET(Constom.USERID_USERBEAN)
+    Observable<UserIDChaXunBean> getChaXun(@Header("userId") String userId, @Header("sessionId") String sessionId);
+
+    //根据id查询用户信息
+    @Multipart
+    @POST(Constom.SHANGCHUANTOUXAING)
+    Observable<ShangChuanHeadPicBean> getShangChuanHeadPic(@Header("userId") String userId, @Header("sessionId") String sessionId, @PartMap HashMap<String, RequestBody> map);
 
 }

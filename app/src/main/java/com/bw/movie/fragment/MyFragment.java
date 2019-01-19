@@ -124,14 +124,11 @@ public class MyFragment extends BaseMVPFragment<MyFragmentView, MyFragmentPresen
         List<MyFragmentBean> strings = new ArrayList<>();
         strings.add(new MyFragmentBean("我的信息",null,R.mipmap.my_icon_messiage_default,1));
         strings.add(new MyFragmentBean("我的关注","购票记录",R.mipmap.my_icon_attention_default,R.mipmap.my_icon_rccord_default));
-        strings.add(new MyFragmentBean("意见反馈","检查更新",R.mipmap.my_icon_feedback_default,R.mipmap.my_icon_version_default));
-
         MyFragmentListViewAdapter myFragmentListViewAdapter = new MyFragmentListViewAdapter(getActivity(), strings);
         parallaxlistview.setAdapter(myFragmentListViewAdapter);
     }
     /**
      * 设置监听
-     *
      * @param view
      */
     @Override

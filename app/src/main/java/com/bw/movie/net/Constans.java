@@ -6,9 +6,9 @@ package com.bw.movie.net;
  * function:
  */
 public class Constans {
-    //6.0 打电话的 请求码
-    public final static int CALL_PHONE=0;
-
+    //6.0 获取相机的权限
+    public final static int XIANG_JI =0;
+//  获取SD卡的写权限
     public final static int WRITE_EXTERNAL_STORAGE=1;
 
 

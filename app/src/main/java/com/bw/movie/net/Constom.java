@@ -79,4 +79,9 @@ public class Constom {
     public final static String DETAIL_PINGLUN_PINGLUN ="movieApi/movie/v1/verify/commentReply";
     //评论影片
     public final static String DETAIL_PINGLUN_YINGPIAN ="movieApi/movie/v1/verify/movieComment";
+
+    //查询用户信息
+    public final static String USERID_USERBEAN ="movieApi/user/v1/verify/getUserInfoByUserId";
+    //上传头像
+    public final static String SHANGCHUANTOUXAING ="movieApi/user/v1/verify/uploadHeadPic";
 }
