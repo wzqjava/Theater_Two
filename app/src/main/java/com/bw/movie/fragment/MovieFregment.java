@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.bw.movie.R;
 import com.bw.movie.activity.ClassifyActivity;
+import com.bw.movie.adapter.MovieFragmentCoverFlowAdapter;
 import com.bw.movie.adapter.MovieFragmentReMenAdapter;
 import com.bw.movie.app.MyApplication;
 import com.bw.movie.base.BaseMVPFragment;
@@ -180,6 +181,7 @@ public class MovieFregment extends BaseMVPFragment<MovieFregmentView, MoviewFrag
     public void successsJiJiang(List<MovieFragmentBean.ResultBean> result) {
         Log.e("zhx", "jijiang+r" + result.get(0).getName());
         MovieFragmentReMenAdapter movieFragmentReMenAdapter1 = new MovieFragmentReMenAdapter(getActivity(), result);
+        MovieFragmentCoverFlowAdapter movieFragmentCoverFlowAdapter = new MovieFragmentCoverFlowAdapter(getActivity(), result);
         movie_fragment_recyclerview_jijiang.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
         movie_fragment_recyclerview_jijiang.setAdapter(movieFragmentReMenAdapter1);
         int itemCount = movieFragmentReMenAdapter1.getItemCount();
@@ -187,7 +189,7 @@ public class MovieFregment extends BaseMVPFragment<MovieFregmentView, MoviewFrag
         mCoun = width / itemCount;
         //设置的是画廊轮播图
         movie_fragment_recyclercoverflow.setFlatFlow(false);
-        movie_fragment_recyclercoverflow.setAdapter(movieFragmentReMenAdapter1);
+        movie_fragment_recyclercoverflow.setAdapter(movieFragmentCoverFlowAdapter);
         movie_fragment_recyclercoverflow.scrollToPosition(2);
 
         movie_fragment_recyclercoverflow.setOnItemSelectedListener(new CoverFlowLayoutManger.OnSelected() {

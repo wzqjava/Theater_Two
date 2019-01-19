@@ -62,9 +62,9 @@ public class DetailRecyclerviewPingLunAdapter extends RecyclerView.Adapter<Detai
         myViewHolder.detail_pinglun_xiangqing.setText(list.get(i).getCommentContent()+"");
         myViewHolder.detail_pinglun_zannum.setText(list.get(i).getGreatNum()+"");
         myViewHolder.detail_pinglun_pinglunnum.setText(list.get(i).getReplyNum()+"");
-        /*if (list.get(i).getGreatNum() >= 1 ){
+        if (list.get(i).getIsGreat() == 1 ){
             myViewHolder.detail_pinglun_zan.setImageResource(R.mipmap.com_icon_praise_selected);
-        }*/
+        }
         myViewHolder.detail_pinglun_pinglun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,12 +77,15 @@ public class DetailRecyclerviewPingLunAdapter extends RecyclerView.Adapter<Detai
             @Override
             public void onClick(View view) {
                 int zzzz = 0 ;
-                if (mDetailPingLunZan != null){
+                if (list.get(i).getIsGreat() != 1){
+                    list.get(i).setIsGreat(1);
                     myViewHolder.detail_pinglun_zan.setImageResource(R.mipmap.com_icon_praise_selected);
                     mDetailPingLunZan.zan(list.get(i).getCommentId()+"");
                     if (zzzz == 0){
                         myViewHolder.detail_pinglun_zannum.setText(list.get(i).getGreatNum()+1+"");
                         zzzz+=1;
+                        list.get(i).setGreatNum(list.get(i).getGreatNum()+1);
+                        notifyDataSetChanged();
                     }
                 }
             }

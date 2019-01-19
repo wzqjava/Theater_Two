@@ -99,5 +99,6 @@ dependencies {
 
 
     implementation 'com.github.axlecho:SakuraPlayer:0.4'
-    implementation 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.8.4'
+    implementation 'cn.jzvd:jiaozivideoplayer:6.2.12'
+
 }

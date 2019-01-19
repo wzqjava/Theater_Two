@@ -29,7 +29,9 @@
         </activity>
         <activity android:name=".activity.RegisterActivity" />
         <activity android:name=".activity.NetWorkActivity" />
-        <activity android:name=".activity.LoginActivity" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".activity.CountDownActivity" />
         <activity android:name=".activity.ShelfActivity" />
         <activity android:name=".activity.ChooseActivity" />
@@ -57,12 +59,13 @@
             android:name=".activity.H5PayDemoActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
-            android:screenOrientation="behind"></activity>
+            android:screenOrientation="behind" />
         <activity android:name=".activity.CityActivity" />
-        <activity android:name=".activity.SearchActivity"
-            android:windowSoftInputMode="adjustNothing|stateHidden"
-            />
-        <activity android:name=".activity.TicketActivity"></activity>
+        <activity
+            android:name=".activity.SearchActivity"
+            android:windowSoftInputMode="adjustNothing|stateHidden" />
+        <activity android:name=".activity.TicketActivity" />
+        <activity android:name=".adapter.ShowStillActivity"></activity>
     </application>
 
 </manifest>

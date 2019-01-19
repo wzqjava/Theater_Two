@@ -4,8 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/dianyingbeijing1"
     tools:context=".activity.DeatilActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/dianyingbeijing3" />
+
+    <ImageView
+        android:id="@+id/movieinfo_imageview_changd"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.9"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/dianyingbeijing3" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0.8"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/dianyingbeijing3" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -30,10 +50,10 @@
 
         <ImageView
             android:id="@+id/detail_guanzhu"
-            android:layout_width="@dimen/sp_30"
-            android:layout_height="@dimen/sp_30"
-            android:layout_marginLeft="@dimen/dp_310"
+            android:layout_width="@dimen/sp_20"
+            android:layout_height="@dimen/sp_20"
             android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_310"
             android:src="@mipmap/com_icon_collection_default" />
     </RelativeLayout>
 
@@ -50,65 +70,64 @@
 
     <ImageView
         android:id="@+id/detail_img"
-        android:layout_width="@dimen/dp_270"
-        android:layout_height="@dimen/dp_300"
-        android:layout_centerInParent="true"
-        android:src="@mipmap/com_icon_collection_default" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detail_name"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/dp_50"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_50"
+        android:src="@mipmap/dianyingbeijing3" />
 
-
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/dp_80">
+        android:layout_marginBottom="@dimen/dp_80"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/detail_detail"
-            android:layout_width="@dimen/dp_55"
+            android:layout_width="@dimen/dp_0"
             android:layout_height="@dimen/dp_30"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginStart="@dimen/dp_30"
-            android:layout_marginLeft="@dimen/dp_30"
-            android:layout_marginTop="@dimen/dp_0"
+            android:layout_marginLeft="@dimen/dp_24"
+            android:layout_weight="1"
             android:background="@drawable/detailbutton"
             android:text="详情"
             android:textColor="#ffffff" />
 
         <Button
             android:id="@+id/detail_yugao"
-            android:layout_width="@dimen/dp_55"
+            android:layout_width="@dimen/dp_0"
             android:layout_height="@dimen/dp_30"
-            android:layout_marginLeft="@dimen/dp_111"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_weight="1"
             android:background="@drawable/detailbutton"
             android:text="预告"
             android:textColor="#ffffff" />
 
         <Button
             android:id="@+id/detail_juzhao"
-            android:layout_width="@dimen/dp_55"
+            android:layout_width="@dimen/dp_0"
             android:layout_height="@dimen/dp_30"
-            android:layout_marginLeft="@dimen/dp_191"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_weight="1"
             android:background="@drawable/detailbutton"
             android:text="剧照"
             android:textColor="#ffffff" />
 
         <Button
             android:id="@+id/detail_yingping"
-            android:layout_width="@dimen/dp_55"
+            android:layout_width="@dimen/dp_0"
             android:layout_height="@dimen/dp_30"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="@dimen/dp_0"
-            android:layout_marginEnd="@dimen/dp_30"
-            android:layout_marginRight="@dimen/dp_30"
+            android:layout_marginRight="@dimen/dp_24"
+            android:layout_weight="1"
             android:background="@drawable/detailbutton"
             android:text="影评"
             android:textColor="#ffffff" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/detail_fanhui"
@@ -135,7 +154,19 @@
         android:background="@drawable/detailgoumai"
         android:text="购买"
         android:textColor="#ffffff" />
-    <include layout="@layout/detail_button" android:id="@+id/detail_onebutton"/>
-    <include layout="@layout/detail_button_two" android:id="@+id/detail_twobutton"/>
-    <include layout="@layout/pinglun_item" android:id="@+id/detail_three_button"></include>
+
+    <include
+        android:id="@+id/detail_onebutton"
+        layout="@layout/detail_button"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/detail_twobutton"
+        layout="@layout/detail_button_two"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/detail_three_button"
+        layout="@layout/pinglun_item"
+        android:visibility="gone"></include>
 </RelativeLayout>

@@ -6,9 +6,8 @@
 
     <RelativeLayout
         android:background="@drawable/yuanjiao"
-        android:layout_marginRight="@dimen/dp_20"
-        android:layout_width="@dimen/dp_130"
-        android:layout_height="@dimen/dp_180">
+        android:layout_width="@dimen/dp_156"
+        android:layout_height="@dimen/dp_216">
         <ImageView
             android:id="@+id/moviefragment_recyclerview_remen_item_img"
             android:src="@mipmap/ic_launcher"

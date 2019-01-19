@@ -46,6 +46,7 @@
             android:layout_marginTop="@dimen/dp_60"
             android:layout_marginLeft="@dimen/dp_260"
             android:src="@mipmap/com_icon_collection_selected"
+            android:visibility="gone"
             android:layout_width="@dimen/dp_30"
             android:layout_height="@dimen/dp_30" />
     </RelativeLayout>

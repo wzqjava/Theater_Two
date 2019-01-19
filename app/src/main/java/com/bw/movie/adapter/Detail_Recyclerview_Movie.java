@@ -7,13 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.axlecho.sakura.PlayerManager;
-import com.axlecho.sakura.PlayerView;
 import com.bumptech.glide.Glide;
 import com.bw.movie.R;
 import com.bw.movie.bean.Detail_Detail_Bean;
+import com.bw.movie.utils.GlideRoundedCornersUtil;
 
 import java.util.List;
+
+import cn.jzvd.JZVideoPlayer;
+import cn.jzvd.JZVideoPlayerStandard;
 
 /**
  * date:2019/1/9
@@ -25,7 +27,7 @@ public class Detail_Recyclerview_Movie extends RecyclerView.Adapter<Detail_Recyc
     Context context;
     List<Detail_Detail_Bean.ResultBean.ShortFilmListBean> list;
     private MyViewHolder myViewHolder;
-    private PlayerView mDetail_player_view;
+    private JZVideoPlayer mDetail_player_view;
 
     public Detail_Recyclerview_Movie(Context context, List<Detail_Detail_Bean.ResultBean.ShortFilmListBean> list) {
         this.context = context;
@@ -43,18 +45,10 @@ public class Detail_Recyclerview_Movie extends RecyclerView.Adapter<Detail_Recyc
 
     @Override
     public void onBindViewHolder(@NonNull final MyViewHolder myViewHolder, final int i) {
-        //mManager = myViewHolder.detail_player_view.getManager();
-
-        String imageUrl = list.get(i).getImageUrl();
-        Glide.with(context).load(imageUrl).into(myViewHolder.detail_player_img);
-        myViewHolder.detail_player_img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                myViewHolder.detail_player_img.setVisibility(View.INVISIBLE);
-                mDetail_player_view = myViewHolder.detail_player_view;
-                mDetail_player_view.setVideoUrl(String.valueOf(list.get(i).getVideoUrl()));
-            }
-        });
+        myViewHolder.detail_player_view.setUp(list.get(i).getVideoUrl(),JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL,
+                "预告片");
+        Glide.with(context).load(list.get(i).getImageUrl())
+                .into(myViewHolder.detail_player_view.thumbImageView);
     }
     public void set(){
 
@@ -64,12 +58,10 @@ public class Detail_Recyclerview_Movie extends RecyclerView.Adapter<Detail_Recyc
         return list.size();
     }
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public PlayerView detail_player_view;
-        public ImageView detail_player_img;
+        public JZVideoPlayerStandard detail_player_view;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.detail_player_view = (PlayerView) itemView.findViewById(R.id.detail_player_view);
-            this.detail_player_img = (ImageView) itemView.findViewById(R.id.detail_player_img);
+            this.detail_player_view = (JZVideoPlayerStandard) itemView.findViewById(R.id.detail_player_view);
         }
     }
 }
