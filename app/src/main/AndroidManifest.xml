@@ -12,6 +12,8 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
+    <uses-permission android:name="android.permission.CAMERA"/>
+
     <application
         android:name=".app.MyApplication"
         android:allowBackup="true"
@@ -57,12 +59,13 @@
             android:name=".activity.H5PayDemoActivity"
             android:configChanges="orientation|keyboardHidden|navigation"
             android:exported="false"
-            android:screenOrientation="behind"></activity>
+            android:screenOrientation="behind" />
         <activity android:name=".activity.CityActivity" />
-        <activity android:name=".activity.SearchActivity"
-            android:windowSoftInputMode="adjustNothing|stateHidden"
-            />
-        <activity android:name=".activity.TicketActivity"></activity>
+        <activity
+            android:name=".activity.SearchActivity"
+            android:windowSoftInputMode="adjustNothing|stateHidden" />
+        <activity android:name=".activity.TicketActivity" />
+        <activity android:name=".activity.MyFragmentGuanZhuActivity"></activity>
     </application>
 
 </manifest>

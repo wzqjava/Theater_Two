@@ -9,7 +9,9 @@ public class BaseMVPPresenter<V> {
     public V view;
 
     public void detach() {
-        view = null;
+        if (view != null){
+            view = null;
+        }
     }
 
     public void attch(V v) {

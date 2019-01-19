@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="@dimen/dp_10">
+
+    <EditText
+        android:id="@+id/item_old_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入旧密码"
+        android:maxEms="16"
+        android:maxLines="1"
+        android:textColor="#55333333"
+        android:textColorHint="#55333333" />
+
+    <EditText
+        android:id="@+id/item_new_pwd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:maxEms="16"
+        android:textColor="#55333333"
+        android:textColorHint="#55333333"
+        android:hint="请输入新密码" />
+
+    <EditText
+        android:id="@+id/item_new_pwd2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:maxEms="16"
+        android:textColor="#55333333"
+        android:textColorHint="#55333333"
+        android:hint="请重新输入新密码" />
+
+</LinearLayout>

@@ -82,4 +82,9 @@ public class Constom {
 
     //查询购票记录
     public final static String QUERY_TICKET="movieApi/user/v1/verify/findUserBuyTicketRecordList";
+
+    //查询用户信息
+    public final static String USERID_USERBEAN ="movieApi/user/v1/verify/getUserInfoByUserId";
+    //上传头像
+    public final static String SHANGCHUANTOUXAING ="movieApi/user/v1/verify/uploadHeadPic";
 }

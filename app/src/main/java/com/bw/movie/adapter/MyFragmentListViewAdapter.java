@@ -8,6 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.RelativeLayout;
 
 import com.bw.movie.R;
+import com.bw.movie.activity.MyFragmentGuanZhuActivity;
 import com.bw.movie.activity.PersonalDetailsActivity;
 import com.bw.movie.activity.TicketActivity;
 import com.bw.movie.bean.MyFragmentBean;
@@ -49,16 +50,14 @@ public class MyFragmentListViewAdapter extends BaseAdapter {
 
         if (position == 0){
             return 0;
-        }else if (position == 1){
+        }else{
             return 1;
-        }else {
-            return 2;
         }
     }
 
     @Override
     public int getViewTypeCount() {
-        return 3;
+        return 2;
     }
 
     @Override
@@ -70,18 +69,17 @@ public class MyFragmentListViewAdapter extends BaseAdapter {
             if (getItemViewType(i) == 0){
                 view = View.inflate(context,R.layout.myfragment_listview_item_one,null);
                 holderone.myfragment_one = view.findViewById(R.id.myfragment_one);
+                holderone.myfragment_one_two = view.findViewById(R.id.myfragment_one_two);
+                holderone.myfragment_one_three = view.findViewById(R.id.myfragment_one_three);
                 view.setTag(holderone);
             }else if (getItemViewType(i) == 1){
                 view = View.inflate(context,R.layout.myfragment_listview_item_two,null);
                 holderone.myfragment_two_one = view.findViewById(R.id.myfragment_two_one);
                 holderone.myfragment_two_two = view.findViewById(R.id.myfragment_two_two);
-                view.setTag(holderone);
-            }else {
-                view = View.inflate(context,R.layout.myfragment_listview_item_three,null);
-                holderone.myfragment_three_one = view.findViewById(R.id.myfragment_three_one);
-                holderone.myfragment_three_two = view.findViewById(R.id.myfragment_three_two);
+                holderone.myfragment_two_three = view.findViewById(R.id.myfragment_two_three);
                 view.setTag(holderone);
             }
+
             if (getItemViewType(i) == 0){
                 holderone = (MyViewHolderOne) view.getTag();
                 holderone.myfragment_one.setOnClickListener(new View.OnClickListener() {
@@ -91,7 +89,22 @@ public class MyFragmentListViewAdapter extends BaseAdapter {
                         PersonalDetailsActivity.start(context);
                     }
                 });
+                holderone.myfragment_one_two.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Log.e("zhx     zhx","1-2");
+                        MyFragmentGuanZhuActivity.start(context);
+                    }
+                });
+                holderone.myfragment_one_three.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Log.e("zhx     zhx","1-3");
+                        TicketActivity.start(context);
+                    }
+                });
             }else if (getItemViewType(i) == 1){
+                holderone = (MyViewHolderOne) view.getTag();
                 holderone.myfragment_two_one.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -102,20 +115,12 @@ public class MyFragmentListViewAdapter extends BaseAdapter {
                     @Override
                     public void onClick(View view) {
                         Log.e("zhx     zhx","2-2");
-                        TicketActivity.start(context);
                     }
                 });
-            }else {
-                holderone.myfragment_three_one.setOnClickListener(new View.OnClickListener() {
+                holderone.myfragment_two_three.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Log.e("zhx     zhx","3-1");
-                    }
-                });
-                holderone.myfragment_three_two.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Log.e("zhx     zhx","3-2");
+                        Log.e("zhx     zhx","2-3");
                     }
                 });
             }
@@ -124,9 +129,10 @@ public class MyFragmentListViewAdapter extends BaseAdapter {
     }
     class MyViewHolderOne{
         RelativeLayout myfragment_one;
+        RelativeLayout myfragment_one_two;
+        RelativeLayout myfragment_one_three;
         RelativeLayout myfragment_two_one;
         RelativeLayout myfragment_two_two;
-        RelativeLayout myfragment_three_one;
-        RelativeLayout myfragment_three_two;
+        RelativeLayout myfragment_two_three;
     }
 }

@@ -7,8 +7,8 @@
     <ImageView
         android:id="@+id/iv_header"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_200"
-        android:src="@mipmap/dianyingbeijing3"
+        android:layout_height="@dimen/dp_220"
+        android:src="@mipmap/wodebj"
         android:scaleType="centerCrop" />
     <ImageView
         android:id="@+id/iv_img"
