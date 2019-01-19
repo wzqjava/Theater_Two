@@ -7,7 +7,7 @@ package com.bw.movie.net;
  */
 public class Constom {
 
-    private final static  boolean flag=true;
+    private final static  boolean flag=false;
     /**
      * 通过flag返回内网/外网测试环境
      */

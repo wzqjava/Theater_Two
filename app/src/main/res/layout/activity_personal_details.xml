@@ -156,7 +156,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
             <TextView
-                android:layout_centerVertical="true"
                 android:text="phone"
                 android:id="@+id/personaldetail_activity_phone"
                 android:textColor="#000000"
