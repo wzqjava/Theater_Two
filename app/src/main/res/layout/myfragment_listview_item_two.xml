@@ -37,6 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
         <ImageView
+            android:id="@+id/myfragment_two_two_image"
             android:layout_centerHorizontal="true"
             android:layout_width="@dimen/dp_24"
             android:layout_height="@dimen/dp_24"

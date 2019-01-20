@@ -13,6 +13,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bw.movie.BuildConfig;
 import com.bw.movie.R;
@@ -26,7 +27,11 @@ import com.bw.movie.presenter.LoginPersenter;
 import com.bw.movie.utils.EncryptUtil;
 import com.bw.movie.utils.RetrofitUtils;
 import com.greendao.gen.UserBeanDao;
+import com.tencent.mm.opensdk.modelmsg.SendAuth;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
+import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
@@ -50,6 +55,7 @@ public class LoginActivity extends BaseMVPActivity<LoginInterface,LoginPersenter
     private ImageView login_button_wechat;
     private SharedPreferences rember;
     private boolean isHideFirst = true;
+    private IWXAPI api;
 
     @Override
     protected LoginPersenter initPresenter() {
@@ -66,7 +72,7 @@ public class LoginActivity extends BaseMVPActivity<LoginInterface,LoginPersenter
         login_edittext_phone = (EditText) findViewById(R.id.login_edittext_phone);
         login_edittext_pwd = (EditText) findViewById(R.id.login_edittext_pwd);
         login_imageview_showpwd = (ImageView) findViewById(R.id.login_imageview_showpwd);
-        //login_button_wechat = (ImageView)findViewById(R.id.login_button_wechat);
+        login_button_wechat = (ImageView)findViewById(R.id.login_button_wechat);
         login_checkbox_rember = (CheckBox) findViewById(R.id.login_checkbox_rember);
         login_textview_registered = (TextView) findViewById(R.id.login_text_register);
         login_checkbox_automatic = (CheckBox) findViewById(R.id.login_checkbox_automatic);
@@ -74,19 +80,14 @@ public class LoginActivity extends BaseMVPActivity<LoginInterface,LoginPersenter
 
         login_button_login.setOnClickListener(this);
         login_imageview_showpwd.setOnClickListener(this);
-        if (BuildConfig.DEBUG) {
-            login_edittext_phone.setText("13793014727");
-
-            if (BuildConfig.DEBUG) {
-                login_edittext_phone.setText("13793014728");
-                login_edittext_pwd.setText("123456");
-            }
-        }
 
     }
 
     @Override
     protected void initData() {
+        EventBus.getDefault().register(this);
+        api = WXAPIFactory.createWXAPI(this, "wxb3852e6a6b7d9516", false);
+        api.registerApp("wxb3852e6a6b7d9516");
         rember = getSharedPreferences("Rember", MODE_PRIVATE);
         if (rember.getBoolean("rember", false)) {
             login_edittext_phone.setText(rember.getString("phone", ""));
@@ -155,13 +156,19 @@ public class LoginActivity extends BaseMVPActivity<LoginInterface,LoginPersenter
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
-       /* login_button_wechat.setOnClickListener(new View.OnClickListener() {
+        login_button_wechat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if (!api.isWXAppInstalled()) {
+                    Toast.makeText(LoginActivity.this, "您的设备未安装微信客户端", Toast.LENGTH_SHORT).show();
+                } else {
+                    SendAuth.Req req = new SendAuth.Req();
+                    req.scope = "snsapi_userinfo";
+                    req.state = "wechat_sdk_demo_test";
+                    api.sendReq(req);
+                }
             }
-        });*/
-
+        });
     }
 
     @Override
@@ -224,6 +231,7 @@ public class LoginActivity extends BaseMVPActivity<LoginInterface,LoginPersenter
 
                 Intent intent = new Intent(LoginActivity.this,ShelfActivity.class);
                 startActivity(intent);
+                finish();
             } else {
                 //
             }
@@ -268,6 +276,15 @@ public class LoginActivity extends BaseMVPActivity<LoginInterface,LoginPersenter
         edit.putString("userId", loginBean.getResult().getUserId() + "");
         edit.putString("sessionId", loginBean.getResult().getSessionId());
 
+        showToast("登陆成功");
+
+        SharedPreferences xinGe = getSharedPreferences("XinGe", MODE_PRIVATE);
+        String xtoken = xinGe.getString("Xtoken", "000000000000000000000000000");
+        Map<String,String> xMap = new HashMap<>();
+        xMap.put("token",xtoken);
+        xMap.put("os",1+"");
+        presenter.PustXinGe(xMap, loginBean.getResult().getUserId() + "", loginBean.getResult().getSessionId());
+
         edit.commit();
     }
 
@@ -276,14 +293,29 @@ public class LoginActivity extends BaseMVPActivity<LoginInterface,LoginPersenter
      * 注册成功后回显账号密码
      * @param bean
      */
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void handleEvent(RegisteredEventBusBean bean){
+    @Subscribe(threadMode = ThreadMode.MAIN ,sticky = true)
+    public void even(RegisteredEventBusBean bean){
         login_edittext_phone.setText(bean.getPhone());
         login_edittext_pwd.setText(bean.getPwd());
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
+    public void even(SendAuth.Resp req) {
+        //showToast("123456");
+        String code = req.code;
+        Map<String, String> map = new HashMap<>();
+        map.put("code", code);
+        presenter.WeiCartLogin(map);
     }
 
     @Override
     public void Failed() {
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

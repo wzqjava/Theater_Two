@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/opinion_textview_pagename"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_30"
+        android:text="意见反馈"
+        android:textColor="#444444"
+        android:textSize="@dimen/sp_14" />
+
+    <EditText
+        android:id="@+id/opinion_edittext_content"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/opinion_textview_pagename"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_30"
+        android:layout_marginRight="@dimen/dp_24"
+        android:background="@drawable/shape_mine_card"
+        android:elevation="@dimen/dp_4"
+        android:gravity="left|top"
+        android:hint="写下您对产品的感受吧！工作人员将会在第一时间评估处理。"
+        android:minLines="3"
+        android:padding="@dimen/dp_20"
+        android:textColor="#999999"
+        android:textSize="@dimen/sp_12" />
+
+    <Button
+        android:id="@+id/opinion_button_commit"
+        android:layout_width="@dimen/dp_48"
+        android:layout_height="@dimen/dp_25"
+        android:layout_below="@id/opinion_edittext_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_24"
+        android:background="@drawable/shape_feedback_btn_background"
+        android:text="提交"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/sp_12" />
+
+    <LinearLayout
+        android:id="@+id/opinion_relativeLayout_showhide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFF"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="@dimen/dp_70"
+            android:layout_height="@dimen/dp_70"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_140"
+            android:src="@mipmap/common_icon_finish_n" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_25"
+            android:text="反馈成功" />
+
+        <TextView
+            android:layout_width="@dimen/dp_280"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_25"
+            android:gravity="center"
+            android:text="感谢您对唯独影院的关注与支持，我们会认真处理您的反馈，尽快修复和完善相关功能" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/opinion_imageview_return"
+        android:layout_width="@dimen/dp_60"
+        android:layout_height="@dimen/dp_60"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="@dimen/dp_24"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:src="@mipmap/com_icon_my_fanhui" />
+</RelativeLayout>

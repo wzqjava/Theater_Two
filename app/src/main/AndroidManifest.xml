@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.bw.movie">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".app.MyApplication"
@@ -21,7 +22,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:windowSoftInputMode="stateVisible|adjustPan">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,7 +35,7 @@
         <activity android:name=".activity.NetWorkActivity" />
         <activity
             android:name=".activity.LoginActivity"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan"/>
         <activity android:name=".activity.CountDownActivity" />
         <activity android:name=".activity.ShelfActivity" />
         <activity android:name=".activity.ChooseActivity" />
@@ -52,7 +54,7 @@
         <activity android:name=".activity.SelectTheatersActivity" />
         <activity android:name=".activity.PlayDetailActivity" />
         <activity android:name=".activity.MyFragmentReMindActivity" />
-        <activity android:name=".activity.MyFragmentGuanZhuActivity"/>
+        <activity android:name=".activity.MyFragmentGuanZhuActivity" />
         <activity android:name=".activity.PersonalDetailsActivity" />
         <activity
             android:name=".wxapi.WXPayEntryActivity"
@@ -68,7 +70,13 @@
             android:name=".activity.SearchActivity"
             android:windowSoftInputMode="adjustNothing|stateHidden" />
         <activity android:name=".activity.TicketActivity" />
-        <activity android:name=".adapter.ShowStillActivity"></activity>
+        <activity android:name=".adapter.ShowStillActivity" />
+        <activity android:name=".activity.OpinionActivity" />
+        <activity android:name=".activity.DownLoadActivity" />
+        <activity android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

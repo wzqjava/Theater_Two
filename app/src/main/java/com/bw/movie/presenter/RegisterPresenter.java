@@ -1,5 +1,7 @@
 package com.bw.movie.presenter;
 
+import android.text.TextUtils;
+
 import com.bw.movie.activity.RegisterActivity;
 import com.bw.movie.base.BaseMVPActivity;
 import com.bw.movie.base.BaseMVPPresenter;
@@ -51,10 +53,32 @@ public class RegisterPresenter extends BaseMVPPresenter<RegisterView> {
             }
         });
     }
-    public boolean isChinaPhoneLegal(String str) throws PatternSyntaxException {
-        String regExp = "^((13[0-9])|(15[^4])|(18[0-9])|(17[0-8])|(147,145))\\d{8}$";
-        Pattern p = Pattern.compile(regExp);
-        Matcher m = p.matcher(str);
-        return m.matches();
+    public String isPass(String nickname,String sex,String birthday,String phone,String email,String pwd) {
+        final String PHONE ="^((13[0-9])|(14[5,7,9])|(15[^4])|(18[0-9])|(17[0,1,3,5,6,7,8]))\\d{8}$";
+        final String PWD = "^[a-zA-Z0-9]{3,16}$";
+        final String SEX="[男|女]";
+        final String DATE="^\\d{4}(\\-|\\/|\\.)\\d{1,2}\\1\\d{1,2}$";
+        final String EMAIL="^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
+        if(TextUtils.isEmpty(nickname)||TextUtils.isEmpty(sex)||TextUtils.isEmpty(birthday)||
+                TextUtils.isEmpty(phone)||TextUtils.isEmpty(email)||TextUtils.isEmpty(pwd)){
+            return "所有输入框不能为空";
+        }else{
+            if(!sex.matches(SEX)){
+                return "你确定你的性别?";
+            }
+            if(!birthday.matches(DATE)){
+                return "请输入正确的日期";
+            }
+            if(!phone.matches(PHONE)){
+                return "请输入正确格式的手机号";
+            }
+            if(!email.matches(EMAIL)){
+                return "请输入正确的邮箱地址";
+            }
+            if(!pwd.matches(PWD)){
+                return "请输入正确格式的密码";
+            }
+            return "yes";
+        }
     }
 }

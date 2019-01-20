@@ -7,6 +7,7 @@ package com.bw.movie.net;
  */
 public class Constom {
 
+
     private final static  boolean flag=false;
     /**
      * 通过flag返回内网/外网测试环境
@@ -27,6 +28,8 @@ public class Constom {
     public final static String REGISTER_URL="movieApi/user/v1/registerUser";
     //登录的接口
     public final static String LOHGIN_URL="movieApi/user/v1/login";
+    //登录的接口
+    public final static String WeiChart="movieApi/user/v1/weChatBindingLogin";
     //首页的热门电影
     public final static String MOVIEFRAGMENT_REMEN="movieApi/movie/v1/findHotMovieList";
     //首页的正在上映
@@ -87,4 +90,8 @@ public class Constom {
     public final static String USERID_USERBEAN ="movieApi/user/v1/verify/getUserInfoByUserId";
     //上传头像
     public final static String SHANGCHUANTOUXAING ="movieApi/user/v1/verify/uploadHeadPic";
+    /**
+     * 和信鸽关联
+     */
+    public static final String XinGe = "movieApi/tool/v1/verify/uploadPushToken";
 }

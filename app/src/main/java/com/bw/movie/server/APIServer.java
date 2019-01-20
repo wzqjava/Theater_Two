@@ -24,6 +24,7 @@ import com.bw.movie.bean.RegisterBean;
 import com.bw.movie.bean.SearchBean;
 import com.bw.movie.bean.SelectThrastersRecyclerViewBean;
 import com.bw.movie.bean.ShangChuanHeadPicBean;
+import com.bw.movie.bean.SimpleBean;
 import com.bw.movie.bean.UserIDChaXunBean;
 import com.bw.movie.model.BaseResponse;
 import com.bw.movie.net.Constom;
@@ -161,6 +162,18 @@ public interface APIServer {
     @POST(Constom.LOHGIN_URL)
     Observable<LoginBean> Login(@FieldMap Map<String, String> map);
 
+    /**
+     * 微信登录
+     *
+     * @param map
+     * @return
+     */
+    @FormUrlEncoded
+    //@Headers("Content-Type:application/x-www-form-urlencoded; charset=utf-8")
+    //phone=13793014727&pwd=eWLPHopE945d2ivttHaQTQ%3D%3D
+    @POST(Constom.WeiChart)
+    Observable<LoginBean> WeiCartLogin(@FieldMap Map<String, String> map);
+
     //注册的网络请求
     //http://172.17.8.100/movieApi/user/v1/registerUser
     @FormUrlEncoded
@@ -285,4 +298,7 @@ public interface APIServer {
     @POST(Constom.SHANGCHUANTOUXAING)
     Observable<ShangChuanHeadPicBean> getShangChuanHeadPic(@Header("userId") String userId, @Header("sessionId") String sessionId, @PartMap HashMap<String, RequestBody> map);
 
+    @FormUrlEncoded
+    @POST(Constom.XinGe)
+    Observable<SimpleBean> PustXinGe(@FieldMap Map<String, String> xMap,@Header("userId") String userId, @Header("sessionId") String sessionId);
 }

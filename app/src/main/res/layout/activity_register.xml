@@ -2,8 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/bitmap">
-
+    android:background="@mipmap/bitmap"
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <RelativeLayout
         android:layout_width="@dimen/dp_300"
@@ -32,14 +33,17 @@
             android:layout_marginLeft="@dimen/dp_40"
             android:background="@null"
             android:hint="昵称"
+            android:maxEms="1"
+            android:maxLength="10"
+            android:maxLines="1"
             android:textColor="#ffffff"
             android:textColorHint="#fff" />
 
         <TextView
             android:layout_width="@dimen/dp_320"
             android:layout_height="@dimen/dp_1"
-            android:layout_marginTop="@dimen/dp_5"
             android:layout_below="@+id/register_name"
+            android:layout_marginTop="@dimen/dp_5"
             android:background="#ffff" />
     </RelativeLayout>
 
@@ -70,16 +74,20 @@
             android:layout_marginLeft="@dimen/dp_40"
             android:background="@null"
             android:hint="性别"
+            android:maxEms="1"
+            android:maxLength="1"
+            android:maxLines="1"
             android:textColor="#ffffff"
             android:textColorHint="#fff" />
 
         <TextView
             android:layout_width="@dimen/dp_320"
             android:layout_height="@dimen/dp_1"
-            android:layout_marginTop="@dimen/dp_5"
             android:layout_below="@+id/register_sex"
+            android:layout_marginTop="@dimen/dp_5"
             android:background="#ffff" />
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="@dimen/dp_300"
         android:layout_height="@dimen/dp_40"
@@ -107,16 +115,20 @@
             android:layout_marginLeft="@dimen/dp_40"
             android:background="@null"
             android:hint="出生日期"
+            android:maxEms="1"
+            android:maxLength="10"
+            android:maxLines="1"
             android:textColor="#ffffff"
             android:textColorHint="#fff" />
 
         <TextView
             android:layout_width="@dimen/dp_320"
             android:layout_height="@dimen/dp_1"
-            android:layout_marginTop="@dimen/dp_5"
             android:layout_below="@+id/register_date"
+            android:layout_marginTop="@dimen/dp_5"
             android:background="#ffff" />
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="@dimen/dp_300"
         android:layout_height="@dimen/dp_40"
@@ -144,16 +156,21 @@
             android:layout_marginLeft="@dimen/dp_40"
             android:background="@null"
             android:hint="手机号"
+            android:inputType="phone"
+            android:maxEms="1"
+            android:maxLength="11"
+            android:maxLines="1"
             android:textColor="#ffffff"
             android:textColorHint="#fff" />
 
         <TextView
             android:layout_width="@dimen/dp_320"
             android:layout_height="@dimen/dp_1"
-            android:layout_marginTop="@dimen/dp_5"
             android:layout_below="@+id/register_phone"
+            android:layout_marginTop="@dimen/dp_5"
             android:background="#ffff" />
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="@dimen/dp_300"
         android:layout_height="@dimen/dp_40"
@@ -181,16 +198,19 @@
             android:layout_marginLeft="@dimen/dp_40"
             android:background="@null"
             android:hint="邮箱"
+            android:maxLines="1"
+            android:paddingLeft="@dimen/dp_50"
             android:textColor="#ffffff"
             android:textColorHint="#fff" />
 
         <TextView
             android:layout_width="@dimen/dp_320"
             android:layout_height="@dimen/dp_1"
-            android:layout_marginTop="@dimen/dp_5"
             android:layout_below="@+id/register_mail"
+            android:layout_marginTop="@dimen/dp_5"
             android:background="#ffff" />
     </RelativeLayout>
+
     <RelativeLayout
         android:layout_width="@dimen/dp_300"
         android:layout_height="@dimen/dp_40"
@@ -217,15 +237,18 @@
             android:layout_marginStart="@dimen/dp_40"
             android:layout_marginLeft="@dimen/dp_40"
             android:background="@null"
-            android:hint="登录密码"
+            android:hint="密码"
+            android:maxEms="1"
+            android:maxLength="16"
+            android:maxLines="1"
             android:textColor="#ffffff"
             android:textColorHint="#fff" />
 
         <TextView
             android:layout_width="@dimen/dp_320"
             android:layout_height="@dimen/dp_1"
-            android:layout_marginTop="@dimen/dp_5"
             android:layout_below="@+id/register_lock"
+            android:layout_marginTop="@dimen/dp_5"
             android:background="#ffff" />
     </RelativeLayout>
 
@@ -233,10 +256,20 @@
         android:id="@+id/register_register"
         android:layout_width="@dimen/dp_250"
         android:layout_height="wrap_content"
-        android:text="注册"
-        android:textColor="#ffffff"
-        android:background="@drawable/shape"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/dp_85" />
+        android:layout_marginBottom="@dimen/dp_85"
+        android:background="@drawable/shape"
+        android:text="注册"
+        android:textColor="#ffffff" />
+    <TextView
+        android:id="@+id/text_return"
+        android:layout_marginLeft="@dimen/dp_15"
+        android:layout_marginTop="@dimen/dp_15"
+        android:layout_width="wrap_content"
+        android:onClick="Finish"
+        android:textColor="#FFF"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp_16"
+        android:text="返回"/>
 </RelativeLayout>
