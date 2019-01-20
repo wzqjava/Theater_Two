@@ -65,7 +65,7 @@ public class LoginPersenter extends BaseMVPPresenter<LoginInterface> {
         mLoginModel.PustXinGe(xMap, userId, sessionId,new DisposableObserver<SimpleBean>() {
             @Override
             public void onNext(SimpleBean simpleBean) {
-                Log.e("信鸽推送  关联","成功");
+                Log.e("信鸽推送  关联","成功"+simpleBean.getMessage());
             }
 
             @Override
